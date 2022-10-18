@@ -5,8 +5,11 @@
 
 ### To launch the front-end project locally:
 
-1. Open the terminal window and clone the repository using this command:  
-`git@github.com:WomenPlusPlus/deploy-impact-22-wikimini-c.git` 
+1. Open the terminal window and clone the repository using this command:
+
+- HTTPS: `https://github.com/WomenPlusPlus/deploy-impact-22-wikimini-c.git`
+- SSH: `git@github.com:WomenPlusPlus/deploy-impact-22-wikimini-c.git`
+
 1. Change the directory to wikimini front-end directory  
 `cd deploy-impact-22-wikimini-c/wikimini-frontend`  
 3. Install the project's dependencies by running this command:   
