@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Don Alessandro",
+			"TayfunEt."
+		]
+	},
+	"vector-languages": "Tiller",
+	"vector-language-button-label": "{{PLURAL:$1|$1 til|$1 tiller}}",
+	"vector-action-addsection": "Mevzu qoş",
+	"vector-action-delete": "Yoq et",
+	"vector-action-move": "Adını deñiştir",
+	"vector-action-protect": "Qorçala",
+	"vector-action-undelete": "Yañıdan yarat",
+	"vector-action-unprotect": "Qorçalavnı deñiştir",
+	"vector-view-create": "Yarat",
+	"vector-view-edit": "Deñiştir",
+	"vector-view-history": "Keçmişini köster",
+	"vector-view-view": "Oqu",
+	"vector-view-viewsource": "Menba kodunı köster",
+	"vector-more-actions": "Başqa areketler",
+	"vector-searchsuggest-containing": "<strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong> içeren saifelerni qıdır"
+}

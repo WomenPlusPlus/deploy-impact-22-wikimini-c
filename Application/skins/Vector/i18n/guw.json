@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anthonymodec",
+			"Gadarawamo",
+			"Hunpatinjob",
+			"Misteld",
+			"Samatics",
+			"Atej2*"
+		]
+	},
+	"vector-language-button-label": "{{PLURAL:$1|$1 ogbè|$1 ogbè lẹ}}",
+	"vector-action-addsection": "Yi hosọ dogọ",
+	"vector-action-delete": "Sunsunsẹ",
+	"vector-action-move": "Sẹtẹn",
+	"vector-action-protect": "Họ́",
+	"vector-view-create": "Dá",
+	"vector-view-edit": "Jlado",
+	"vector-view-history": "Pọ́n kandai",
+	"vector-view-view": "Hia",
+	"vector-more-actions": "Dogọ",
+	"vector-searchsuggest-containing": "Dín weda he bẹ <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong> hẹn lẹ",
+	"vector-anon-user-menu-pages-learn": "Plọnnu dogọ"
+}

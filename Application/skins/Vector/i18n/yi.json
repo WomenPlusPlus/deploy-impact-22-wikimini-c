@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Castillerian",
+			"Har-wradim",
+			"Joystick",
+			"פוילישער"
+		]
+	},
+	"skinname-vector": "וועקטאר",
+	"vector-skin-desc": "מאדערנע ווערסיע פון מאנאבוק מיט פרישן אויסזען און א סך באניצער־פריינדלעכקייט פארבעסערונגען",
+	"vector.css": "/* אלע CSS דא וועל ווערן געלאדן פֿאר באניצער פונעם וועקטאר סקין */",
+	"vector-language-button-label": "{{PLURAL:$1|$1 שפּראַך|$1 שפּראַכן}}",
+	"vector-action-addsection": "צושטעלן טעמע",
+	"vector-action-delete": "אויסמעקן",
+	"vector-action-move": "באַוועגן",
+	"vector-action-protect": "שיצן",
+	"vector-action-undelete": "מבטל זיין אויסמעקן",
+	"vector-action-unprotect": "ענדערונג באַשיצונג",
+	"vector-view-create": "שאַפֿן",
+	"vector-view-edit": "רעדאַקטירן",
+	"vector-view-history": "ווייזן היסטאָריע",
+	"vector-view-view": "לייענען",
+	"vector-view-viewsource": "ווײַזן מקור",
+	"vector-more-actions": "נאך"
+}
