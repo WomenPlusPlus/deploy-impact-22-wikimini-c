@@ -17,7 +17,7 @@
  * @file
  */
 
-namespace MediaWiki\Extension\SoraiaExtension;
+namespace MediaWiki\Extension\WikiMiniExtension;
 
 use DatabaseUpdater;
 
@@ -30,9 +30,9 @@ class Hooks implements \MediaWiki\Hook\BeforePageDisplayHook {
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$config = $out->getConfig();
-		if ( $config->get( 'SoraiaExtensionVandalizeEachPage' ) ) {
+		if ( $config->get( 'WikiMiniExtensionVandalizeEachPage' ) ) {
 			$out->addModules( 'oojs-ui-core' );
-			$out->addHTML( \Html::element( 'p', [], 'SoraiaExtension was here' ) );
+			$out->addHTML( \Html::element( 'p', [], 'WikiMiniExtension was here' ) );
 		}
 	}
 
