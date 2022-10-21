@@ -14,6 +14,32 @@ const style = {
   bgcolor: 'background.paper',
 };
 
+const students = [
+  { studentName: 'Student1' },
+  { studentName: 'Student2' },
+  { studentName: 'Student3' },
+  { studentName: 'Student4' },
+  { studentName: 'Student5' },
+  { studentName: 'Student6' },
+  { studentName: 'Student7' },
+  { studentName: 'Student8' },
+  { studentName: 'Student9' },
+  { studentName: 'Student10' },
+];
+
+const studentsTasksStatus = [
+  { studentName: 'Student1', task: 'Task1' },
+  { studentName: 'Student2', task: 'Task2' },
+  { studentName: 'Student3', task: 'Task3' },
+  { studentName: 'Student4', task: 'Task4' },
+  { studentName: 'Student5', task: 'Task5' },
+  { studentName: 'Student6', task: 'Task6' },
+  { studentName: 'Student7', task: 'Task7' },
+  { studentName: 'Student8', task: 'Task8' },
+  { studentName: 'Student9', task: 'Task9' },
+  { studentName: 'Student10', task: 'Task10' },
+];
+
 const DashboardPage = () => (
   <MainContainer>
     <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
@@ -30,73 +56,20 @@ const DashboardPage = () => (
             overflow: 'hidden',
             overflowY: 'scroll',
             gap: 2,
-            // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
           }}
         >
-          <List sx={style} component="nav" aria-label="mailbox folders">
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <DeleteOutlineIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <DeleteOutlineIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <DeleteOutlineIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <DeleteOutlineIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <DeleteOutlineIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <DeleteOutlineIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <DeleteOutlineIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <DeleteOutlineIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <DeleteOutlineIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
+          <List sx={style} component="nav">
+            {students.map(({ studentName }) => (
+              <>
+                <ListItem button>
+                  <ListItemText key={studentName} primary={studentName} />
+                  <IconButton aria-label="delete">
+                    <DeleteOutlineIcon />
+                  </IconButton>
+                </ListItem>
+                <Divider variant="middle" />
+              </>
+            ))}
           </List>
         </Box>
       </Box>
@@ -112,100 +85,25 @@ const DashboardPage = () => (
             overflow: 'hidden',
             overflowY: 'scroll',
             gap: 2,
-            // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
           }}
         >
           <List sx={style} component="nav" aria-label="mailbox folders">
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <CheckCircleOutlineIcon />
-              </IconButton>
-              <IconButton aria-label="delete">
-                <HighlightOffIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <CheckCircleOutlineIcon />
-              </IconButton>
-              <IconButton aria-label="delete">
-                <HighlightOffIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <CheckCircleOutlineIcon />
-              </IconButton>
-              <IconButton aria-label="delete">
-                <HighlightOffIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <CheckCircleOutlineIcon />
-              </IconButton>
-              <IconButton aria-label="delete">
-                <HighlightOffIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <CheckCircleOutlineIcon />
-              </IconButton>
-              <IconButton aria-label="delete">
-                <HighlightOffIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <CheckCircleOutlineIcon />
-              </IconButton>
-              <IconButton aria-label="delete">
-                <HighlightOffIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <CheckCircleOutlineIcon />
-              </IconButton>
-              <IconButton aria-label="delete">
-                <HighlightOffIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <CheckCircleOutlineIcon />
-              </IconButton>
-              <IconButton aria-label="delete">
-                <HighlightOffIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
-            <ListItem button>
-              <ListItemText primary="Student" />
-              <IconButton aria-label="delete">
-                <CheckCircleOutlineIcon />
-              </IconButton>
-              <IconButton aria-label="delete">
-                <HighlightOffIcon />
-              </IconButton>
-            </ListItem>
-            <Divider variant="middle" />
+
+            {studentsTasksStatus.map(({ studentName, task }) => (
+              <>
+                <ListItem button>
+                  <ListItemText key={studentName} primary={studentName} />
+                  <ListItemText key={studentName} primary={task} />
+                  <IconButton>
+                    <CheckCircleOutlineIcon />
+                  </IconButton>
+                  <IconButton>
+                    <HighlightOffIcon />
+                  </IconButton>
+                </ListItem>
+                <Divider variant="middle" />
+              </>
+            ))}
           </List>
         </Box>
       </Box>
@@ -221,7 +119,6 @@ const DashboardPage = () => (
             overflow: 'hidden',
             overflowY: 'scroll',
             gap: 2,
-            // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
           }}
         >
           <List sx={style} component="nav" aria-label="mailbox folders">
@@ -347,7 +244,6 @@ const DashboardPage = () => (
       </Box>
     </Box>
   </MainContainer>
-
 );
 
 export default DashboardPage;
