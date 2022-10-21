@@ -1,0 +1,53 @@
+{
+	"name": "WikiMiniExtension",
+	"author": [
+		"Soraia Tavares"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:BoilerPlate",
+	"descriptionmsg": "wikiminiextension-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\WikiMiniExtension\\": "src/"
+	},
+	"config": {
+		"WikiMiniExtensionEnableFoo": {
+			"description": "Enable the Foo feature.",
+			"value": true
+		},
+		"WikiMiniExtensionVandalizeEachPage": {
+			"description": "Write 'WikiMiniExtension was here' on each page",
+			"value": false
+		}
+	},
+	"HookHandlers": {
+		"WikiMiniExtensionHooks": {
+			"class": "MediaWiki\\Extension\\WikiMiniExtension\\Hooks"
+		}
+	},
+	"Hooks": {
+		"BeforePageDisplay": "WikiMiniExtensionHooks",
+		"LoadExtensionSchemaUpdates": "MediaWiki\\Extension\\WikiMiniExtension\\Hooks::onLoadExtensionSchemaUpdates"
+	},
+	"MessagesDirs": {
+		"WikiMiniExtension": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"ext.WikiMiniExtension": {
+			"localBasePath": "resources/ext.WikiMiniExtension",
+			"remoteExtPath": "WikiMiniExtension/resources/ext.WikiMiniExtension",
+			"dependencies": [],
+			"styles": [],
+			"packageFiles": [
+				"init.js"
+			],
+			"messages": []
+		}
+	},
+	"manifest_version": 2
+}
