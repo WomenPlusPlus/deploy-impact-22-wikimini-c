@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -17,6 +18,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const ClassesPage = () => {
   const navigate = useNavigate();
+  const teacherClasses = useSelector((state) => state.teacher.classes);
 
   return (
     <MainContainer>
@@ -39,18 +41,15 @@ const ClassesPage = () => {
               xs: 1, sm: 2, md: 3,
             }}
           >
-            <Grid item xs={6}>
-              <Item><Button fullWidth onClick={() => navigate('/dashboard')}>Class 1</Button></Item>
-            </Grid>
-            <Grid item xs={6}>
-              <Item><Button fullWidth>Class 2</Button></Item>
-            </Grid>
-            <Grid item xs={6}>
-              <Item><Button fullWidth>Class 3</Button></Item>
-            </Grid>
-            <Grid item xs={6}>
-              <Item><Button fullWidth>Class 4</Button></Item>
-            </Grid>
+            {teacherClasses.map((item) => (
+              <Grid key={item.id} item xs={6}>
+                <Item>
+                  <Button fullWidth onClick={() => navigate('/dashboard')}>
+                    {item.classTitle}
+                  </Button>
+                </Item>
+              </Grid>
+            ))}
           </Grid>
         </Box>
       </Box>
