@@ -20,10 +20,17 @@ const ClassesPage = () => {
 
   return (
     <MainContainer>
-      <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column" width="100%" height="400px">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        width="100%"
+        height="400px"
+      >
         <Typography variant="h4" mb={5}>WELCOME BARBRA STREISAND!</Typography>
         <Typography variant="h5" mb={5}>CLASSES</Typography>
-        <Button variant="contained">ADD CLASS</Button>
+        <Button variant="contained" onClick={() => navigate('/add-class')}>ADD CLASS</Button>
         <Box sx={{ width: '800px', mt: 5 }}>
           <Grid
             container

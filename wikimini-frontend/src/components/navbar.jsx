@@ -25,6 +25,7 @@ const Navbar = () => {
           </IconButton>
           <Button color="inherit" onClick={() => navigate('/')}>HOME</Button>
           <Button color="inherit" onClick={() => navigate('/login')}>Login</Button>
+          <Button color="inherit" onClick={() => navigate('/register')}>Register</Button>
           <Button color="inherit" onClick={() => navigate('/dashboard')}>Dashboard</Button>
         </Toolbar>
       </AppBar>
