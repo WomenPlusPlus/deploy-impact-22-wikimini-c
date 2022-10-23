@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Typography,
@@ -15,6 +17,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import MainContainer from '../../components/main-container';
 import AddStudentModal from './add-student-modal';
+import { createClass } from '../../redux/reducers/teacher';
 
 const style = {
   width: '100%',
@@ -45,9 +48,12 @@ const validationSchema = yup.object({
 });
 
 const AddClassPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const onSubmit = (values) => {
-    console.log('Values entered');
-    console.table(values);
+    dispatch(createClass({ ...values, students: [] }));
+    navigate('/classes');
   };
 
   const {
