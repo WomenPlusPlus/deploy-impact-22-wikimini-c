@@ -4,8 +4,8 @@
 			"Soraia Tavares"
 		]
 	},
-	"apihelp-query+allclasses-summary": "Get all created classes.",
-	"apihelp-query+allclasses-param-key": "Reduce the result to only one of the foo properties.",
+	"apihelp-query+example-summary": "Get all created classes.",
+	"apihelp-query+example-param-key": "Reduce the result to only one of the foo properties.",
 	"apihelp-query+example-example-1": "Get all the information about classes.",
 	"apihelp-query+example-example-2": "Get all classes for a specific \"teacher\"."
 }

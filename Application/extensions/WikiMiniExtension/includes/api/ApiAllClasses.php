@@ -40,8 +40,7 @@ class ApiAllClasses extends \ApiQueryBase {
 					'class-teacher-id' => (int)$row->class_teacher_id,
 					'class-token' => $row->class_token
 				];
-
-			$result->addValue( null, $this->getModuleName(), $vals );
+			$fit = $result->addValue( [ 'query', $this->getModuleName() ], null, $vals );
 		}
 	}
 

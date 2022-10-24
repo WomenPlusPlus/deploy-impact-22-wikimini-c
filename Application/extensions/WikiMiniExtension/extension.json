@@ -47,6 +47,9 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\Wikimini\\": "includes/"
 	},
+	"APIModules": {
+		"createclass": "MediaWiki\\Extension\\Wikimini\\api\\ApiCreateClass"
+	},
 	"APIListModules": {
 		"allclasses": "MediaWiki\\Extension\\Wikimini\\api\\ApiAllClasses"
 	},
