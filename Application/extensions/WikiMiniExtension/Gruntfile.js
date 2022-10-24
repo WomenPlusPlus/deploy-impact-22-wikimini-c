@@ -1,4 +1,4 @@
-/* eslint-env node, es6 */
+/* eslint-env node */
 module.exports = function ( grunt ) {
 	var conf = grunt.file.readJSON( 'extension.json' );
 
@@ -9,14 +9,14 @@ module.exports = function ( grunt ) {
 	grunt.initConfig( {
 		eslint: {
 			options: {
-				cache: true,
-				fix: grunt.option( 'fix' )
+				cache: true
 			},
 			all: '.'
 		},
 		stylelint: {
 			all: [
 				'**/*.{css,less}',
+				'!**/coverage/**',
 				'!node_modules/**',
 				'!vendor/**'
 			]

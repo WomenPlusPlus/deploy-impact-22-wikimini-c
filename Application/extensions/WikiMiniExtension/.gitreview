@@ -1,6 +1,5 @@
 [gerrit]
 host=gerrit.wikimedia.org
 port=29418
-project=mediawiki/extensions/WikiMiniExtension.git
+project=mediawiki/extensions/wikimini.git
 track=1
-defaultrebase=0
