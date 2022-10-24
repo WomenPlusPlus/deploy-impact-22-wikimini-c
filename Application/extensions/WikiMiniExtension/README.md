@@ -1,6 +1,7 @@
-# WikiMini extension for MediaWiki
+# Example extension for MediaWiki
 
-The WikiMini extension allows the implementation of a educational dashboard.
+The Examples extension is a collection of small example features that implement
+common extension interfaces in MediaWiki.
 
 The basic structure of this repository is based on the BoilerPlate extension.
 
