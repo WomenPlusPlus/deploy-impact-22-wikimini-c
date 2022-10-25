@@ -7,6 +7,9 @@ import ClassesPage from '../pages/classes-page';
 import DashboardPage from '../pages/dashboard-page';
 import RegisterPage from '../pages/register-page';
 import AddClassPage from '../pages/add-class-page';
+import CreateTaskPage from '../pages/create-task-page';
+import AssignStudentPage from '../pages/assign-student-page';
+import TasksPage from '../pages/tasks-page';
 
 const PageRoutes = () => (
   <Routes>
@@ -17,6 +20,9 @@ const PageRoutes = () => (
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/classes" element={<ClassesPage />} />
       <Route path="/add-class" element={<AddClassPage />} />
+      <Route path="/create-task" element={<CreateTaskPage />} />
+      <Route path="/assign-student" element={<AssignStudentPage />} />
+      <Route path="/tasks" element={<TasksPage />} />
     </Route>
   </Routes>
 );
