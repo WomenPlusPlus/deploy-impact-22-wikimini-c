@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\Wikimini\api;
 
 use ApiBase;
+use User;
 use MediaWiki\MediaWikiServices;
 
 class ApiCreateClass extends ApiBase {
@@ -19,33 +20,39 @@ class ApiCreateClass extends ApiBase {
 
         // create connection to write DB
         $lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
-
         $dbw = $lb->getConnectionRef( DB_PRIMARY );
 
-        // get params and make sure class name is provided
-        $params = $this->extractRequestParams();
-        $this->requireOnlyOneParameter($params, 'class_name');
+        // get user
+        $user = $this->getUser();
+        $userid = $user->getId();
+        
+        //check if user is allowed to create a class
+        if ($user->isAllowed('r_create_class')) {
 
-        $vals = [
-            'class_name' =>$params['class_name'],
-            'class_start' => '2022-01-01',
-            'class_end' => '2022-01-11',
-            'class_teacher_id' => 1,
-            'class_token' => '213sada2'
-        ];
+            // get params and make sure class name is provided
+            $params = $this->extractRequestParams();
+            $this->requireOnlyOneParameter($params, 'class_name');
 
-        // create class row in DB
-        if (isset($params['class_name'])) { 
-            $dbw->insert(
-                'wm_classes', 
-                $vals,
-                __METHOD__
-                );
-        }
+            $vals = [
+                'class_name' =>$params['class_name'],
+                'class_teacher_user_id' => (int)$userid
+            ];
+
+            // create class row in DB
+            if (isset($params['class_name'])) { 
+                $dbw->insert(
+                    'wm_classes', 
+                    $vals,
+                    __METHOD__
+                    );
+            }
 
         $stuff = [$vals];
-        $r = [ 'new_class' => $stuff ];
-		$this->getResult()->addValue( null, $this->getModuleName(), $r );
+        $r = [ 'created_class' => $stuff ];
+        $this->getResult()->addValue( null, $this->getModuleName(), $r );
+        } else {
+            $this->dieWithError('The user is not allowed to create a class.');
+        }
 
 	}
 
@@ -58,8 +65,11 @@ class ApiCreateClass extends ApiBase {
         ];
     }
 
-    public function getParamDescription() {
-        return array('class_name' => 'The name given to the class of students.');
-    }
+    protected function getExamplesMessages() {
+		return [
+			'action=createclass&class_name=example'
+				=> 'apihelp-query+createclass-example-1'
+		];
+	}
 
 }

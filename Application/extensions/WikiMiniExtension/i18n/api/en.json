@@ -4,8 +4,9 @@
 			"Soraia Tavares"
 		]
 	},
-	"apihelp-query+example-summary": "Get all created classes.",
-	"apihelp-query+example-param-key": "Reduce the result to only one of the foo properties.",
-	"apihelp-query+example-example-1": "Get all the information about classes.",
-	"apihelp-query+example-example-2": "Get all classes for a specific \"teacher\"."
+	"apihelp-createclass-summary": "This will create a class under the current logged in teacher.",
+	"apihelp-query+allclasses-summary": "This will fetch all existing classes for the current logged in teacher.",
+	"apihelp-createclass-param-class_name": "Name of the class.",
+	"apihelp-query+createclass-example-1": "Create a new class.",
+	"apihelp-allclasses-example-1": "Fetch all teachers' classes."
 }
