@@ -1,12 +1,13 @@
 import React from 'react';
 import {
-  Typography, Box, List, ListItem, ListItemText, Divider, IconButton,
+  Typography, Box, List, ListItem, ListItemText, Divider, IconButton, Button,
 } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import CreateIcon from '@mui/icons-material/Create';
+import { useNavigate } from 'react-router-dom';
 import MainContainer from '../../components/main-container';
 
 const style = {
@@ -54,13 +55,86 @@ const tasks = [
   { task: 'Task11' },
 ];
 
-const DashboardPage = () => (
-  <MainContainer>
-    <Typography>Class 1</Typography>
+const DashboardPage = () => {
+  const navigate = useNavigate();
 
-    <Box display="flex" width="100%" gap={5}>
-      <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-        <Typography variant="h5" my={5}>Sudents</Typography>
+  return (
+    <MainContainer>
+      <Typography variant="h5" mb={5}>Class 1</Typography>
+      <Box display="flex" width="100%" gap={5}>
+        <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+          <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" mb={3}>
+            <Typography>Students</Typography>
+            <Box display="flex" gap={3}>
+              <Button variant="contained" size="small">Add student</Button>
+            </Box>
+          </Box>
+          <Box width="100%" border="1px solid black" borderRadius={1} mb={5}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                height: 290,
+                overflow: 'hidden',
+                overflowY: 'scroll',
+                gap: 2,
+              }}
+            >
+              <List sx={style} component="nav">
+                {students.map(({ studentName }) => (
+                  <>
+                    <ListItem button>
+                      <ListItemText key={studentName} primary={studentName} />
+                      <IconButton aria-label="delete">
+                        <DeleteOutlineIcon />
+                      </IconButton>
+                    </ListItem>
+                    <Divider variant="middle" />
+                  </>
+                ))}
+              </List>
+            </Box>
+          </Box>
+        </Box>
+        <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+          <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" mb={3}>
+            <Typography>Recent tasks</Typography>
+            <Box display="flex" gap={3}>
+              <Button variant="contained" size="small" onClick={() => navigate('/create-task')}>Create task</Button>
+              <Button variant="contained" size="small" onClick={() => navigate('/tasks')}>See all tasks</Button>
+            </Box>
+          </Box>
+          <Box width="100%" border="1px solid black" borderRadius={1} mb={5}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                height: 290,
+                overflow: 'hidden',
+                overflowY: 'scroll',
+                gap: 2,
+              }}
+            >
+              <List sx={style} component="nav">
+                {tasks.map(({ task }) => (
+                  <>
+                    <ListItem button>
+                      <ListItemText key={task} primary={task} />
+                      <IconButton aria-label="delete">
+                        <DeleteOutlineIcon />
+                      </IconButton>
+                    </ListItem>
+                    <Divider variant="middle" />
+                  </>
+                ))}
+              </List>
+            </Box>
+          </Box>
+        </Box>
+
+      </Box>
+      <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" width="100%">
+        <Typography variant="h5" my={5}>Task status</Typography>
         <Box width="100%" border="1px solid black" borderRadius={1} mb={5}>
           <Box
             sx={{
@@ -72,42 +146,18 @@ const DashboardPage = () => (
               gap: 2,
             }}
           >
-            <List sx={style} component="nav">
-              {students.map(({ studentName }) => (
+            <List sx={style} component="nav" aria-label="mailbox folders">
+
+              {studentsTasksStatus.map(({ studentName, task }) => (
                 <>
                   <ListItem button>
                     <ListItemText key={studentName} primary={studentName} />
-                    <IconButton aria-label="delete">
-                      <DeleteOutlineIcon />
+                    <ListItemText key={studentName} primary={task} />
+                    <IconButton>
+                      <CheckCircleOutlineIcon />
                     </IconButton>
-                  </ListItem>
-                  <Divider variant="middle" />
-                </>
-              ))}
-            </List>
-          </Box>
-        </Box>
-      </Box>
-      <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-        <Typography variant="h5" my={5}>Tasks</Typography>
-        <Box width="100%" border="1px solid black" borderRadius={1} mb={5}>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              height: 290,
-              overflow: 'hidden',
-              overflowY: 'scroll',
-              gap: 2,
-            }}
-          >
-            <List sx={style} component="nav">
-              {tasks.map(({ task }) => (
-                <>
-                  <ListItem button>
-                    <ListItemText key={task} primary={task} />
-                    <IconButton aria-label="delete">
-                      <DeleteOutlineIcon />
+                    <IconButton>
+                      <HighlightOffIcon />
                     </IconButton>
                   </ListItem>
                   <Divider variant="middle" />
@@ -118,10 +168,8 @@ const DashboardPage = () => (
         </Box>
       </Box>
 
-    </Box>
-    <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" width="100%">
-      <Typography variant="h5" my={5}>Task status</Typography>
-      <Box width="100%" border="1px solid black" borderRadius={1} mb={5}>
+      <Typography variant="h5" my={5}>Forum?</Typography>
+      <Box width="100%" border="1px solid black" borderRadius={1}>
         <Box
           sx={{
             display: 'flex',
@@ -133,161 +181,128 @@ const DashboardPage = () => (
           }}
         >
           <List sx={style} component="nav" aria-label="mailbox folders">
-
-            {studentsTasksStatus.map(({ studentName, task }) => (
-              <>
-                <ListItem button>
-                  <ListItemText key={studentName} primary={studentName} />
-                  <ListItemText key={studentName} primary={task} />
-                  <IconButton>
-                    <CheckCircleOutlineIcon />
-                  </IconButton>
-                  <IconButton>
-                    <HighlightOffIcon />
-                  </IconButton>
-                </ListItem>
-                <Divider variant="middle" />
-              </>
-            ))}
+            <ListItem button>
+              <IconButton aria-label="delete">
+                <MailOutlineIcon />
+              </IconButton>
+              <ListItemText primary="Message" />
+              <IconButton aria-label="delete">
+                <CreateIcon />
+              </IconButton>
+              <IconButton aria-label="delete">
+                <DeleteOutlineIcon />
+              </IconButton>
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem button>
+              <IconButton aria-label="delete">
+                <MailOutlineIcon />
+              </IconButton>
+              <ListItemText primary="Message" />
+              <IconButton aria-label="delete">
+                <CreateIcon />
+              </IconButton>
+              <IconButton aria-label="delete">
+                <DeleteOutlineIcon />
+              </IconButton>
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem button>
+              <IconButton aria-label="delete">
+                <MailOutlineIcon />
+              </IconButton>
+              <ListItemText primary="Message" />
+              <IconButton aria-label="delete">
+                <CreateIcon />
+              </IconButton>
+              <IconButton aria-label="delete">
+                <DeleteOutlineIcon />
+              </IconButton>
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem button>
+              <IconButton aria-label="delete">
+                <MailOutlineIcon />
+              </IconButton>
+              <ListItemText primary="Message" />
+              <IconButton aria-label="delete">
+                <CreateIcon />
+              </IconButton>
+              <IconButton aria-label="delete">
+                <DeleteOutlineIcon />
+              </IconButton>
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem button>
+              <IconButton aria-label="delete">
+                <MailOutlineIcon />
+              </IconButton>
+              <ListItemText primary="Message" />
+              <IconButton aria-label="delete">
+                <CreateIcon />
+              </IconButton>
+              <IconButton aria-label="delete">
+                <DeleteOutlineIcon />
+              </IconButton>
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem button>
+              <IconButton aria-label="delete">
+                <MailOutlineIcon />
+              </IconButton>
+              <ListItemText primary="Message" />
+              <IconButton aria-label="delete">
+                <CreateIcon />
+              </IconButton>
+              <IconButton aria-label="delete">
+                <DeleteOutlineIcon />
+              </IconButton>
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem button>
+              <IconButton aria-label="delete">
+                <MailOutlineIcon />
+              </IconButton>
+              <ListItemText primary="Message" />
+              <IconButton aria-label="delete">
+                <CreateIcon />
+              </IconButton>
+              <IconButton aria-label="delete">
+                <DeleteOutlineIcon />
+              </IconButton>
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem button>
+              <IconButton aria-label="delete">
+                <MailOutlineIcon />
+              </IconButton>
+              <ListItemText primary="Message" />
+              <IconButton aria-label="delete">
+                <CreateIcon />
+              </IconButton>
+              <IconButton aria-label="delete">
+                <DeleteOutlineIcon />
+              </IconButton>
+            </ListItem>
+            <Divider variant="middle" />
+            <ListItem button>
+              <IconButton aria-label="delete">
+                <MailOutlineIcon />
+              </IconButton>
+              <ListItemText primary="Message" />
+              <IconButton aria-label="delete">
+                <CreateIcon />
+              </IconButton>
+              <IconButton aria-label="delete">
+                <DeleteOutlineIcon />
+              </IconButton>
+            </ListItem>
+            <Divider variant="middle" />
           </List>
         </Box>
       </Box>
-    </Box>
-
-    <Typography variant="h5" my={5}>Forum?</Typography>
-    <Box width="100%" border="1px solid black" borderRadius={1}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: 290,
-          overflow: 'hidden',
-          overflowY: 'scroll',
-          gap: 2,
-        }}
-      >
-        <List sx={style} component="nav" aria-label="mailbox folders">
-          <ListItem button>
-            <IconButton aria-label="delete">
-              <MailOutlineIcon />
-            </IconButton>
-            <ListItemText primary="Message" />
-            <IconButton aria-label="delete">
-              <CreateIcon />
-            </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteOutlineIcon />
-            </IconButton>
-          </ListItem>
-          <Divider variant="middle" />
-          <ListItem button>
-            <IconButton aria-label="delete">
-              <MailOutlineIcon />
-            </IconButton>
-            <ListItemText primary="Message" />
-            <IconButton aria-label="delete">
-              <CreateIcon />
-            </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteOutlineIcon />
-            </IconButton>
-          </ListItem>
-          <Divider variant="middle" />
-          <ListItem button>
-            <IconButton aria-label="delete">
-              <MailOutlineIcon />
-            </IconButton>
-            <ListItemText primary="Message" />
-            <IconButton aria-label="delete">
-              <CreateIcon />
-            </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteOutlineIcon />
-            </IconButton>
-          </ListItem>
-          <Divider variant="middle" />
-          <ListItem button>
-            <IconButton aria-label="delete">
-              <MailOutlineIcon />
-            </IconButton>
-            <ListItemText primary="Message" />
-            <IconButton aria-label="delete">
-              <CreateIcon />
-            </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteOutlineIcon />
-            </IconButton>
-          </ListItem>
-          <Divider variant="middle" />
-          <ListItem button>
-            <IconButton aria-label="delete">
-              <MailOutlineIcon />
-            </IconButton>
-            <ListItemText primary="Message" />
-            <IconButton aria-label="delete">
-              <CreateIcon />
-            </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteOutlineIcon />
-            </IconButton>
-          </ListItem>
-          <Divider variant="middle" />
-          <ListItem button>
-            <IconButton aria-label="delete">
-              <MailOutlineIcon />
-            </IconButton>
-            <ListItemText primary="Message" />
-            <IconButton aria-label="delete">
-              <CreateIcon />
-            </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteOutlineIcon />
-            </IconButton>
-          </ListItem>
-          <Divider variant="middle" />
-          <ListItem button>
-            <IconButton aria-label="delete">
-              <MailOutlineIcon />
-            </IconButton>
-            <ListItemText primary="Message" />
-            <IconButton aria-label="delete">
-              <CreateIcon />
-            </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteOutlineIcon />
-            </IconButton>
-          </ListItem>
-          <Divider variant="middle" />
-          <ListItem button>
-            <IconButton aria-label="delete">
-              <MailOutlineIcon />
-            </IconButton>
-            <ListItemText primary="Message" />
-            <IconButton aria-label="delete">
-              <CreateIcon />
-            </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteOutlineIcon />
-            </IconButton>
-          </ListItem>
-          <Divider variant="middle" />
-          <ListItem button>
-            <IconButton aria-label="delete">
-              <MailOutlineIcon />
-            </IconButton>
-            <ListItemText primary="Message" />
-            <IconButton aria-label="delete">
-              <CreateIcon />
-            </IconButton>
-            <IconButton aria-label="delete">
-              <DeleteOutlineIcon />
-            </IconButton>
-          </ListItem>
-          <Divider variant="middle" />
-        </List>
-      </Box>
-    </Box>
-  </MainContainer>
-);
+    </MainContainer>
+  );
+};
 
 export default DashboardPage;
