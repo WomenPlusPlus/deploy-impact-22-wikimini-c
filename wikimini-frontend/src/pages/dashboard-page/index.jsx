@@ -9,50 +9,38 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import CreateIcon from '@mui/icons-material/Create';
 import { useNavigate } from 'react-router-dom';
 import MainContainer from '../../components/main-container';
+import DeletableList from '../../components/deletable-list';
 
 const style = {
   width: '100%',
   bgcolor: 'background.paper',
 };
 
-const students = [
-  { studentName: 'Student1' },
-  { studentName: 'Student2' },
-  { studentName: 'Student3' },
-  { studentName: 'Student4' },
-  { studentName: 'Student5' },
-  { studentName: 'Student6' },
-  { studentName: 'Student7' },
-  { studentName: 'Student8' },
-  { studentName: 'Student9' },
-  { studentName: 'Student10' },
-];
-
 const studentsTasksStatus = [
-  { studentName: 'Student1', task: 'Task1' },
-  { studentName: 'Student2', task: 'Task2' },
-  { studentName: 'Student3', task: 'Task3' },
-  { studentName: 'Student4', task: 'Task4' },
-  { studentName: 'Student5', task: 'Task5' },
-  { studentName: 'Student6', task: 'Task6' },
-  { studentName: 'Student7', task: 'Task7' },
-  { studentName: 'Student8', task: 'Task8' },
-  { studentName: 'Student9', task: 'Task9' },
-  { studentName: 'Student10', task: 'Task10' },
+  { id: 1, studentName: 'Student1', task: 'Task1' },
+  { id: 2, studentName: 'Student2', task: 'Task2' },
+  { id: 3, studentName: 'Student3', task: 'Task3' },
+  { id: 4, studentName: 'Student4', task: 'Task4' },
+  { id: 5, studentName: 'Student5', task: 'Task5' },
+  { id: 6, studentName: 'Student6', task: 'Task6' },
+  { id: 7, studentName: 'Student7', task: 'Task7' },
+  { id: 8, studentName: 'Student8', task: 'Task8' },
+  { id: 9, studentName: 'Student9', task: 'Task9' },
+  { id: 10, studentName: 'Student10', task: 'Task10' },
 ];
 
 const tasks = [
-  { task: 'Task1' },
-  { task: 'Task2' },
-  { task: 'Task3' },
-  { task: 'Task4' },
-  { task: 'Task5' },
-  { task: 'Task6' },
-  { task: 'Task7' },
-  { task: 'Task8' },
-  { task: 'Task9' },
-  { task: 'Task10' },
-  { task: 'Task11' },
+  { id: 1, task: 'Task1' },
+  { id: 2, task: 'Task2' },
+  { id: 3, task: 'Task3' },
+  { id: 4, task: 'Task4' },
+  { id: 5, task: 'Task5' },
+  { id: 6, task: 'Task6' },
+  { id: 7, task: 'Task7' },
+  { id: 8, task: 'Task8' },
+  { id: 9, task: 'Task9' },
+  { id: 10, task: 'Task10' },
+  { id: 11, task: 'Task11' },
 ];
 
 const DashboardPage = () => {
@@ -69,32 +57,7 @@ const DashboardPage = () => {
               <Button variant="contained" size="small">Add student</Button>
             </Box>
           </Box>
-          <Box width="100%" border="1px solid black" borderRadius={1} mb={5}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: 290,
-                overflow: 'hidden',
-                overflowY: 'scroll',
-                gap: 2,
-              }}
-            >
-              <List sx={style} component="nav">
-                {students.map(({ studentName }) => (
-                  <>
-                    <ListItem button>
-                      <ListItemText key={studentName} primary={studentName} />
-                      <IconButton aria-label="delete">
-                        <DeleteOutlineIcon />
-                      </IconButton>
-                    </ListItem>
-                    <Divider variant="middle" />
-                  </>
-                ))}
-              </List>
-            </Box>
-          </Box>
+          <DeletableList items={studentsTasksStatus} itemName="studentName" style={style} />
         </Box>
         <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
           <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" mb={3}>
@@ -104,34 +67,8 @@ const DashboardPage = () => {
               <Button variant="contained" size="small" onClick={() => navigate('/tasks')}>See all tasks</Button>
             </Box>
           </Box>
-          <Box width="100%" border="1px solid black" borderRadius={1} mb={5}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: 290,
-                overflow: 'hidden',
-                overflowY: 'scroll',
-                gap: 2,
-              }}
-            >
-              <List sx={style} component="nav">
-                {tasks.map(({ task }) => (
-                  <>
-                    <ListItem button>
-                      <ListItemText key={task} primary={task} />
-                      <IconButton aria-label="delete">
-                        <DeleteOutlineIcon />
-                      </IconButton>
-                    </ListItem>
-                    <Divider variant="middle" />
-                  </>
-                ))}
-              </List>
-            </Box>
-          </Box>
+          <DeletableList items={tasks} itemName="task" style={style} />
         </Box>
-
       </Box>
       <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" width="100%">
         <Typography variant="h5" my={5}>Task status</Typography>
@@ -148,11 +85,11 @@ const DashboardPage = () => {
           >
             <List sx={style} component="nav" aria-label="mailbox folders">
 
-              {studentsTasksStatus.map(({ studentName, task }) => (
-                <>
+              {studentsTasksStatus.map(({ id, studentName, task }) => (
+                <div key={id}>
                   <ListItem button>
-                    <ListItemText key={studentName} primary={studentName} />
-                    <ListItemText key={studentName} primary={task} />
+                    <ListItemText primary={studentName} />
+                    <ListItemText primary={task} />
                     <IconButton>
                       <CheckCircleOutlineIcon />
                     </IconButton>
@@ -161,7 +98,7 @@ const DashboardPage = () => {
                     </IconButton>
                   </ListItem>
                   <Divider variant="middle" />
-                </>
+                </div>
               ))}
             </List>
           </Box>

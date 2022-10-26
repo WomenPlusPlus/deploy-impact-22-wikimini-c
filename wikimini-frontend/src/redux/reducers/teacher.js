@@ -15,5 +15,5 @@ export const teacherSlice = createSlice({
   },
 });
 
-export const { createClass, removeStudent, addStudent } = teacherSlice.actions;
+export const { createClass } = teacherSlice.actions;
 export default teacherSlice.reducer;
