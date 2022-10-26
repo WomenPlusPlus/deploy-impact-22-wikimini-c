@@ -12,17 +12,17 @@ const style = {
 };
 
 const tasks = [
-  { task: 'Task1' },
-  { task: 'Task2' },
-  { task: 'Task3' },
-  { task: 'Task4' },
-  { task: 'Task5' },
-  { task: 'Task6' },
-  { task: 'Task7' },
-  { task: 'Task8' },
-  { task: 'Task9' },
-  { task: 'Task10' },
-  { task: 'Task11' },
+  { id: 1, task: 'Task1' },
+  { id: 2, task: 'Task2' },
+  { id: 3, task: 'Task3' },
+  { id: 4, task: 'Task4' },
+  { id: 5, task: 'Task5' },
+  { id: 6, task: 'Task6' },
+  { id: 7, task: 'Task7' },
+  { id: 8, task: 'Task8' },
+  { id: 9, task: 'Task9' },
+  { id: 10, task: 'Task10' },
+  { id: 11, task: 'Task11' },
 ];
 
 const TasksPage = () => (
@@ -38,8 +38,8 @@ const TasksPage = () => (
         }}
       >
         <List sx={style} component="nav">
-          {tasks.map(({ task }) => (
-            <>
+          {tasks.map(({ id, task }) => (
+            <div key={id}>
               <ListItem>
                 <ListItemText key={task} primary={task} />
                 <IconButton>
@@ -50,7 +50,7 @@ const TasksPage = () => (
                 </IconButton>
               </ListItem>
               <Divider variant="middle" />
-            </>
+            </div>
           ))}
         </List>
       </Box>
