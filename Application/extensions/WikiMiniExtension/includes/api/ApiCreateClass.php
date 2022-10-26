@@ -35,7 +35,7 @@ class ApiCreateClass extends ApiBase {
 
         $vals = [
             'class_name' =>$params['class_name'],
-            'class_teacher_user_id' => (int)$userid
+            'class_teacher_user_id' => 1
         ];
 
         // create class row in DB
