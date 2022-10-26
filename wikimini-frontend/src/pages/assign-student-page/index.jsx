@@ -10,16 +10,16 @@ const style = {
 };
 
 const students = [
-  { studentName: 'Student1' },
-  { studentName: 'Student2' },
-  { studentName: 'Student3' },
-  { studentName: 'Student4' },
-  { studentName: 'Student5' },
-  { studentName: 'Student6' },
-  { studentName: 'Student7' },
-  { studentName: 'Student8' },
-  { studentName: 'Student9' },
-  { studentName: 'Student10' },
+  { id: 1, studentName: 'Student1' },
+  { id: 2, studentName: 'Student2' },
+  { id: 3, studentName: 'Student3' },
+  { id: 4, studentName: 'Student4' },
+  { id: 5, studentName: 'Student5' },
+  { id: 6, studentName: 'Student6' },
+  { id: 7, studentName: 'Student7' },
+  { id: 8, studentName: 'Student8' },
+  { id: 9, studentName: 'Student9' },
+  { id: 10, studentName: 'Student10' },
 ];
 
 const AssignStudentPage = () => (
@@ -35,13 +35,13 @@ const AssignStudentPage = () => (
         }}
       >
         <List sx={style} component="nav">
-          {students.map(({ studentName }) => (
-            <>
+          {students.map(({ id, studentName }) => (
+            <div key={id}>
               <ListItem>
                 <ListItemText key={studentName} primary={studentName} />
               </ListItem>
               <Divider variant="middle" />
-            </>
+            </div>
           ))}
         </List>
       </Box>

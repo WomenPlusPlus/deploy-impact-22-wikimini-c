@@ -17,17 +17,46 @@ const teachingSubjects = [
   { teachingSubject: 'Chemistry' },
 ];
 
+const taskTypes = [
+  'Create article',
+  'Edit article',
+  'Review article',
+  'Illustrate',
+];
+
 const CreateTaskPage = () => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    console.info('You clicked the Chip.');
-  };
-
-  const [subject, setSubject] = React.useState('');
+  const [task, setTask] = React.useState({
+    taskType: '',
+    subject: '',
+    taskDescription: '',
+    taskLink: '',
+    judgmentCriteria: '',
+  });
 
   const handleChange = (event) => {
-    setSubject(event.target.value);
+    setTask({
+      ...task,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleTypeTask = (event) => {
+    setTask({
+      ...task,
+      taskType: event.target.innerHTML,
+    });
+  };
+
+  const handleSaveTask = (event) => {
+    event.preventDefault();
+    navigate('/dashboard');
+  };
+
+  const handleSaveandAssign = (event) => {
+    event.preventDefault();
+    navigate('/assign-student');
   };
 
   return (
@@ -41,10 +70,9 @@ const CreateTaskPage = () => {
           {' '}
           <Typography variant="h5" mb={2}>Type of task</Typography>
           <Box width="100%">
-            <Chip label="Create article" onClick={handleClick} />
-            <Chip label="Edit article" onClick={handleClick} />
-            <Chip label="Review article" onClick={handleClick} />
-            <Chip label="Illustrate" onClick={handleClick} />
+            {taskTypes.map((type) => (
+              <Chip key={type} label={type} onClick={handleTypeTask} color={task.taskType === type ? 'primary' : 'default'} />
+            ))}
           </Box>
         </Box>
         <Box width="100%" mb={3}>
@@ -54,7 +82,8 @@ const CreateTaskPage = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={subject}
+              name="subject"
+              value={task.subject}
               label="Subject"
               onChange={handleChange}
             >
@@ -72,6 +101,8 @@ const CreateTaskPage = () => {
           <TextField
             id="outlined-multiline-static"
             label="Description"
+            name="taskDescription"
+            onChange={handleChange}
             multiline
             rows={4}
             fullWidth
@@ -82,6 +113,8 @@ const CreateTaskPage = () => {
           <TextField
             id="outlined-multiline-static"
             label="Link to article, video, etc."
+            name="taskLink"
+            onChange={handleChange}
             multiline
             rows={1}
             fullWidth
@@ -92,6 +125,8 @@ const CreateTaskPage = () => {
           <TextField
             id="outlined-multiline-static"
             label="Judgement criteria"
+            name="judgmentCriteria"
+            onChange={handleChange}
             multiline
             rows={3}
             fullWidth
@@ -102,9 +137,7 @@ const CreateTaskPage = () => {
             <Button
               type="submit"
               variant="contained"
-              onClick={() => {
-                alert('clicked save');
-              }}
+              onClick={handleSaveTask}
             >
               Save task
 
@@ -112,9 +145,7 @@ const CreateTaskPage = () => {
             <Button
               type="submit"
               variant="contained"
-              onClick={() => {
-                alert('clicked assign'); navigate('/assign-student');
-              }}
+              onClick={handleSaveandAssign}
             >
               Save task and assign student
 
