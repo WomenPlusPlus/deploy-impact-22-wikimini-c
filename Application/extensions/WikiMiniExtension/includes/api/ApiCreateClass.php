@@ -23,36 +23,36 @@ class ApiCreateClass extends ApiBase {
         $dbw = $lb->getConnectionRef( DB_PRIMARY );
 
         // get user
-        $user = $this->getUser();
-        $userid = $user->getId();
+        //$user = $this->getUser();
+        //$userid = $user->getId();
         
         //check if user is allowed to create a class
-        if ($user->isAllowed('r_create_class')) {
+        //if ($user->isAllowed('r_create_class')) {
 
-            // get params and make sure class name is provided
-            $params = $this->extractRequestParams();
-            $this->requireOnlyOneParameter($params, 'class_name');
+        // get params and make sure class name is provided
+        $params = $this->extractRequestParams();
+        $this->requireOnlyOneParameter($params, 'class_name');
 
-            $vals = [
-                'class_name' =>$params['class_name'],
-                'class_teacher_user_id' => (int)$userid
-            ];
+        $vals = [
+            'class_name' =>$params['class_name'],
+            'class_teacher_user_id' => (int)$userid
+        ];
 
-            // create class row in DB
-            if (isset($params['class_name'])) { 
-                $dbw->insert(
-                    'wm_classes', 
-                    $vals,
-                    __METHOD__
-                    );
-            }
+        // create class row in DB
+        if (isset($params['class_name'])) { 
+            $dbw->insert(
+                'wm_classes', 
+                $vals,
+                __METHOD__
+                );
+        }
 
         $stuff = [$vals];
         $r = [ 'created_class' => $stuff ];
         $this->getResult()->addValue( null, $this->getModuleName(), $r );
-        } else {
-            $this->dieWithError('The user is not allowed to create a class.');
-        }
+        // } else {
+        //     $this->dieWithError('The user is not allowed to create a class.');
+        // }
 
 	}
 
