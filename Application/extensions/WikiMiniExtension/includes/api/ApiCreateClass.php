@@ -22,13 +22,6 @@ class ApiCreateClass extends ApiBase {
         $lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
         $dbw = $lb->getConnectionRef( DB_PRIMARY );
 
-        // get user
-        //$user = $this->getUser();
-        //$userid = $user->getId();
-        
-        //check if user is allowed to create a class
-        //if ($user->isAllowed('r_create_class')) {
-
         // get params and make sure class name is provided
         $params = $this->extractRequestParams();
         $this->requireOnlyOneParameter($params, 'class_name');
@@ -50,9 +43,6 @@ class ApiCreateClass extends ApiBase {
         $stuff = [$vals];
         $r = [ 'created_class' => $stuff ];
         $this->getResult()->addValue( null, $this->getModuleName(), $r );
-        // } else {
-        //     $this->dieWithError('The user is not allowed to create a class.');
-        // }
 
 	}
 
@@ -71,5 +61,4 @@ class ApiCreateClass extends ApiBase {
 				=> 'apihelp-query+createclass-example-1'
 		];
 	}
-
 }

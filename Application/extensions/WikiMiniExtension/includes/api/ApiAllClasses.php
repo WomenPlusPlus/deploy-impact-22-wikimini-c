@@ -15,11 +15,7 @@ class ApiAllClasses extends \ApiQueryBase {
 	}
 
 	public function execute() {
-
-		// get user
-        $user = $this->getUser();
-        $userid = $user->getId();
-		
+	
 		$db = $this->getDB();
 
 		$this->addTables('wm_classes');
@@ -28,16 +24,13 @@ class ApiAllClasses extends \ApiQueryBase {
 			'class_name'
 		]);
 
-		$this->addWhere([
-			'class_teacher_user_id' => $userid
-		]);
-
 		$res = $this->select( __METHOD__ );
 		$result = $this->getResult();
 
 		foreach($res as $row) {
 			$vals = [
-					'name' => $row->class_name
+					'name' => $row->class_name,
+					'teacherid' => $row->class_teacher_user_id
 				];
 			$fit = $result->addValue( [ 'query', $this->getModuleName() ], null, $vals );
 		}
