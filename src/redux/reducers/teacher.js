@@ -1,19 +1,35 @@
-import { createSlice } from '@reduxjs/toolkit';
+/* eslint-disable no-param-reassign */
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createClassService } from '../../services/teacher';
 
 const initialState = {
-  classes: [],
+  allClasses: [],
+  status: '',
 };
+
+export const createClass = createAsyncThunk(
+  'teacher/createClass',
+  async (classData) => {
+    const res = await createClassService(classData);
+    console.log(res);
+  },
+);
 
 export const teacherSlice = createSlice({
   name: 'teacher',
   initialState,
-  reducers: {
-    createClass: (state, action) => {
-      const nextId = state.classes.length + 1;
-      state.classes.push({ ...action.payload, id: nextId });
+  reducers: {},
+  extraReducers: {
+    [createClass.fulfilled]: (state) => {
+      state.status = 'Created';
+    },
+    [createClass.rejected]: (state) => {
+      state.status = 'Failed to create user';
+    },
+    [createClass.pending]: (state) => {
+      state.status = 'Loading';
     },
   },
 });
 
-export const { createClass } = teacherSlice.actions;
 export default teacherSlice.reducer;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Typography,
@@ -49,11 +49,12 @@ const validationSchema = yup.object({
 
 const AddClassPage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const onSubmit = (values) => {
+    console.log(values);
     dispatch(createClass({ ...values, students: [] }));
-    navigate('/classes');
+    // navigate('/classes');
   };
 
   const {
@@ -111,7 +112,7 @@ const AddClassPage = () => {
               >
                 <List sx={style} component="nav">
                   {students.map(({ studentName }) => (
-                    <>
+                    <div key={studentName}>
                       <ListItem button>
                         <ListItemText key={studentName} primary={studentName} />
                         <IconButton aria-label="delete">
@@ -119,7 +120,7 @@ const AddClassPage = () => {
                         </IconButton>
                       </ListItem>
                       <Divider variant="middle" />
-                    </>
+                    </div>
                   ))}
                 </List>
               </Box>

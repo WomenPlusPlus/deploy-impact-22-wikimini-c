@@ -18,7 +18,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const ClassesPage = () => {
   const navigate = useNavigate();
-  const teacherClasses = useSelector((state) => state.teacher.classes);
+  const teacherClasses = useSelector((state) => state.teacher.allClasses);
 
   return (
     <MainContainer>
