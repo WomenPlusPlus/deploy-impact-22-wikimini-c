@@ -48,7 +48,8 @@
 		"MediaWiki\\Extension\\Wikimini\\": "includes/"
 	},
 	"APIModules": {
-		"createclass": "MediaWiki\\Extension\\Wikimini\\api\\ApiCreateClass"
+		"createclass": "MediaWiki\\Extension\\Wikimini\\api\\ApiCreateClass",
+		"createtask": "MediaWiki\\Extension\\Wikimini\\api\\ApiCreateTask"
 	},
 	"APIListModules": {
 		"allclasses": "MediaWiki\\Extension\\Wikimini\\api\\ApiAllClasses"

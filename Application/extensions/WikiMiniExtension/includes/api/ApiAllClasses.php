@@ -21,7 +21,9 @@ class ApiAllClasses extends \ApiQueryBase {
 		$this->addTables('wm_classes');
 		
 		$this->addFields([
-			'class_name'
+			'class_id',
+			'class_name',
+			'class_teacher_user_id'
 		]);
 
 		$res = $this->select( __METHOD__ );
@@ -29,8 +31,9 @@ class ApiAllClasses extends \ApiQueryBase {
 
 		foreach($res as $row) {
 			$vals = [
+					'id' => (int)$row->class_id,
 					'name' => $row->class_name,
-					'teacherid' => $row->class_teacher_user_id
+					'teacherid' => (int)$row->class_teacher_user_id
 				];
 			$fit = $result->addValue( [ 'query', $this->getModuleName() ], null, $vals );
 		}

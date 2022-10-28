@@ -61,4 +61,5 @@ class ApiCreateClass extends ApiBase {
 				=> 'apihelp-query+createclass-example-1'
 		];
 	}
+
 }
