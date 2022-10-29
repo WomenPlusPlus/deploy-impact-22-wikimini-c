@@ -107,7 +107,7 @@ const AddClassPage = () => {
                 type="submit"
                 variant="contained"
                 size="large"
-                disabled={!dirty || !isValid}
+                disabled={!dirty || !isValid || teacherState.status === 'Loading'}
               >
                 Save class
               </Button>
