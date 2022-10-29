@@ -5,4 +5,8 @@ export const store = configureStore({
   reducer: {
     teacher: teacherReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    immutableCheck: false,
+    serializableCheck: false,
+  }),
 });
