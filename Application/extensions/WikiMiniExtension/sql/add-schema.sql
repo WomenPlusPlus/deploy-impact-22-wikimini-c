@@ -39,3 +39,16 @@ CREATE TABLE IF NOT EXISTS /*_*/wm_tasks (
 -- Tasks index
 CREATE INDEX /*i*/wm_task_id ON /*_*/wm_tasks (task_id);
 CREATE INDEX /*i*/wm_task_name ON /*_*/wm_tasks (task_name);
+
+-- Links students to their tasks
+CREATE TABLE IF NOT EXISTS /*_*/wm_tasks_to_students (
+  task_id                 INT unsigned        NOT NULL,
+  student_id              INT unsigned        NOT NULL,
+  task_status             VARCHAR(255)        NOT NULL,
+  task_feedback           VARCHAR(255),
+  task_score              VARCHAR(255)
+)/*$wgDBTableOptions*/;
+
+-- Tasks to Students index
+CREATE INDEX /*i*/wm_task_id ON /*_*/wm_tasks_to_students (task_id);
+CREATE INDEX /*i*/wm_student_id ON /*_*/wm_tasks_to_students (student_id);

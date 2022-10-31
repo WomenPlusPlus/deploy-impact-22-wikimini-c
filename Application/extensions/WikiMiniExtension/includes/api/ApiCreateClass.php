@@ -15,6 +15,10 @@ class ApiCreateClass extends ApiBase {
 	public function isWriteMode() {
         return true;
     }
+
+    public function MustBePosted() {
+        return true;
+    }
     
     public function execute() {
 

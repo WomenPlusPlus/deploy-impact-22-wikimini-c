@@ -7,15 +7,27 @@
 	"apihelp-createclass-summary": "This will create a class under the current logged in teacher.",
 	"apihelp-query+allclasses-summary": "This will fetch all existing classes for the current logged in teacher.",
 	"apihelp-createtask-summary": "Create a task for a specific class.",
+	"apihelp-addstudent-summary": "Add a student to a class by its username.",
+	"apihelp-query+studentsinclass-summary": "Get all students in specified class.",
+
+	"apihelp-addstudent-extended-description": " The same student cannot be added to the same class - this will result in a DB error. If the student and/or class does not exist a error will be displayed.",
+
 	"apihelp-createtask-param-task_reference_link": "URL link to the article being worked on, if any.",
 	"apihelp-createtask-param-task_type": "Type of task",
 	"apihelp-createtask-param-task_name": "Name of the task",
 	"apihelp-createtask-param-task_subject": "Subject of the task - History, Literature, etc.",
 	"apihelp-createtask-param-task_description": "A short description explaining the goal of the task.",
 	"apihelp-createtask-param-task_criteria": "Judgement criteria for the task.",
+	"apihelp-createclass-param-class_name": "Name of the class.",
+	"apihelp-addstudent-param-student_name": "Username of the student.",
+	"apihelp-addstudent-param-class_id": "ID of the class.",
+	"apihelp-createaccount-param-userrole": "Role of the user.",
+	"apihelp-query+studentsinclass-param-class_id": "ID of the class.",
+
 	"apihelp-query+createtask-example-1": "Create a new task without referencing a link.",
 	"apihelp-query+createtask-example-2": "Create a task referencing a link.",
-	"apihelp-createclass-param-class_name": "Name of the class.",
 	"apihelp-query+createclass-example-1": "Create a new class.",
-	"apihelp-allclasses-example-1": "Fetch all teachers' classes."
+	"apihelp-allclasses-example-1": "Fetch all teachers' classes.",
+	"apihelp-query+addstudent-example-1": "Add Student 1 to Class 1.",
+	"apihelp-studentsinclass-example-1": "Fetch all students in class 1."
 }
