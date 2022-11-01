@@ -36,8 +36,6 @@ class ApiCreateTask extends ApiBase {
 
             $page_name = $arr[sizeof($arr) - 1];
         }
-
-        // TO-DO: fetch class
         
 
         $vals = [
@@ -48,7 +46,7 @@ class ApiCreateTask extends ApiBase {
             'task_type' =>$params['task_type'],
             'task_reference_link' =>$params['task_reference_link'],
             'page_name' => $page_name,
-            'class_id' => (int)1,
+            'class_id' => (int)$params['class_id'],
             'creation_date' => date("Y-m-d H:i:s")
         ];
 
@@ -79,6 +77,10 @@ class ApiCreateTask extends ApiBase {
             ],
 
             // required parameters
+            'class_id' => [
+                ApiBase::PARAM_TYPE => 'integer',
+                ApiBase::PARAM_REQUIRED => true
+            ],
             'task_name' => [
                 ApiBase::PARAM_TYPE => 'string',
                 ApiBase::PARAM_REQUIRED => true
@@ -100,9 +102,9 @@ class ApiCreateTask extends ApiBase {
 
     protected function getExamplesMessages() {
 		return [
-			'action=createtask&task_name=Task 1&task_type=Create Article&task_subject=History&task_description=A short description&task_criteria=Criteria'
+			'action=createtask&class_id=1&task_name=Task 1&task_type=Create Article&task_subject=History&task_description=A short description&task_criteria=Criteria'
 				=> 'apihelp-query+createtask-example-1',
-                'action=createtask&task_name=Task 2&task_type=Edit Article&task_subject=Math&task_description=Edit this article&task_criteria=Criteria&task_reference_link=https://en.wikipedia.org/wiki/Dog'
+                'action=createtask&class_id=1&task_name=Task 2&task_type=Edit Article&task_subject=Math&task_description=Edit this article&task_criteria=Criteria&task_reference_link=https://en.wikipedia.org/wiki/Dog'
 				=> 'apihelp-query+createtask-example-2',
 		];
 	}

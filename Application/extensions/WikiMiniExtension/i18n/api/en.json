@@ -23,6 +23,7 @@
 	"apihelp-addstudent-param-class_id": "ID of the class.",
 	"apihelp-createaccount-param-userrole": "Role of the user.",
 	"apihelp-query+studentsinclass-param-class_id": "ID of the class.",
+	"apihelp-createtask-param-class_id": "Id of the class.",
 
 	"apihelp-query+createtask-example-1": "Create a new task without referencing a link.",
 	"apihelp-query+createtask-example-2": "Create a task referencing a link.",
