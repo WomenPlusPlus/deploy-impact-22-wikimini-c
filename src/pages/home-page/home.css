@@ -1,0 +1,151 @@
+.text {
+    color: blue
+}
+
+.container {
+    display:flex;
+    align-items: center;
+    flex-direction:column;
+    position:relative;
+    height:4000px;
+    width:100vw;
+    /* border: 2px solid black; */
+    margin-top: 165px;
+    background-image: url("/public/main3.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center; */
+    padding-left:20%;
+    padding-right:20%;    
+}
+
+.sky-container {
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    width: 100%;
+    height:450px;
+    /* border: 2px solid red; */
+    margin-top:5%
+}
+
+.search-form {
+    width:100%;
+    height:76px;
+    border-radius:50%;
+    border:none;
+    margin-bottom:50px;
+    position:relative;
+}
+
+.search-input {
+    width:100%;
+    height:100%;
+    border-radius:50px;
+    box-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    border:none;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.search-button {
+    position:absolute;
+    top: 50%;  
+    left: 95%; 
+    transform: translate(-50%, -50%);
+    border:none;
+    height:40px;
+    width:40px;
+    background: url("/public/search.svg") no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.description-container {
+    position:relative;
+    /* border:5px solid green; */
+}
+
+.description-box {
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    /* border:2px solid blue; */
+    background-color: rgba(255, 255, 255, 1);
+    border-radius:20px;
+    padding:5% 12%  
+}
+
+.title {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom:30px;
+}
+
+p {
+    margin:0;
+}
+
+.image-child {
+    position:absolute;
+    top: 60%;  
+    left: -2%; 
+    transform: translate(-50%, -50%);
+    height: 380px;
+    width: 350px;
+    /* border: 2px solid purple; */
+    background: url("/public/woman-sitting.png") no-repeat;
+    background-size: cover;
+}
+
+.image-item {
+    position:absolute;
+    top: 80%;  
+    left: 98%; 
+    transform: translate(-50%, -50%);
+    height: 180px;
+    width: 220px;
+    /* border: 2px solid purple; */
+    background: url("/public/backpack.png") no-repeat;
+    background-size: cover;
+}
+
+.cloud-one {
+    position:absolute;
+    top: 5%;  
+    left: 2%; 
+    transform: translate(-50%, -50%);
+    height: 150px;
+    width: 250px;
+    /* border: 2px solid purple; */
+    background: url("/public/cloud.png") no-repeat;
+    background-size: contain;
+}
+
+.cloud-two {
+    position:absolute;
+    top: 3%;  
+    left: 100%; 
+    transform: translate(-100%, -50%);
+    height: 150px;
+    width: 250px;
+    /* border: 2px solid purple; */
+    background: url("/public/cloud.png") no-repeat;
+    background-size: contain;
+}
+
+.cloud-three {
+    position:absolute;
+    top: 4%;  
+    left: 95%; 
+    transform: translate(-100%, -50%);
+    height: 120px;
+    width: 220px;
+    /* border: 2px solid purple; */
+    background: url("/public/cloud.png") no-repeat;
+    background-size: contain;
+}
+
+
