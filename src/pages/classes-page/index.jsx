@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import { Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import MainContainer from '../../components/main-container';
+import { getClasses } from '../../redux/reducers/teacher';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -18,7 +19,13 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const ClassesPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const teacherClasses = useSelector((state) => state.teacher.allClasses);
+  console.log(teacherClasses);
+
+  React.useEffect(() => {
+    dispatch(getClasses());
+  }, [dispatch]);
 
   return (
     <MainContainer>
@@ -28,7 +35,7 @@ const ClassesPage = () => {
         alignItems="center"
         flexDirection="column"
         width="100%"
-        height="400px"
+        height="100%"
       >
         <Typography variant="h4" mb={5}>WELCOME BARBRA STREISAND!</Typography>
         <Typography variant="h5" mb={5}>CLASSES</Typography>
@@ -41,7 +48,7 @@ const ClassesPage = () => {
               xs: 1, sm: 2, md: 3,
             }}
           >
-            {teacherClasses.map((item) => (
+            {teacherClasses?.map((item) => (
               <Grid key={item.id} item xs={6}>
                 <Item>
                   <Button fullWidth onClick={() => navigate('/dashboard')}>
