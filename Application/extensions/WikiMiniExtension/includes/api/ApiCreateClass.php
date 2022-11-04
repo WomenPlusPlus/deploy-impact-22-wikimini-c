@@ -26,23 +26,37 @@ class ApiCreateClass extends ApiBase {
         $lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
         $dbw = $lb->getConnectionRef( DB_PRIMARY );
 
-        // get params and make sure class name is provided
-        $params = $this->extractRequestParams();
-        $this->requireOnlyOneParameter($params, 'class_name');
+        // get user
+        $user = $this->getUser();
+        $userid = $user->getId();
+        
+        //check if user is allowed to create a class
+        if ($user->isAllowed('r_create_class')) {
 
+<<<<<<< HEAD
         $vals = [
             'class_name' =>$params['class_name'],
             'class_teacher_user_id' => 1
         ];
+=======
+            // get params and make sure class name is provided
+            $params = $this->extractRequestParams();
+            $this->requireOnlyOneParameter($params, 'class_name');
+>>>>>>> a2487c2f5d4d6e2ba9d49f03f8ddd97c8e0c7c34
 
-        // create class row in DB
-        if (isset($params['class_name'])) { 
-            $dbw->insert(
-                'wm_classes', 
-                $vals,
-                __METHOD__
-                );
-        }
+        $vals = [
+            'class_name' =>$params['class_name'],
+            'class_teacher_user_id' => 5
+        ];
+
+            // create class row in DB
+            if (isset($params['class_name'])) { 
+                $dbw->insert(
+                    'wm_classes', 
+                    $vals,
+                    __METHOD__
+                    );
+            }
 
         $stuff = [$vals];
         $r = [ 'created_class' => $stuff ];
