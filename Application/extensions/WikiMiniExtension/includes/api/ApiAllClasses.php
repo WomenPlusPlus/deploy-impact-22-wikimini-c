@@ -21,7 +21,6 @@ class ApiAllClasses extends \ApiQueryBase {
 		$this->addTables('wm_classes');
 		
 		$this->addFields([
-<<<<<<< HEAD
 			'class_id',
 			'class_name',
 			'class_teacher_user_id'
