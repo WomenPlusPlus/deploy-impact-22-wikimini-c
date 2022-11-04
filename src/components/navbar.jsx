@@ -7,26 +7,30 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 
+const toolbarStyle = {
+  minHeight: '165px',
+};
+
 const Navbar = () => {
   const navigate = useNavigate();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed">
-        <Toolbar>
+      <AppBar position="fixed" elevation={0} style={{ background: '#ddf1fb' }}>
+        <Toolbar style={toolbarStyle}>
           <IconButton
             size="large"
             edge="start"
-            color="inherit"
+            color="default"
             aria-label="menu"
             sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
-          <Button color="inherit" onClick={() => navigate('/')}>HOME</Button>
-          <Button color="inherit" onClick={() => navigate('/login')}>Login</Button>
-          <Button color="inherit" onClick={() => navigate('/register')}>Register</Button>
-          <Button color="inherit" onClick={() => navigate('/dashboard')}>Dashboard</Button>
+          <Button color="info" onClick={() => navigate('/')}>HOME</Button>
+          <Button color="info" onClick={() => navigate('/login')}>Login</Button>
+          <Button color="info" onClick={() => navigate('/register')}>Register</Button>
+          <Button color="info" onClick={() => navigate('/dashboard')}>Dashboard</Button>
         </Toolbar>
       </AppBar>
     </Box>

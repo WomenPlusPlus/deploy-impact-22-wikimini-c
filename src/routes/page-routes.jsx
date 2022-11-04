@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MainLayout from '../layouts/main-layout';
-import HomePage from '../pages/home-page';
 import LoginPage from '../pages/login-page';
 import ClassesPage from '../pages/classes-page';
 import DashboardPage from '../pages/dashboard-page';
@@ -10,6 +9,7 @@ import AddClassPage from '../pages/add-class-page';
 import CreateTaskPage from '../pages/create-task-page';
 import AssignStudentPage from '../pages/assign-student-page';
 import TasksPage from '../pages/tasks-page';
+import HomePage from '../pages/home-page/home';
 
 const PageRoutes = () => (
   <Routes>

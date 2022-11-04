@@ -3,16 +3,16 @@ import { createTheme } from '@mui/material';
 const baseTheme = createTheme({
   palette: {
     primary: {
-      main: '#18191a',
-      light: '#d1cfcd',
+      main: '#000000',
+      dark: '#000000',
       contrast: '#E8E8E8',
       contrastText: '#eeeeee',
     },
     secondary: {
-      main: '#141414',
-      light: '#F5E7DE',
-      dark: '#d6c8bc',
-      contrastText: '#eeeeee',
+      main: '#d1cfcd',
+      light: '#d1cfcd',
+      dark: '#d1cfcd',
+      contrastText: '#d1cfcd',
     },
   },
 
@@ -34,15 +34,34 @@ const baseTheme = createTheme({
   zIndex: {
     appBar: 1300,
   },
+
+  overrides: {
+    MuiAppBar: {
+      colorPrimary: {
+        backgroundColor: '#662E9B',
+      },
+    },
+  },
+
+  components: {
+    MuiToolbar: {
+      styleOverrides: {
+        dense: {
+          height: 100,
+          minHeight: 100,
+        },
+      },
+    },
+  },
 });
 
 const mixinTheme = createTheme(baseTheme, {
   mixins: {
     navbar: {
-      display: 'flex',
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-      height: '70px',
+      // display: 'flex',
+      // justifyContent: 'flex-end',
+      // alignItems: 'center',
+      height: '165px',
       boxShadow: 0,
       padding: baseTheme.spacing(0, 4),
     },
