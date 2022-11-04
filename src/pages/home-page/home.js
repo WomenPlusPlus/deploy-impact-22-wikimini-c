@@ -5,6 +5,7 @@ import './home.css';
 const HomePage = () => (
 
   <div className="container">
+    <div className="grass" />
     <div className="cloud-one" />
     <div className="cloud-two" />
     <div className="cloud-three" />
@@ -26,6 +27,8 @@ const HomePage = () => (
         </div>
         <div className="image-child" />
         <div className="image-item" />
+        <div className="rocks" />
+        <div className="grass" />
       </div>
     </div>
     <div className="category-container">
@@ -82,13 +85,51 @@ const HomePage = () => (
 
       </div>
     </div>
-    <div className="about-us-container">
+    <div className="info-container">
       <div>
         <img className="about-us-image" src="ImageAboutUs.png" alt="people" />
 
       </div>
       <div>
         <p className="title">ABOUT US</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel dolor commodo,
+          condimentum lacus vel, interdum nisi. Quisque eu magna quis nisi accumsan molestie
+          eget at elit. Sed maximus ligula et libero ornare semper. Phasellus ac efficitur
+          sem, cursus feugiat tortor. Aenean condimentum sit amet lacus eu varius.
+          Pellentesque ultricies non urna et vehicula. Nulla nec laoreet velit, et aliquam
+          est.
+          {' '}
+
+        </p>
+      </div>
+    </div>
+    <div className="info-container">
+      <div>
+        <p className="title">FOR PARENTS</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel dolor commodo,
+          condimentum lacus vel, interdum nisi. Quisque eu magna quis nisi accumsan molestie
+          eget at elit. Sed maximus ligula et libero ornare semper. Phasellus ac efficitur
+          sem, cursus feugiat tortor. Aenean condimentum sit amet lacus eu varius.
+          Pellentesque ultricies non urna et vehicula. Nulla nec laoreet velit, et aliquam
+          est.
+          {' '}
+
+        </p>
+      </div>
+      <div>
+        <img className="about-us-image" src="ImageForParents.png" alt="people" />
+
+      </div>
+    </div>
+    <div className="info-container">
+      <div>
+        <img className="about-us-image" src="ImageForTeachers.png" alt="people" />
+
+      </div>
+      <div>
+        <p className="title">FOR TEACHERS</p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel dolor commodo,
           condimentum lacus vel, interdum nisi. Quisque eu magna quis nisi accumsan molestie

@@ -15,8 +15,37 @@
     background-repeat: no-repeat;
     background-size: cover;
     /* background-position: center; */
+    /* padding-left:20%;
+    padding-right:20%;     */
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    padding-left:13%;
+    padding-right:13%;;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .container {
+    padding-left:14%;
+    padding-right:14%;
+  }
+}
+
+
+@media only screen and (min-width: 768px) {
+  .container {
     padding-left:20%;
-    padding-right:20%;    
+    padding-right:20%;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .container {
+    padding-left:20%;
+    padding-right:20%;
+  }
 }
 
 .sky-container {
@@ -24,17 +53,18 @@
     flex-direction:column;
     justify-content: space-between;
     width: 100%;
-    height:450px;
+    height:470px;
     /* border: 2px solid red; */
-    margin-top:5%
+    margin-top:9%
 }
 
 .search-form {
     width:100%;
     height:76px;
+    min-height: 70px;
     border-radius:50%;
     border:none;
-    margin-bottom:50px;
+    margin-bottom:20px;
     position:relative;
 }
 
@@ -46,12 +76,13 @@
     border:none;
     padding-left: 30px;
     padding-right: 30px;
+    position:relative;
 }
 
 .search-button {
     position:absolute;
     top: 50%;  
-    left: 95%; 
+    right: 3%; 
     transform: translate(-50%, -50%);
     border:none;
     height:40px;
@@ -65,6 +96,7 @@
     position:relative;
     /* border:5px solid green; */
 }
+
 h1 {
     padding:0px;
 }
@@ -81,6 +113,42 @@ h1 {
     padding:0% 12% 5% 12%
 }
 
+@media only screen and (max-width: 600px) {
+  .description-box {
+    padding:3% 17% 8% 17%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .description-box {
+    padding:3% 20% 8% 20%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .description-box {
+    padding:3% 22% 8% 22%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .description-box {
+    padding:3% 20% 8% 20%
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .description-box {
+    padding:3% 12% 5% 12%
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .description-box {
+    padding:3% 12% 5% 12%
+  }
+}
+
 .title {
     font-size: 36px;
     font-weight: 900;
@@ -92,18 +160,24 @@ h1 {
     .title {
         font-size: 24px;
     }
+
+    h1 {
+      font-size:24px
+    }
   }
 
 @media only screen and (min-width: 600px) {
     .title {
         font-size: 24px;
     }
+    
   }
 
 @media only screen and (min-width: 768px) {
     .title {
         font-size: 30px;
     }
+   
   }
 
 @media only screen and (min-width: 992px) {
@@ -134,61 +208,173 @@ p {
     background-size: cover;
 }
 
+/* @media only screen and (max-width: 320px) {
+  .image-child {
+    height: 30px;
+    width: 10px;
+  }
+} */
+@media only screen and (max-width: 400px) {
+  .image-child {
+    height: 160px;
+    width: 160px;
+    top: 90%;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  .image-child {
+    height: 240px;
+    width: 240px;
+    top: 85%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .image-child {
+    height: 380px;
+    width: 350px;
+    top: 70%;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .image-child {
+    top: 60%;
+  }
+}
+
+
+
+
 .image-item {
     position:absolute;
     top: 80%;  
     left: 98%; 
     transform: translate(-50%, -50%);
-    height: 180px;
-    width: 220px;
+    /* height: 190px;
+    width: 220px; */
     /* border: 2px solid purple; */
     background: url("/public/backpack.png") no-repeat;
     background-size: cover;
 }
 
-.cloud-one {
-    position:absolute;
-    top: 5%;  
-    left: 2%; 
-    transform: translate(-50%, -50%);
+@media only screen and (max-width: 400px) {
+  .image-item {
+    height: 80px;
+    width: 100px;
+    top: 94%;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  .image-item {
+    height: 100px;
+    width: 120px;
+    top: 93%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .image-item {
     height: 150px;
-    width: 250px;
-    /* border: 2px solid purple; */
-    background: url("/public/cloud.png") no-repeat;
-    background-size: contain;
+    width: 150px;
+    top: 85%;
+  }
+}
+
+@media only screen and (min-width: 912px) {
+  .image-item {
+    height: 190px;
+    width: 220px;
+    top: 85%;
+  }
+}
+
+.cloud-one {
+  position:absolute;
+  top: 6%;  
+  left: 80%; 
+  transform: translate(-100%, -50%);
+  height: 120px;
+  width: 220px;
+  /* border: 2px solid purple; */
+  background: url("/public/cloud.png") no-repeat;
+  background-size: contain;
+  animation-name: displaceCloud;
+  animation-duration: 22s;
+  animation-direction:alternate;
+  animation-iteration-count:infinite
+}
+
+@keyframes displaceCloud {
+from { transform : translateX(-100%) }
+to   { transform : translateX(-100vw) } /* slide down to make room for advertisements */
 }
 
 .cloud-two {
-    position:absolute;
-    top: 3%;  
-    left: 100%; 
-    transform: translate(-100%, -50%);
-    height: 150px;
-    width: 250px;
-    /* border: 2px solid purple; */
-    background: url("/public/cloud.png") no-repeat;
-    background-size: contain;
+  position:absolute;
+  top: 3%;  
+  left: 70%; 
+  transform: translate(-100%, -50%);
+  height: 120px;
+  width: 220px;
+  /* border: 2px solid purple; */
+  background: url("/public/cloud.png") no-repeat;
+  background-size: contain;
+  animation-name: displaceCloud;
+  animation-duration: 22s;
+  animation-direction:alternate;
+  animation-iteration-count:infinite
 }
+
 
 .cloud-three {
     position:absolute;
     top: 4%;  
-    left: 95%; 
+    left: 85%; 
     transform: translate(-100%, -50%);
     height: 120px;
     width: 220px;
     /* border: 2px solid purple; */
     background: url("/public/cloud.png") no-repeat;
     background-size: contain;
+    animation-name: displaceCloud;
+    animation-duration: 22s;
+    animation-direction:alternate;
+    animation-iteration-count:infinite
 }
+
+
+.rocks {
+  position:absolute;
+  top: 160%;  
+  left: 0%; 
+  transform: translate(-100%, -50%);
+  height: 150px;
+  width: 250px;
+  /* border: 2px solid purple; */
+  background: url("/public/rocks.png") no-repeat;
+  background-size: contain;
+}
+
+/* .grass {
+  position:absolute;
+  top: 370%;  
+  left:80%; 
+  transform: translate(-50%, -50px);
+  height: 100px;
+  width: 100px;
+  background: url("/public/Grass.png") no-repeat;
+  background-size: contain;
+} */
 
 .category-container {
    display:flex;
    flex-direction: column;
    height:900px;
    width: 100%;
-   border:2px solid blue;
-   margin-top:120px;
+   /* border:2px solid blue; */
+   margin-top:100px;
    align-items: center; 
 }
 
@@ -220,7 +406,7 @@ p {
   }
 
 @media only screen and (min-width: 600px) {
-    .grid-container { grid-template-columns: repeat(2, 1fr); }
+    .grid-container { grid-template-columns: repeat(3, 1fr); }
   }
 
 @media only screen and (min-width: 768px) {
@@ -245,6 +431,9 @@ p {
         font-size:12px;
         font-weight: 600;
       }
+      .info-container {
+        flex-direction: column;
+      }
   }
 
   @media only screen and (min-width: 600px) {
@@ -257,6 +446,9 @@ p {
         font-size:12px;
         font-weight: 600;
       }
+      .info-container {
+        flex-direction: column;
+      }
   }
 
   @media only screen and (min-width: 768px) {
@@ -267,6 +459,9 @@ p {
     .grid-container p {
         font-size:14px;
         font-weight: 600;
+      }
+      .info-container {
+        flex-direction: column;
       }
   }
 
@@ -279,6 +474,9 @@ p {
         font-size:16px;
         font-weight: 600;
       }
+      .info-container {
+        flex-direction: row;
+      }
   }
 
 
@@ -290,6 +488,9 @@ p {
     .grid-container p {
         font-size:20px;
         font-weight: 600;
+      }
+      .info-container {
+        flex-direction: row;
       }
   }
 
@@ -304,24 +505,42 @@ p {
     padding-right: 5px;
   }
 
-  .about-us-container {
+  .info-container {
     display:flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
     width:120%;
     height:450px;
-    border: 2px solid red;
-    margin-top: 280px;
+    /* border: 2px solid red; */
+    margin-top: 300px;
+    /* flex-wrap: wrap; */
   }
 
-  .about-us-container div {
-    width: 50%;
+  .info-container div {
+    width: 100%;
     height: 100%;
-    border: 2px solid green;
+    /* border: 2px solid green; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:8px;
   }
 
-  .about-us-image {
+  .info-container div p {
+    text-align:left;
+  }
+
+
+  .info-image {
     max-width: 100%;
   height: auto;
 
   }
+
+  .info-container:last-of-type {
+    margin-top:400px;
+  }
+
 
 
