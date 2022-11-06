@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Box, Chip, Typography, TextField, Button,
 } from '@mui/material';
@@ -8,6 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useNavigate } from 'react-router-dom';
 import MainContainer from '../../components/main-container';
+import { createTask } from '../../redux/reducers/teacher';
 
 const teachingSubjects = [
   { teachingSubject: 'Math' },
@@ -18,21 +20,24 @@ const teachingSubjects = [
 ];
 
 const taskTypes = [
-  'Create article',
-  'Edit article',
-  'Review article',
+  'Create Article',
+  'Edit Article',
   'Illustrate',
+  'Review Article',
 ];
 
 const CreateTaskPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [task, setTask] = React.useState({
+    taskName: '',
     taskType: '',
     subject: '',
     taskDescription: '',
     taskLink: '',
     judgmentCriteria: '',
+    classId: 1,
   });
 
   const handleChange = (event) => {
@@ -51,7 +56,9 @@ const CreateTaskPage = () => {
 
   const handleSaveTask = (event) => {
     event.preventDefault();
-    navigate('/dashboard');
+    console.log(task);
+    dispatch(createTask(task));
+    // navigate('/dashboard');
   };
 
   const handleSaveandAssign = (event) => {
@@ -65,7 +72,18 @@ const CreateTaskPage = () => {
         component="form"
         width="100%"
       >
-
+        <Box width="100%" mb={3}>
+          <Typography variant="h5" mb={2}>Task Name</Typography>
+          <TextField
+            id="outlined-multiline-static"
+            label="Task name"
+            name="taskName"
+            onChange={handleChange}
+            multiline
+            rows={1}
+            fullWidth
+          />
+        </Box>
         <Box width="100%" mb={3}>
           {' '}
           <Typography variant="h5" mb={2}>Type of task</Typography>
