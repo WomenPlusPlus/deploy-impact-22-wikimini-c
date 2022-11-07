@@ -54,7 +54,14 @@ const DashboardPage = () => {
           <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" mb={3}>
             <Typography>Students</Typography>
             <Box display="flex" gap={3}>
-              <Button variant="contained" size="small">Add student</Button>
+              <Button
+                sx={(theme) => ({ background: theme.palette.secondary.main })}
+                variant="contained"
+                size="small"
+              >
+                Add student
+
+              </Button>
             </Box>
           </Box>
           <DeletableList items={studentsTasksStatus} itemName="studentName" style={style} />

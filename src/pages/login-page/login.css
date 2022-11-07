@@ -1,0 +1,12 @@
+.login-container {
+    display:flex;
+    align-items: center;
+    flex-direction:column;
+    position:relative;
+    height:calc(100vh - 165px);
+    width:100vw;
+    background-image: url("/public/LogIn.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}

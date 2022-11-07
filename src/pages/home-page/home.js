@@ -14,7 +14,7 @@ const HomePage = () => (
       </div>
       <a href="/login" className="login-button">Login</a>
     </div>
-    <div className="container">
+    <div className="home-container">
       <div className="grass" />
       <div className="cloud-one" />
       <div className="cloud-two" />
