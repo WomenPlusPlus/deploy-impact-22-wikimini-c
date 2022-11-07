@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Box,
   Typography,
@@ -9,38 +10,41 @@ import {
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import ModalButton from '../../components/modal-button';
+import { addStudentToClass } from '../../redux/reducers/student';
 
 const initialValues = {
-  firstName: '',
-  surname: '',
+  // firstName: '',
+  // surname: '',
   username: '',
-  password: '',
+  // password: '',
+  classId: 1,
 };
 
 const validationSchema = yup.object({
-  firstName: yup.string()
-    .required('Required')
-    .min(2, 'At least 2 characters')
-    .matches(/^[a-ząčęėįšųūž ]+$/i, 'Only letters and spaces'),
-  surname: yup.string()
-    .required('Required')
-    .min(2, 'At least 2 characters')
-    .matches(/^[a-ząčęėįšųūž ]+$/i, 'Only letters and spaces'),
+  // firstName: yup.string()
+  //   .required('Required')
+  //   .min(2, 'At least 2 characters')
+  //   .matches(/^[a-ząčęėįšųūž ]+$/i, 'Only letters and spaces'),
+  // surname: yup.string()
+  //   .required('Required')
+  //   .min(2, 'At least 2 characters')
+  //   .matches(/^[a-ząčęėįšųūž ]+$/i, 'Only letters and spaces'),
   username: yup.string()
     .required('Required')
-    .min(2, 'At least 2 characters')
-    .matches(/^[a-ząčęėįšųūž ]+$/i, 'Only letters and spaces'),
-  password: yup.string()
-    .required('Required')
-    .min(8, 'At least 8 characters')
-    .matches(/[a-z]/, 'At least one upper-case letter')
-    .matches(/[A-Z]/, 'At least one lower-case letter')
-    .matches(/\d/, 'At least one number')
-    .matches(/\W/, 'At least one special symbol'),
+    .min(2, 'At least 2 characters'),
+  // .matches(/^[0-9a-ząčęėįšųūž ]+$/i, 'Only letters and spaces'),
+  // password: yup.string()
+  //   .required('Required')
+  //   .min(8, 'At least 8 characters')
+  //   .matches(/[a-z]/, 'At least one upper-case letter')
+  //   .matches(/[A-Z]/, 'At least one lower-case letter')
+  //   .matches(/\d/, 'At least one number')
+  //   .matches(/\W/, 'At least one special symbol'),
 });
 
 const AddStudentModal = () => {
   const [modalOpen, setModalOpen] = React.useState(false);
+  const dispatch = useDispatch();
 
   const closeModal = () => {
     setModalOpen(false);
@@ -49,6 +53,7 @@ const AddStudentModal = () => {
   const onSubmit = (values) => {
     console.log('Values entered');
     console.table(values);
+    dispatch(addStudentToClass(values));
   };
 
   const {
@@ -94,7 +99,7 @@ const AddStudentModal = () => {
               }}
               onSubmit={handleSubmit}
             >
-              <TextField
+              {/* <TextField
                 name="firstName"
                 label="Name"
                 type="text"
@@ -105,8 +110,8 @@ const AddStudentModal = () => {
                 onBlur={handleBlur}
                 error={touched.firstName && Boolean(errors.firstName)}
                 helperText={touched.firstName && errors.firstName}
-              />
-              <TextField
+              /> */}
+              {/* <TextField
                 name="surname"
                 label="Surname"
                 type="text"
@@ -117,9 +122,9 @@ const AddStudentModal = () => {
                 onBlur={handleBlur}
                 error={touched.surname && Boolean(errors.surname)}
                 helperText={touched.surname && errors.surname}
-              />
+              /> */}
               <TextField
-                name="surname"
+                name="username"
                 label="Username"
                 type="text"
                 variant="filled"
@@ -130,7 +135,7 @@ const AddStudentModal = () => {
                 error={touched.username && Boolean(errors.username)}
                 helperText={touched.username && errors.username}
               />
-              <TextField
+              {/* <TextField
                 name="password"
                 label="Password"
                 type="password"
@@ -141,7 +146,7 @@ const AddStudentModal = () => {
                 onBlur={handleBlur}
                 error={touched.password && Boolean(errors.password)}
                 helperText={touched.password && errors.password}
-              />
+              /> */}
               <Button
                 type="submit"
                 variant="contained"

@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { createClassService } from '../../services/teacher';
-import { getClassesService } from '../../services/classes';
+import { getClassesService, createTaskService } from '../../services/classes';
 
 const initialState = {
   allClasses: [],
@@ -16,16 +16,32 @@ export const createClass = createAsyncThunk(
     .catch((error) => rejectWithValue(error.message)),
 );
 
-export const getClasses = createAsyncThunk(
-  'teacher/getClasses',
-  () => getClassesService()
+export const getClasses = createAsyncThunk('teacher/getClasses', () => {
+  console.log('ar tu čia');
+
+  return getClassesService()
     .then((res) => res.query.allclasses.map((c) => {
       const { id, name: classTitle, teacherid } = c;
       console.log(classTitle);
 
       return { id, classTitle, teacherid };
     }))
-    .catch((error) => console.log(error.message)),
+    .catch((error) => console.log(error.message));
+});
+
+export const createTask = createAsyncThunk(
+  'teacher/createTask',
+  (taskData, { rejectWithValue }) => createTaskService(taskData)
+    .then((res) => {
+      console.log(res);
+
+      if (res.data.error) {
+        return rejectWithValue(res.data.error);
+      }
+
+      return res;
+    })
+    .catch((error) => rejectWithValue(error.message)),
 );
 
 export const teacherSlice = createSlice({
@@ -59,6 +75,16 @@ export const teacherSlice = createSlice({
       state.message = 'Failed to load class';
     },
     [getClasses.pending]: (state) => {
+      state.status = 'Loading';
+    },
+    [createTask.fulfilled]: (state) => {
+      state.status = 'Task created';
+    },
+    [createTask.rejected]: (state) => {
+      state.status = 'Failed';
+      state.message = 'Failed to create a task';
+    },
+    [createTask.pending]: (state) => {
       state.status = 'Loading';
     },
   },
