@@ -1,5 +1,40 @@
-.text {
-    color: blue
+.topnav {
+  overflow: hidden;
+  background-color: rgba(192, 232, 252, 0.5);
+  height:165px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0px 40px
+}
+
+.logo {
+  position: relative;
+  height: 64px;
+  width: 312px; 
+  background: url("/public/LogoWikimini.png") no-repeat;
+  background-size: contain;
+  z-index:1000;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo {
+    width: 200px;
+    height: 40px;
+  }
+}
+
+.login-button {
+  padding: 10px 40px;
+  background: #EB5757;
+  border-radius: 10px;
+  text-decoration: none;
+  color:white;
+}
+
+.login-button:hover {
+  transform: scale(1.1);
+ 
 }
 
 .container {
@@ -9,14 +44,9 @@
     position:relative;
     height:4000px;
     width:100vw;
-    /* border: 2px solid black; */
-    margin-top: 165px;
     background-image: url("/public/main3.png");
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-position: center; */
-    /* padding-left:20%;
-    padding-right:20%;     */
 }
 
 @media only screen and (max-width: 600px) {
@@ -32,7 +62,6 @@
     padding-right:14%;
   }
 }
-
 
 @media only screen and (min-width: 768px) {
   .container {
@@ -54,7 +83,6 @@
     justify-content: space-between;
     width: 100%;
     height:470px;
-    /* border: 2px solid red; */
     margin-top:9%
 }
 
@@ -94,7 +122,6 @@
 
 .description-container {
     position:relative;
-    /* border:5px solid green; */
 }
 
 h1 {
@@ -107,7 +134,6 @@ h1 {
     flex-direction: column;
     align-items: center;
     width:100%;
-    /* border:2px solid blue; */
     background-color: rgba(255, 255, 255, 1);
     border-radius:20px;
     padding:0% 12% 5% 12%
@@ -152,8 +178,8 @@ h1 {
 .title {
     font-size: 36px;
     font-weight: 900;
-    margin-bottom:30px;
     text-align: center;
+    margin-bottom:15px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -169,15 +195,13 @@ h1 {
 @media only screen and (min-width: 600px) {
     .title {
         font-size: 24px;
-    }
-    
+    } 
   }
 
 @media only screen and (min-width: 768px) {
     .title {
         font-size: 30px;
     }
-   
   }
 
 @media only screen and (min-width: 992px) {
@@ -203,17 +227,10 @@ p {
     transform: translate(-50%, -50%);
     height: 380px;
     width: 350px;
-    /* border: 2px solid purple; */
     background: url("/public/woman-sitting.png") no-repeat;
     background-size: cover;
 }
 
-/* @media only screen and (max-width: 320px) {
-  .image-child {
-    height: 30px;
-    width: 10px;
-  }
-} */
 @media only screen and (max-width: 400px) {
   .image-child {
     height: 160px;
@@ -244,24 +261,28 @@ p {
   }
 }
 
-
-
-
 .image-item {
     position:absolute;
-    top: 80%;  
+    top: 100%;  
     left: 98%; 
     transform: translate(-50%, -50%);
-    /* height: 190px;
-    width: 220px; */
-    /* border: 2px solid purple; */
     background: url("/public/backpack.png") no-repeat;
-    background-size: cover;
+    background-size: contain;
+    
+    /* animation-name: moveItem;
+    animation-duration: 0.1s;
+    animation-direction:alternate;
+    animation-iteration-count:infinite */
 }
+
+@keyframes moveItem {
+  from { transform: rotate(-2deg) }
+  to   { transform: rotate(2deg) }
+  }
 
 @media only screen and (max-width: 400px) {
   .image-item {
-    height: 80px;
+    height: 100px;
     width: 100px;
     top: 94%;
   }
@@ -269,24 +290,25 @@ p {
 
 @media only screen and (min-width: 400px) {
   .image-item {
-    height: 100px;
-    width: 120px;
+    height: 150px;
+    width: 150px;
     top: 93%;
   }
 }
+
 @media only screen and (min-width: 768px) {
   .image-item {
-    height: 150px;
-    width: 150px;
+    height: 180px;
+    width: 180px;
     top: 85%;
   }
 }
 
 @media only screen and (min-width: 912px) {
   .image-item {
-    height: 190px;
+    height: 220px;
     width: 220px;
-    top: 85%;
+    top: 90%;
   }
 }
 
@@ -297,7 +319,6 @@ p {
   transform: translate(-100%, -50%);
   height: 120px;
   width: 220px;
-  /* border: 2px solid purple; */
   background: url("/public/cloud.png") no-repeat;
   background-size: contain;
   animation-name: displaceCloud;
@@ -307,8 +328,8 @@ p {
 }
 
 @keyframes displaceCloud {
-from { transform : translateX(-100%) }
-to   { transform : translateX(-100vw) } /* slide down to make room for advertisements */
+from { transform : translateX(0%) }
+to   { transform : translateX(-100vw) }
 }
 
 .cloud-two {
@@ -318,7 +339,6 @@ to   { transform : translateX(-100vw) } /* slide down to make room for advertise
   transform: translate(-100%, -50%);
   height: 120px;
   width: 220px;
-  /* border: 2px solid purple; */
   background: url("/public/cloud.png") no-repeat;
   background-size: contain;
   animation-name: displaceCloud;
@@ -327,7 +347,6 @@ to   { transform : translateX(-100vw) } /* slide down to make room for advertise
   animation-iteration-count:infinite
 }
 
-
 .cloud-three {
     position:absolute;
     top: 4%;  
@@ -335,7 +354,6 @@ to   { transform : translateX(-100vw) } /* slide down to make room for advertise
     transform: translate(-100%, -50%);
     height: 120px;
     width: 220px;
-    /* border: 2px solid purple; */
     background: url("/public/cloud.png") no-repeat;
     background-size: contain;
     animation-name: displaceCloud;
@@ -344,7 +362,6 @@ to   { transform : translateX(-100vw) } /* slide down to make room for advertise
     animation-iteration-count:infinite
 }
 
-
 .rocks {
   position:absolute;
   top: 160%;  
@@ -352,7 +369,6 @@ to   { transform : translateX(-100vw) } /* slide down to make room for advertise
   transform: translate(-100%, -50%);
   height: 150px;
   width: 250px;
-  /* border: 2px solid purple; */
   background: url("/public/rocks.png") no-repeat;
   background-size: contain;
 }
@@ -373,18 +389,42 @@ to   { transform : translateX(-100vw) } /* slide down to make room for advertise
    flex-direction: column;
    height:900px;
    width: 100%;
-   /* border:2px solid blue; */
    margin-top:100px;
    align-items: center; 
 }
 
 .grid-container {
+    margin-top:20px;
     display:grid;
     justify-items:center;
     align-content:center;
-    /* width:120%; */
     max-width:1400px;
     gap:20px
+}
+
+@media only screen and (max-width: 600px) {
+  .grid-container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media only screen and (min-width: 600px) {
+  .grid-container { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media only screen and (min-width: 768px) {
+  .grid-container { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media only screen and (min-width: 992px) {
+  .grid-container { grid-template-columns: repeat(3, 1fr); };
+}
+
+@media only screen and (min-width: 1500px) {
+  .grid-container { grid-template-columns: repeat(4, 1fr); }
+}
+
+.grid-container p {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .category-card {
@@ -397,35 +437,16 @@ to   { transform : translateX(-100vw) } /* slide down to make room for advertise
     align-items:center;
     padding-bottom:15px;
     box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
-
-
 }
-
-@media only screen and (max-width: 600px) {
-    .grid-container { grid-template-columns: repeat(2, 1fr); }
-  }
-
-@media only screen and (min-width: 600px) {
-    .grid-container { grid-template-columns: repeat(3, 1fr); }
-  }
-
-@media only screen and (min-width: 768px) {
-    .grid-container { grid-template-columns: repeat(3, 1fr); }
-  }
-
-@media only screen and (min-width: 992px) {
-    .grid-container { grid-template-columns: repeat(3, 1fr); };
-  }
-  
-  @media only screen and (min-width: 1500px) {
-    .grid-container { grid-template-columns: repeat(4, 1fr); }
-  }
+.category-card:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
   @media only screen and (max-width: 600px) {
     .category-card {
         height:130px;
-        width:130px;
-    
+        width:130px;  
     }
     .grid-container p {
         font-size:12px;
@@ -440,8 +461,7 @@ to   { transform : translateX(-100vw) } /* slide down to make room for advertise
     .category-card {
         height:130px;
         width:130px;
-    
-    }
+      }
     .grid-container p {
         font-size:12px;
         font-weight: 600;
@@ -469,7 +489,7 @@ to   { transform : translateX(-100vw) } /* slide down to make room for advertise
     .category-card {
         height:200px;
         width:200px;
-    }
+      }
     .grid-container p {
         font-size:16px;
         font-weight: 600;
@@ -479,12 +499,11 @@ to   { transform : translateX(-100vw) } /* slide down to make room for advertise
       }
   }
 
-
 @media only screen and (min-width: 1500px) {
     .category-card {
         height:250px;
         width:250px;
-    }
+      }
     .grid-container p {
         font-size:20px;
         font-weight: 600;
@@ -496,31 +515,21 @@ to   { transform : translateX(-100vw) } /* slide down to make room for advertise
 
   .category-image{
     height: 80%;
-    width: 70%;
-    
-  }
-
-  .grid-container p {
-    padding-left: 5px;
-    padding-right: 5px;
+    width: 70%; 
   }
 
   .info-container {
     display:flex;
-    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     width:120%;
-    height:450px;
-    /* border: 2px solid red; */
+    height:425px;
     margin-top: 300px;
-    /* flex-wrap: wrap; */
   }
 
   .info-container div {
     width: 100%;
     height: 100%;
-    /* border: 2px solid green; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -531,16 +540,58 @@ to   { transform : translateX(-100vw) } /* slide down to make room for advertise
     text-align:left;
   }
 
-
   .info-image {
     max-width: 100%;
-  height: auto;
-
+    height: auto;
   }
 
   .info-container:last-of-type {
-    margin-top:400px;
+    margin-top:420px;
   }
 
+  .read-more-button {
+    background: #EB5757;
+    color: white;
+    border-radius: 10px;
+    border:none;
+    padding: 10px 40px;
+    width: fit-content;
+    margin-top:10px;
+    cursor: pointer;
+  }
+
+  .read-more-button:hover {
+    transform: scale(1.1);
+   
+  }
+
+  .footer {
+    /* position: fixed; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    background-color: rgba(192, 232, 252, 0.5);
+    padding: 3% 8%;
+ }
+
+ .footer div {
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  min-width: 150px;
+  padding-bottom: 30px;
+ }
+
+ .footer-logo {
+  height: 150px;
+  width: 150px;
+  background: url("/public/Logo_footer.png") no-repeat;
+  background-size: contain;
+
+ }
 
 
