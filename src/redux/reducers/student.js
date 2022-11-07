@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import {
   addStudentService,
   listStudentsService,
+  giveTaskToStudentService,
 } from '../../services/students';
 
 export const addStudentToClass = createAsyncThunk(
@@ -28,6 +29,20 @@ export const listStudentsInClass = createAsyncThunk(
       }
 
       return res.data.query.studentsinclass;
+    })
+    .catch((error) => error.message),
+);
+
+export const giveTask = createAsyncThunk(
+  'teacher/giveTask',
+  (taskData, { rejectWithValue }) => giveTaskToStudentService(taskData)
+    .then((res) => {
+      console.log(res);
+      if (res.data.error) {
+        return rejectWithValue(res.data.error);
+      }
+
+      return res;
     })
     .catch((error) => error.message),
 );
@@ -65,6 +80,15 @@ export const studentSlice = createSlice({
       }));
     },
     [listStudentsInClass.rejected]: (state) => {
+      state.status = 'failed';
+    },
+    [giveTask.pending]: (state) => {
+      state.status = 'loading';
+    },
+    [giveTask.fulfilled]: (state) => {
+      state.status = 'success';
+    },
+    [giveTask.rejected]: (state) => {
       state.status = 'failed';
     },
   },

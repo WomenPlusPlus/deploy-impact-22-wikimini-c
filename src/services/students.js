@@ -18,9 +18,6 @@ export const addStudentService = (student) => {
   return axios.post(url, formData, { params });
 };
 
-// TODO: addStudentToTaskService
-
-// TODO: list students for a given class
 export const listStudentsService = (classId) => {
   const url = `${process.env.REACT_APP_API_URL}api.php`;
 
@@ -32,4 +29,20 @@ export const listStudentsService = (classId) => {
   };
 
   return axios.get(url, { params });
+};
+
+export const giveTaskToStudentService = ({ studentId, taskId }) => {
+  const url = `${process.env.REACT_APP_API_URL}api.php`;
+
+  const params = {
+    action: 'givetask',
+    format: 'json',
+  };
+
+  const formData = new FormData();
+  formData.append('student_id', studentId);
+  formData.append('task_id', taskId);
+  formData.append('task_status', 'Pending');
+
+  return axios.post(url, formData, { params });
 };
