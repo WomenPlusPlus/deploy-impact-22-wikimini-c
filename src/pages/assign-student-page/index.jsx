@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Box, List, ListItem, ListItemText, Divider, Typography,
+  Box, List, ListItem, ListItemText, Divider, Typography, ListItemButton, Button,
 } from '@mui/material';
 import MainContainer from '../../components/main-container';
-import { listStudentsInClass } from '../../redux/reducers/student';
+import { giveTask, listStudentsInClass } from '../../redux/reducers/student';
 
 const style = {
   width: '100%',
@@ -14,10 +14,16 @@ const style = {
 const AssignStudentPage = () => {
   const dispatch = useDispatch();
   const students = useSelector((state) => state.student.data.students);
-  console.log(students);
+  const [student, setStudent] = React.useState(null);
+
   React.useEffect(() => {
     dispatch(listStudentsInClass(1));
   }, [dispatch]);
+
+  const handleSubmit = () => {
+    // TODO: ADD TASKID FROM URL PARAMS
+    dispatch(giveTask({ studentId: student.id, taskId: 1 }));
+  };
 
   return (
     <MainContainer>
@@ -35,7 +41,12 @@ const AssignStudentPage = () => {
             {students.map(({ id, username }) => (
               <div key={id}>
                 <ListItem>
-                  <ListItemText key={username} primary={username} />
+                  <ListItemButton
+                    onClick={() => setStudent({ id, username })}
+                    selected={id === student?.id}
+                  >
+                    <ListItemText key={username} primary={username} />
+                  </ListItemButton>
                 </ListItem>
                 <Divider variant="middle" />
               </div>
@@ -43,7 +54,7 @@ const AssignStudentPage = () => {
           </List>
         </Box>
       </Box>
-
+      <Button variant="contained" color="primary" onClick={handleSubmit} disabled={!student}>Assign</Button>
     </MainContainer>
   );
 };
