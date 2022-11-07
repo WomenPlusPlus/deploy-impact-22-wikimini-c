@@ -13,8 +13,9 @@ import HomePage from '../pages/home-page/home';
 
 const PageRoutes = () => (
   <Routes>
+    <Route index element={<HomePage />} />
     <Route path="/" element={<MainLayout />}>
-      <Route index element={<HomePage />} />
+      {/* <Route index element={<HomePage />} /> */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
