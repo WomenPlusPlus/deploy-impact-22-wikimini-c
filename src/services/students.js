@@ -21,3 +21,15 @@ export const addStudentService = (student) => {
 // TODO: addStudentToTaskService
 
 // TODO: list students for a given class
+export const listStudentsService = (classId) => {
+  const url = `${process.env.REACT_APP_API_URL}api.php`;
+
+  const params = {
+    action: 'query',
+    list: 'studentsinclass',
+    format: 'json',
+    class_id: classId,
+  };
+
+  return axios.get(url, { params });
+};
