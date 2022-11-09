@@ -5,6 +5,8 @@ import { getClassesService, createTaskService } from '../../services/classes';
 
 const initialState = {
   allClasses: [],
+  currentClass: {},
+  currentTask: {},
   status: '',
   message: '',
 };
