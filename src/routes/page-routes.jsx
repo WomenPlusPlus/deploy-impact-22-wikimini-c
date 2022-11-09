@@ -18,12 +18,12 @@ const PageRoutes = () => (
       {/* <Route index element={<HomePage />} /> */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="/class/:id/dashboard" element={<DashboardPage />} />
       <Route path="/classes" element={<ClassesPage />} />
       <Route path="/add-class" element={<AddClassPage />} />
-      <Route path="/create-task" element={<CreateTaskPage />} />
-      <Route path="/assign-student" element={<AssignStudentPage />} />
-      <Route path="/tasks" element={<TasksPage />} />
+      <Route path="/class/:id/create-task" element={<CreateTaskPage />} />
+      <Route path="/class/:classId/task/:id/assign-student" element={<AssignStudentPage />} />
+      <Route path="/class/:id/tasks" element={<TasksPage />} />
     </Route>
   </Routes>
 );
