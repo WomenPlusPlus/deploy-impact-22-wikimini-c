@@ -7,9 +7,10 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import CreateIcon from '@mui/icons-material/Create';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import MainContainer from '../../components/main-container';
 import DeletableList from '../../components/deletable-list';
+import AddStudentModal from '../add-class-page/add-student-modal';
 
 const style = {
   width: '100%',
@@ -45,6 +46,7 @@ const tasks = [
 
 const DashboardPage = () => {
   const navigate = useNavigate();
+  const { id: classId } = useParams();
 
   return (
     <MainContainer>
@@ -54,14 +56,15 @@ const DashboardPage = () => {
           <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" mb={3}>
             <Typography>Students</Typography>
             <Box display="flex" gap={3}>
-              <Button
+              {/* <Button
                 sx={(theme) => ({ background: theme.palette.secondary.main })}
                 variant="contained"
                 size="small"
               >
                 Add student
 
-              </Button>
+              </Button> */}
+              <AddStudentModal classId={classId} />
             </Box>
           </Box>
           <DeletableList items={studentsTasksStatus} itemName="studentName" style={style} />
@@ -70,8 +73,8 @@ const DashboardPage = () => {
           <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" mb={3}>
             <Typography>Recent tasks</Typography>
             <Box display="flex" gap={3}>
-              <Button variant="contained" size="small" onClick={() => navigate('/create-task')}>Create task</Button>
-              <Button variant="contained" size="small" onClick={() => navigate('/tasks')}>See all tasks</Button>
+              <Button variant="contained" size="small" onClick={() => navigate(`/class/${classId}/create-task`)}>Create task</Button>
+              <Button variant="contained" size="small" onClick={() => navigate(`/class/${classId}/tasks`)}>See all tasks</Button>
             </Box>
           </Box>
           <DeletableList items={tasks} itemName="task" style={style} />

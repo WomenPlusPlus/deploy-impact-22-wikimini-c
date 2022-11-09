@@ -13,36 +13,16 @@ import ModalButton from '../../components/modal-button';
 import { addStudentToClass } from '../../redux/reducers/student';
 
 const initialValues = {
-  // firstName: '',
-  // surname: '',
   username: '',
-  // password: '',
-  classId: 1,
 };
 
 const validationSchema = yup.object({
-  // firstName: yup.string()
-  //   .required('Required')
-  //   .min(2, 'At least 2 characters')
-  //   .matches(/^[a-ząčęėįšųūž ]+$/i, 'Only letters and spaces'),
-  // surname: yup.string()
-  //   .required('Required')
-  //   .min(2, 'At least 2 characters')
-  //   .matches(/^[a-ząčęėįšųūž ]+$/i, 'Only letters and spaces'),
   username: yup.string()
     .required('Required')
     .min(2, 'At least 2 characters'),
-  // .matches(/^[0-9a-ząčęėįšųūž ]+$/i, 'Only letters and spaces'),
-  // password: yup.string()
-  //   .required('Required')
-  //   .min(8, 'At least 8 characters')
-  //   .matches(/[a-z]/, 'At least one upper-case letter')
-  //   .matches(/[A-Z]/, 'At least one lower-case letter')
-  //   .matches(/\d/, 'At least one number')
-  //   .matches(/\W/, 'At least one special symbol'),
 });
 
-const AddStudentModal = () => {
+const AddStudentModal = ({ classId }) => {
   const [modalOpen, setModalOpen] = React.useState(false);
   const dispatch = useDispatch();
 
@@ -53,7 +33,7 @@ const AddStudentModal = () => {
   const onSubmit = (values) => {
     console.log('Values entered');
     console.table(values);
-    dispatch(addStudentToClass(values));
+    dispatch(addStudentToClass({ ...values, classId }));
   };
 
   const {

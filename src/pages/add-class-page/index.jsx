@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
@@ -52,6 +52,7 @@ const AddClassPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const teacherState = useSelector((state) => state.teacher);
+  const { classId, setClassId } = useState();
 
   const onSubmit = (values) => {
     dispatch(createClass({ ...values, students: [] }));
@@ -74,6 +75,7 @@ const AddClassPage = () => {
   useEffect(() => {
     if (teacherState.status === 'Created') {
       clearStatus();
+      
       navigate('/classes');
     }
   }, [clearStatus, navigate, teacherState.status]);
@@ -112,35 +114,41 @@ const AddClassPage = () => {
                 Save class
               </Button>
             </Box>
-            <AddStudentModal />
+
           </Box>
           <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-            <Box width="100%" border="1px solid black" borderRadius={1}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: 290,
-                  overflow: 'hidden',
-                  overflowY: 'scroll',
-                  gap: 2,
-                }}
-              >
-                <List sx={style} component="nav">
-                  {students.map(({ studentName }) => (
-                    <div key={studentName}>
-                      <ListItem button>
-                        <ListItemText key={studentName} primary={studentName} />
-                        <IconButton aria-label="delete">
-                          <DeleteOutlineIcon />
-                        </IconButton>
-                      </ListItem>
-                      <Divider variant="middle" />
-                    </div>
-                  ))}
-                </List>
-              </Box>
-            </Box>
+            {classId && (
+              <>
+                <Box width="100%" border="1px solid black" borderRadius={1}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: 290,
+                      overflow: 'hidden',
+                      overflowY: 'scroll',
+                      gap: 2,
+                    }}
+                  >
+                    <List sx={style} component="nav">
+                      {students.map(({ studentName }) => (
+                        <div key={studentName}>
+                          <ListItem button>
+                            <ListItemText key={studentName} primary={studentName} />
+                            <IconButton aria-label="delete">
+                              <DeleteOutlineIcon />
+                            </IconButton>
+                          </ListItem>
+                          <Divider variant="middle" />
+                        </div>
+                      ))}
+                    </List>
+                  </Box>
+                </Box>
+                <AddStudentModal classId={classId} />
+              </>
+            )}
+
           </Box>
         </Box>
       </Box>

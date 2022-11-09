@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Box, Chip, Typography, TextField, Button,
 } from '@mui/material';
@@ -7,9 +7,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import MainContainer from '../../components/main-container';
-import { createTask } from '../../redux/reducers/teacher';
+import { createTask, changeStatus } from '../../redux/reducers/teacher';
 
 const teachingSubjects = [
   { teachingSubject: 'Math' },
@@ -29,6 +29,7 @@ const taskTypes = [
 const CreateTaskPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { id: classId } = useParams();
 
   const [task, setTask] = React.useState({
     taskName: '',
@@ -37,8 +38,19 @@ const CreateTaskPage = () => {
     taskDescription: '',
     taskLink: '',
     judgmentCriteria: '',
-    classId: 1,
+    classId,
   });
+
+  const teacher = useSelector((state) => state.teacher);
+
+  React.useEffect(() => {
+    if (teacher.status === 'Task created') {
+      dispatch(changeStatus({ status: '', message: '' }));
+      // TODO: ADD CURRENT TASK ID WHEN IT IS AVAILABLE FROM THE API RESPONSE
+      // navigate(`/class/${classId}/task/${teacher.currentTask.id}/assign-student`);
+      navigate(`/class/${classId}/task/${3}/assign-student`);
+    }
+  }, [teacher, classId, navigate, dispatch]);
 
   const handleChange = (event) => {
     setTask({
@@ -58,12 +70,6 @@ const CreateTaskPage = () => {
     event.preventDefault();
     console.log(task);
     dispatch(createTask(task));
-    // navigate('/dashboard');
-  };
-
-  const handleSaveandAssign = (event) => {
-    event.preventDefault();
-    navigate('/assign-student');
   };
 
   return (
@@ -155,30 +161,20 @@ const CreateTaskPage = () => {
             <Button
               type="submit"
               variant="contained"
-              onClick={handleSaveTask}
+              onClick={() => { navigate(`/class/${classId}/dashboard`); }}
             >
-              Save task
+              Cancel
 
             </Button>
             <Button
               type="submit"
               variant="contained"
-              onClick={handleSaveandAssign}
+              onClick={handleSaveTask}
             >
-              Save task and assign student
+              Next
 
             </Button>
           </Box>
-          <Button
-            type="submit"
-            variant="contained"
-            onClick={() => {
-              alert('clicked cancel');
-            }}
-          >
-            Cancel
-
-          </Button>
         </Box>
 
       </Box>
