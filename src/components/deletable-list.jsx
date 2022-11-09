@@ -10,7 +10,7 @@ import {
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 const DeletableList = ({ items, itemName, style }) => (
-  <Box width="100%" border="1px solid black" borderRadius={1} mb={5}>
+  <Box width="100%" mb={4}>
     <Box
       sx={{
         display: 'flex',
