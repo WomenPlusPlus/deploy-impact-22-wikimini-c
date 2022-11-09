@@ -27,7 +27,7 @@ class ApiCreateTask extends ApiBase {
         $lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
         $dbw = $lb->getConnectionRef( DB_PRIMARY );
 
-        // get params and make sure class name is provided
+        // get params
         $params = $this->extractRequestParams();
 
         // get page name from url
@@ -38,7 +38,7 @@ class ApiCreateTask extends ApiBase {
         }
         
 
-        $vals = [
+        $to_add = [
             'task_name' =>$params['task_name'],
             'task_subject' =>$params['task_subject'],
             'task_description' =>$params['task_description'],
@@ -50,15 +50,16 @@ class ApiCreateTask extends ApiBase {
             'creation_date' => date("Y-m-d H:i:s")
         ];
 
-        // create task row in DB
+        // create new task row on DB
         $dbw->insert(
             'wm_tasks', 
-            $vals,
+            $to_add,
             __METHOD__
             );
+        
+        $result = ['task_id' => $dbw->insertId()] + $to_add;
 
-        $stuff = [$vals];
-        $r = [ 'created_task' => $stuff ];
+        $r = [ 'created_task' => $result ];
         $this->getResult()->addValue( null, $this->getModuleName(), $r );
 
 	}

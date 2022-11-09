@@ -26,27 +26,33 @@ class ApiCreateClass extends ApiBase {
         $lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
         $dbw = $lb->getConnectionRef( DB_PRIMARY );
 
-        // get params and make sure class name is provided
+        // get parameters
         $params = $this->extractRequestParams();
-        $this->requireOnlyOneParameter($params, 'class_name');
 
-        $vals = [
+        $to_add = [
             'class_name' =>$params['class_name'],
-            'class_teacher_user_id' => 5
+            'class_teacher_user_id' => $params['teacher_id']
         ];
 
-        // create class row in DB
+        // create new class
         if (isset($params['class_name'])) { 
             $dbw->insert(
                 'wm_classes', 
-                $vals,
+                $to_add,
                 __METHOD__
                 );
         }
 
-        $stuff = [$vals];
-        $r = [ 'created_class' => $stuff ];
-        $this->getResult()->addValue( null, $this->getModuleName(), $r );
+        $result = [
+            'class_id' => $dbw->insertId(),
+            'class_name' => $params['class_name'],
+            'class_teacher_id'=> $params['teacher_id']
+        ];
+
+        $apiResult = $this->getResult();
+
+        $r = [ 'created_class' => $result ];
+        $apiResult->addValue( null, $this->getModuleName(), $r );
     }
 
 
@@ -56,12 +62,16 @@ class ApiCreateClass extends ApiBase {
                 ApiBase::PARAM_TYPE => 'string',
                 ApiBase::PARAM_REQUIRED => true
             ],
+            'teacher_id' => [
+                ApiBase::PARAM_TYPE => 'integer',
+                ApiBase::PARAM_REQUIRED => true
+            ]
         ];
     }
 
     protected function getExamplesMessages() {
 		return [
-			'action=createclass&class_name=example'
+			'action=createclass&class_name=example&teacher_id=1'
 				=> 'apihelp-query+createclass-example-1'
 		];
 	}

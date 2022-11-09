@@ -56,7 +56,8 @@
 	"APIListModules": {
 		"allclasses": "MediaWiki\\Extension\\Wikimini\\api\\ApiAllClasses",
 		"studentsinclass": "MediaWiki\\Extension\\Wikimini\\api\\ApiStudentsInClass",
-		"getstudentstasks": "MediaWiki\\Extension\\Wikimini\\api\\ApiGetStudentsTasks"
+		"getstudentstasks": "MediaWiki\\Extension\\Wikimini\\api\\ApiGetStudentsTasks",
+		"getclassdetails": "MediaWiki\\Extension\\Wikimini\\api\\ApiClassDetails"
 	},
 	"namespaces": [
 		{

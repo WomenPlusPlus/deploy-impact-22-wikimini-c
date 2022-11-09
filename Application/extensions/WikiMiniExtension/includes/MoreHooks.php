@@ -10,6 +10,12 @@ namespace MediaWiki\Extension\Wikimini;
 use DatabaseUpdater;
 use User;
 use ApiBase;
+use MediaWiki\Revision\RenderedRevision;
+use MediaWiki\User\UserIdentity;
+use MediaWiki\Content\Transform\ContentTransformer;
+use WikitextContent;
+use Content;
+use WikiPage;
 
 class MoreHooks implements
 	\MediaWiki\Hook\GetMagicVariableIDsHook,
@@ -90,4 +96,5 @@ class MoreHooks implements
 			];
 		}
 	}
+
 }

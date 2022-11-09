@@ -10,6 +10,7 @@
 	"apihelp-addstudent-summary": "Add a student to a class by its username.",
 	"apihelp-query+studentsinclass-summary": "Get all students in specified class.",
 	"apihelp-givetask-summary": "Give a task to a student.",
+	"apihelp-query+getclassdetails-summary": "Fetch all information associated with a class, such as students, tasks, etc.",
 
 	"apihelp-addstudent-extended-description": " The same student cannot be added to the same class - this will result in a DB error. If the student and/or class does not exist a error will be displayed.",
 
@@ -24,10 +25,12 @@
 	"apihelp-addstudent-param-class_id": "ID of the class.",
 	"apihelp-createaccount-param-userrole": "Role of the user.",
 	"apihelp-query+studentsinclass-param-class_id": "ID of the class.",
-	"apihelp-createtask-param-class_id": "Id of the class.",
+	"apihelp-createtask-param-class_id": "ID of the class.",
+	"apihelp-query+getclassdetails-param-class_id": "ID of the class",
 	"apihelp-givetask-param-task_id": "ID of the task.",
 	"apihelp-givetask-param-student_id": "ID of the student. Accepts multiple inputs.",
 	"apihelp-givetask-param-task_status": "Status of the task.",
+	"apihelp-createclass-param-teacher_id": "ID of the teacher creating the class.",
 
 	"apihelp-query+createtask-example-1": "Create a new task without referencing a link.",
 	"apihelp-query+createtask-example-2": "Create a task referencing a link.",
@@ -35,5 +38,6 @@
 	"apihelp-allclasses-example-1": "Fetch all teachers' classes.",
 	"apihelp-query+addstudent-example-1": "Add Student 1 to Class 1.",
 	"apihelp-studentsinclass-example-1": "Fetch all students in class 1.",
-	"apihelp-query+givetask-example-1": "Give task 1 to student 1."
+	"apihelp-query+givetask-example-1": "Give task 1 to student 1.",
+	"apihelp-classdetails-example-1": "Fetch all information about class 1."
 }
