@@ -58,7 +58,12 @@ const initialState = {
 export const studentSlice = createSlice({
   name: 'student',
   initialState,
-  reducers: {},
+  reducers: {
+    resetToInitialState: (state) => {
+      state.status = '';
+      state.message = '';
+    },
+  },
   extraReducers: {
     [addStudentToClass.pending]: (state) => {
       state.status = 'loading';
@@ -86,7 +91,7 @@ export const studentSlice = createSlice({
       state.status = 'loading';
     },
     [giveTask.fulfilled]: (state) => {
-      state.status = 'success';
+      state.status = 'task given';
     },
     [giveTask.rejected]: (state) => {
       state.status = 'failed';
@@ -95,3 +100,4 @@ export const studentSlice = createSlice({
 });
 
 export default studentSlice.reducer;
+export const { resetToInitialState } = studentSlice.actions;
