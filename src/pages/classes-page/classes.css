@@ -1,0 +1,14 @@
+.classes-container {
+    display:flex;
+    align-items: center;
+    flex-direction:column;
+    justify-content: center;
+    position:relative;
+    height:100vh;
+    width:100vw;
+    background-image: url("/public/LogIn.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    
+}
