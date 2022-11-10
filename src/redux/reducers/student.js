@@ -69,10 +69,11 @@ export const studentSlice = createSlice({
       state.status = 'loading';
     },
     [addStudentToClass.fulfilled]: (state) => {
-      state.status = 'success';
+      state.status = 'success add student';
     },
     [addStudentToClass.rejected]: (state) => {
-      state.status = 'failed';
+      state.status = 'failed to add student';
+      state.message = 'Failed to add student to this class';
     },
     [listStudentsInClass.pending]: (state) => {
       state.status = 'loading';

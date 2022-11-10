@@ -14,7 +14,15 @@ const initialState = {
 export const createClass = createAsyncThunk(
   'teacher/createClass',
   (classData, { rejectWithValue }) => createClassService(classData)
-    .then((res) => res)
+    .then((res) => {
+      if (res.data.error) {
+        return rejectWithValue(res.data.error);
+      }
+
+      console.log(res);
+
+      return res.data.createclass.created_class;
+    })
     .catch((error) => rejectWithValue(error.message)),
 );
 
@@ -41,7 +49,7 @@ export const createTask = createAsyncThunk(
         return rejectWithValue(res.data.error);
       }
 
-      return res;
+      return res.data.createtask.created_task;
     })
     .catch((error) => rejectWithValue(error.message)),
 );
@@ -51,14 +59,16 @@ export const teacherSlice = createSlice({
   initialState,
   reducers: {
     changeStatus: (state, action) => {
-      state.status = action.payload.status;
-      state.message = action.payload.message;
+      Object.keys(action.payload).forEach((key) => {
+        state[key] = action.payload[key];
+      });
     },
   },
   extraReducers: {
-    [createClass.fulfilled]: (state) => {
+    [createClass.fulfilled]: (state, action) => {
       state.status = 'Created';
       state.message = 'Class created successfully';
+      state.currentClass = action.payload;
     },
     [createClass.rejected]: (state) => {
       state.status = 'Failed';
@@ -79,8 +89,9 @@ export const teacherSlice = createSlice({
     [getClasses.pending]: (state) => {
       state.status = 'Loading';
     },
-    [createTask.fulfilled]: (state) => {
+    [createTask.fulfilled]: (state, action) => {
       state.status = 'Task created';
+      state.currentTask = action.payload;
     },
     [createTask.rejected]: (state) => {
       state.status = 'Failed';
