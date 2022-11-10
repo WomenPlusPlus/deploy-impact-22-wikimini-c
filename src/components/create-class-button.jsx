@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-const StyledButton = ({ children }) => {
+const StyledCreateClassButton = ({ children }) => {
   const navigate = useNavigate();
 
   return (
@@ -10,15 +10,16 @@ const StyledButton = ({ children }) => {
     <Button
       style={{
         borderRadius: '10px',
+        border: '2px solid #EB5757',
       }}
       sx={(theme) => ({
         background: theme.palette.secondary.main,
         color: theme.palette.common.white,
-        width: '300px',
+        width: '170px',
         type: 'button',
         variant: 'contained',
         size: 'large',
-        py: 1.8,
+        py: 1.5,
         border: '2px solid theme.palette.secondary.main',
         ':hover': {
           bgcolor: theme.palette.common.white,
@@ -33,4 +34,4 @@ const StyledButton = ({ children }) => {
   );
 };
 
-export default StyledButton;
+export default StyledCreateClassButton;

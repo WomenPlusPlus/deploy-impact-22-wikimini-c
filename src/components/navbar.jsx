@@ -25,6 +25,22 @@ const Navbar = () => {
             })}
           >
             <CardMedia
+              sx={{
+                width:
+              {
+                lg: 312,
+                md: 312,
+                sm: 250,
+                xs: 150,
+              },
+                height:
+              {
+                lg: 64,
+                md: 64,
+                sm: 50,
+                xs: 35,
+              },
+              }}
               width="312px"
               height="64px"
               component="img"
