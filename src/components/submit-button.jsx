@@ -5,6 +5,7 @@ const StyledSubmitButton = ({ children }) => (
   <Button
     style={{
       borderRadius: '10px',
+      border: '2px solid #EB5757',
     }}
     sx={(theme) => ({
       background: theme.palette.secondary.main,
@@ -13,7 +14,7 @@ const StyledSubmitButton = ({ children }) => (
       type: 'submit',
       variant: 'contained',
       size: 'large',
-      py: 1.8,
+      py: 1.5,
       border: '2px solid theme.palette.secondary.main',
       ':hover': {
         bgcolor: theme.palette.common.white,

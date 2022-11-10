@@ -70,7 +70,7 @@ const RegisterPage = () => {
           onSubmit={handleSubmit}
         >
           <Typography component="h1" variant="h4">REGISTER</Typography>
-          <Box width="100%" display="flex" justifyContent="center" gap={2}>
+          <Box width="100%" display="flex" justifyContent="space-between">
             {/* {accountTypes.map((type) => (
             <Chip key={type} label={type}
             onClick={handleAccountType}
