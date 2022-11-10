@@ -5,8 +5,9 @@ import {
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import CreateIcon from '@mui/icons-material/Create';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import DeletableList from '../../components/deletable-list';
+import AddStudentModal from '../add-class-page/add-student-modal';;
 import './dashboard.css';
 import StyledOutlinedEvaluateButton from '../../components/outlined-evaluate-button';
 
@@ -57,33 +58,16 @@ const messages = [
 
 const DashboardPage = () => {
   const navigate = useNavigate();
+  const { id: classId } = useParams();
 
   return (
     <div className="dashboard-container">
       <Typography variant="h5" mt={5}>Class 1</Typography>
       <Box display="flex" width="100%" gap={5}>
-
         <Box width="100%" height="380px" display="flex" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="#D7EFA8" borderRadius={4}>
           <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" p={2}>
             <Typography>STUDENTS</Typography>
-            <Button
-              sx={(theme) => ({
-                background: theme.palette.secondary.main,
-                ':hover': {
-                  bgcolor: theme.palette.common.white,
-                  color: theme.palette.secondary.main,
-                  border: '2px solid #EB5757',
-                },
-              })}
-              variant="contained"
-              size="small"
-              style={{
-                borderRadius: '10px',
-                border: '2px solid #EB5757',
-              }}
-            >
-              ADD
-            </Button>
+            <AddStudentModal classId={classId} />
           </Box>
           <Box width="100%" mb={4}>
             <Box
@@ -116,7 +100,7 @@ const DashboardPage = () => {
                 })}
                 variant="contained"
                 size="small"
-                onClick={() => navigate('/tasks')}
+                onClick={() => navigate(`/class/${classId}/tasks`)}
                 style={{
                   borderRadius: '10px',
                   border: '2px solid #EB5757',
@@ -137,14 +121,13 @@ const DashboardPage = () => {
                 })}
                 variant="contained"
                 size="small"
-                onClick={() => navigate('/create-task')}
+                onClick={() => navigate(`/class/${classId}/create-task`)}
                 style={{
                   borderRadius: '10px',
                   border: '2px solid #EB5757',
                 }}
               >
                 Create task
-
               </Button>
             </Box>
             {/* <Box display="flex" gap={3} /> */}

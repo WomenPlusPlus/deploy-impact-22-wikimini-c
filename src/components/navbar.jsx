@@ -53,7 +53,6 @@ const Navbar = () => {
           <Button color="info" onClick={() => navigate('/')}>HOME</Button>
           <Button color="info" onClick={() => navigate('/login')}>Login</Button>
           <Button color="info" onClick={() => navigate('/register')}>Register</Button>
-          <Button color="info" onClick={() => navigate('/dashboard')}>Dashboard</Button>
         </Toolbar>
       </AppBar>
     </Box>

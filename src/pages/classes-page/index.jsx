@@ -48,11 +48,11 @@ const ClassesPage = () => {
             rowSpacing={2}
             columnSpacing={2}
           >
-            {teacherClasses?.map((item) => (
-              <Grid key={item.id} item xs={6}>
+            {teacherClasses?.map(({ id, classTitle }) => (
+              <Grid key={id} item xs={6}>
                 <Item>
-                  <Button fullWidth onClick={() => navigate('/dashboard')}>
-                    {item.classTitle}
+                  <Button fullWidth onClick={() => navigate(`/class/${id}/dashboard`)}>
+                    {classTitle}
                   </Button>
                 </Item>
               </Grid>
