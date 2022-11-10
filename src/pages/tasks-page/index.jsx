@@ -1,10 +1,10 @@
-import {
-  Typography, Box, List, ListItem, ListItemText, Divider, IconButton,
-} from '@mui/material';
 import React from 'react';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import CreateIcon from '@mui/icons-material/Create';
-import MainContainer from '../../components/main-container';
+import {
+  Typography, Box, Button,
+} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import DeletableList from '../../components/deletable-list';
+import './tasks.css';
 
 const style = {
   width: '100%',
@@ -22,40 +22,66 @@ const tasks = [
   { id: 8, task: 'Task8' },
   { id: 9, task: 'Task9' },
   { id: 10, task: 'Task10' },
-  { id: 11, task: 'Task11' },
+  { id: 12, task: 'Task11' },
+  { id: 13, task: 'Task11' },
+  { id: 14, task: 'Task11' },
+  { id: 15, task: 'Task11' },
+  { id: 16, task: 'Task11' },
+  { id: 17, task: 'Task11' },
+  { id: 18, task: 'Task11' },
 ];
 
-const TasksPage = () => (
-  <MainContainer>
-    <Typography variant="h5" mb={3}>All tasks</Typography>
-    {' '}
-    <Box width="100%" border="1px solid black" borderRadius={1} mb={5}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 2,
-        }}
-      >
-        <List sx={style} component="nav">
-          {tasks.map(({ id, task }) => (
-            <div key={id}>
-              <ListItem>
-                <ListItemText key={task} primary={task} />
-                <IconButton>
-                  <CreateIcon />
-                </IconButton>
-                <IconButton aria-label="delete">
-                  <DeleteOutlineIcon />
-                </IconButton>
-              </ListItem>
-              <Divider variant="middle" />
-            </div>
-          ))}
-        </List>
+const TasksPage = () => {
+  const navigate = useNavigate();
+
+  return (
+    <div className="tasks-container">
+      <Box width="100%" height="95%" mt={8} display="flex" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="#FEB1D0" borderRadius={4}>
+        <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" p={2}>
+          <Typography>LIST OF ALL YOUR TASKS</Typography>
+          <Box>
+            <Button
+              sx={(theme) => ({
+                background: theme.palette.secondary.main,
+                ml: 2,
+                ':hover': {
+                  bgcolor: theme.palette.common.white,
+                  color: theme.palette.secondary.main,
+                  border: '2px solid #EB5757',
+                },
+              })}
+              variant="contained"
+              size="small"
+              onClick={() => navigate('/create-task')}
+              style={{
+                borderRadius: '10px',
+                border: '2px solid #EB5757',
+              }}
+            >
+              Create task
+
+            </Button>
+          </Box>
+          {/* <Box display="flex" gap={3} /> */}
+        </Box>
+        <Box width="100%" mb={4}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              height: '100%',
+              overflow: 'hidden',
+              // overflowY: 'scroll',
+              gap: 2,
+            }}
+          >
+            <DeletableList items={tasks} itemName="task" style={style} />
+          </Box>
+        </Box>
       </Box>
-    </Box>
-  </MainContainer>
-);
+
+    </div>
+  );
+};
 
 export default TasksPage;
