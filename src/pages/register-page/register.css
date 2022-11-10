@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
     display:flex;
     align-items: center;
     flex-direction:column;
@@ -10,23 +10,29 @@
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-    
 }
 
-/* .cloud-one-login {
-    top: 5%;  
-    left: 80%;
+.cloud-one {
+    position:absolute;
+    top: 6%;  
+    left: 80%; 
     transform: translate(-100%, -50%);
     height: 120px;
     width: 220px;
     background: url("/public/cloud.png") no-repeat;
     background-size: contain;
-    
+    animation-name: displaceCloud;
+    animation-duration: 22s;
+    animation-direction:alternate;
+    animation-iteration-count:infinite
   }
   
+  @keyframes displaceCloud {
+  from { transform : translateX(0%) }
+  to   { transform : translateX(-100vw) }
+  }
   
-  
-  .cloud-two-login {
+  .cloud-two {
     position:absolute;
     top: 3%;  
     left: 70%; 
@@ -35,17 +41,23 @@
     width: 220px;
     background: url("/public/cloud.png") no-repeat;
     background-size: contain;
-    
+    animation-name: displaceCloud;
+    animation-duration: 22s;
+    animation-direction:alternate;
+    animation-iteration-count:infinite
   }
   
-  .cloud-three-login {
+  .cloud-three {
       position:absolute;
-      top: 30%;  
+      top: 4%;  
       left: 85%; 
       transform: translate(-100%, -50%);
       height: 120px;
       width: 220px;
       background: url("/public/cloud.png") no-repeat;
       background-size: contain;
-     
-  } */
+      animation-name: displaceCloud;
+      animation-duration: 22s;
+      animation-direction:alternate;
+      animation-iteration-count:infinite
+  }

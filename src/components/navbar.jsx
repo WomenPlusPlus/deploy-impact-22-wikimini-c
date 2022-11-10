@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="relative" elevation={0} style={{ background: '#ddf1fb' }}>
+      <AppBar position="fixed" elevation={0} style={{ background: '#ddf1fb' }}>
         <Toolbar style={toolbarStyle}>
           <Card
             elevation={0}

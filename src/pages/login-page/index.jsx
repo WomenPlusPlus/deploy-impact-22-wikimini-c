@@ -10,14 +10,14 @@ import StyledOutlinedRegisterButton from '../../components/outlined-register-but
 import './login.css';
 
 const initialValues = {
-  email: '',
+  username: '',
   password: '',
 };
 
 const validationSchema = yup.object({
-  email: yup.string()
+  username: yup.string()
     .required('Required')
-    .email('Incorrect email format'),
+    .min(6, 'At least 6 characters'),
   password: yup.string()
     .required('Required')
     .min(8, 'At least 8 characters')
@@ -45,7 +45,6 @@ const LoginPage = () => {
 
   return (
     <div className="login-container">
-
       <Box display="flex" width="100%" justifyContent="center" alignItems="center" flexDirection="column" marginTop={2}>
         <Box
           component="form"
@@ -53,8 +52,14 @@ const LoginPage = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: 5,
-            width: 420,
+            gap: 4,
+            width:
+            {
+              lg: 420,
+              md: 420,
+              sm: 400,
+              xs: 300,
+            },
           }}
           onSubmit={handleSubmit}
         >
@@ -62,21 +67,37 @@ const LoginPage = () => {
           <TextField
             style={{
               backgroundColor: 'white',
+              borderRadius: '30px',
             }}
-            name="email"
-            label="Email"
-            type="email"
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& > fieldset': {
+                  border: 'none',
+                },
+              },
+            }}
+            name="username"
+            label="Username"
+            type="text"
             variant="outlined"
             fullWidth
-            value={values.email}
+            value={values.username}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={touched.email && Boolean(errors.email)}
+            error={touched.username && Boolean(errors.username)}
           />
 
           <TextField
             style={{
               backgroundColor: 'white',
+              borderRadius: '30px',
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& > fieldset': {
+                  border: 'none',
+                },
+              },
             }}
             name="password"
             label="Password"
@@ -88,7 +109,7 @@ const LoginPage = () => {
             onBlur={handleBlur}
             error={touched.password && Boolean(errors.password)}
           />
-          <Box marginTop={-4} width="100%" display="flex" textAlign="left"><Typography variant="subtitle2">Forgot your password?</Typography></Box>
+          <Box marginTop={-4} marginLeft={4} width="100%" display="flex" textAlign="left"><Typography variant="subtitle2">Forgot your password?</Typography></Box>
           <StyledSubmitButton
             disabled={!dirty || !isValid}
           >
@@ -111,14 +132,14 @@ const LoginPage = () => {
           </StyledOutlinedRegisterButton>
         </Box>
       </Box>
-      <Box height="200px" width="134px" left={0} bottom={-5} position="absolute">
+      <Box height="200px" width="134px" left={0} bottom={-18} position="absolute">
         <CardMedia
           component="img"
           image="Tree.png"
           alt="tree"
         />
       </Box>
-      <Box height="180px" width="114px" left={40} bottom={0} position="absolute">
+      <Box height="180px" width="114px" left={35} bottom={-28} position="absolute">
         <CardMedia
           component="img"
           image="Tree.png"
@@ -141,25 +162,6 @@ const LoginPage = () => {
           alt="backpack"
         />
       </Box>
-
-      {/* <Box
-        bottom={0}
-        height={80}
-        width="100%"
-        border="2px solid red"
-      >
-        <Box position="relative" width="100%">
-          <Box height="171px" width="145px" right={0} bottom={3} position="absolute">
-            <CardMedia
-              height="171px"
-              component="img"
-              image="woman-sitting.png"
-              alt="woman sitting"
-            />
-          </Box>
-        </Box>
-
-      </Box> */}
     </div>
   );
 };
