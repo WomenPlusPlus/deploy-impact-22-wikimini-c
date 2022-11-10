@@ -8,8 +8,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useNavigate } from 'react-router-dom';
-import MainContainer from '../../components/main-container';
 import { createTask } from '../../redux/reducers/teacher';
+import './create-task.css';
 
 const teachingSubjects = [
   { teachingSubject: 'Math' },
@@ -67,7 +67,7 @@ const CreateTaskPage = () => {
   };
 
   return (
-    <MainContainer>
+    <div className="create-task-container">
       <Box
         component="form"
         width="100%"
@@ -182,7 +182,7 @@ const CreateTaskPage = () => {
         </Box>
 
       </Box>
-    </MainContainer>
+    </div>
 
   );
 };

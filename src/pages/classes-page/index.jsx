@@ -8,7 +8,7 @@ import { Typography, Button, CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { getClasses } from '../../redux/reducers/teacher';
 import './classes.css';
-import StyledButton from '../../components/button';
+import StyledCreateClassButton from '../../components/create-class-button';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -16,6 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+  borderRadius: 10,
 }));
 
 const ClassesPage = () => {
@@ -29,22 +30,21 @@ const ClassesPage = () => {
   }, [dispatch]);
 
   return (
-    <div className="login-container">
+    <div className="classes-container">
       <Box
         display="flex"
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
-        width="100%"
+        width="90%"
         height="100%"
       >
-        <Typography variant="h4" mb={4}>WELCOME BARBRA STREISAND!</Typography>
-        <Typography variant="h5" mb={4}>CLASSES</Typography>
+        <Typography variant="h5" mb={4}>WELCOME LYNDA!</Typography>
+        <Typography variant="h6" mb={4}>YOUR CLASSES</Typography>
         <Box>
           <Grid
             container
             mb={4}
-            px={4}
             rowSpacing={2}
             columnSpacing={2}
           >
@@ -59,16 +59,16 @@ const ClassesPage = () => {
             ))}
           </Grid>
         </Box>
-        <StyledButton>CREATE NEW CLASS</StyledButton>
+        <StyledCreateClassButton>CREATE NEW CLASS</StyledCreateClassButton>
       </Box>
-      <Box height="200px" width="134px" left={0} bottom={-18} position="absolute">
+      <Box height="200px" width="134px" left={-20} bottom={-18} position="absolute">
         <CardMedia
           component="img"
           image="Tree.png"
           alt="tree"
         />
       </Box>
-      <Box height="180px" width="114px" left={35} bottom={-28} position="absolute">
+      <Box height="180px" width="114px" left={35} bottom={-45} position="absolute">
         <CardMedia
           component="img"
           image="Tree.png"
