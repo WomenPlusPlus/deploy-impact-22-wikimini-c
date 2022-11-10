@@ -4,10 +4,11 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import { Typography, Button } from '@mui/material';
+import { Typography, Button, CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import MainContainer from '../../components/main-container';
 import { getClasses } from '../../redux/reducers/teacher';
+import './classes.css';
+import StyledCreateClassButton from '../../components/create-class-button';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -15,6 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+  borderRadius: 10,
 }));
 
 const ClassesPage = () => {
@@ -28,25 +30,23 @@ const ClassesPage = () => {
   }, [dispatch]);
 
   return (
-    <MainContainer>
+    <div className="classes-container">
       <Box
         display="flex"
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
-        width="100%"
+        width="90%"
         height="100%"
       >
-        <Typography variant="h4" mb={5}>WELCOME BARBRA STREISAND!</Typography>
-        <Typography variant="h5" mb={5}>CLASSES</Typography>
-        <Button variant="contained" onClick={() => navigate('/add-class')}>ADD CLASS</Button>
-        <Box sx={{ width: '800px', mt: 5 }}>
+        <Typography variant="h5" mb={4}>WELCOME LYNDA!</Typography>
+        <Typography variant="h6" mb={4}>YOUR CLASSES</Typography>
+        <Box>
           <Grid
             container
-            rowSpacing={1}
-            columnSpacing={{
-              xs: 1, sm: 2, md: 3,
-            }}
+            mb={4}
+            rowSpacing={2}
+            columnSpacing={2}
           >
             {teacherClasses?.map(({ id, classTitle }) => (
               <Grid key={id} item xs={6}>
@@ -59,8 +59,39 @@ const ClassesPage = () => {
             ))}
           </Grid>
         </Box>
+        <StyledCreateClassButton>CREATE NEW CLASS</StyledCreateClassButton>
       </Box>
-    </MainContainer>
+      <Box height="200px" width="134px" left={-20} bottom={-18} position="absolute">
+        <CardMedia
+          component="img"
+          image="Tree.png"
+          alt="tree"
+        />
+      </Box>
+      <Box height="180px" width="114px" left={35} bottom={-45} position="absolute">
+        <CardMedia
+          component="img"
+          image="Tree.png"
+          alt="tree"
+        />
+      </Box>
+      <Box height="171px" width="145px" right={0} bottom={0} position="absolute">
+        <CardMedia
+          height="171px"
+          component="img"
+          image="woman-sitting.png"
+          alt="woman sitting"
+        />
+      </Box>
+      <Box height="65px" width="90px" right={70} bottom={10} position="absolute">
+        <CardMedia
+          height="65px"
+          component="img"
+          image="backpack.png"
+          alt="backpack"
+        />
+      </Box>
+    </div>
   );
 };
 

@@ -1,25 +1,28 @@
-/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import {
-  TextField, Box, Typography, Button,
+  Box, Typography, TextField, CardMedia, Chip,
 } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import MainContainer from '../../components/main-container';
+import StyledSubmitButton from '../../components/submit-button';
+import './register.css';
+
+// const accountTypes = [
+//   'Student',
+//   'Teacher',
+//   'Parent',
+// ];
 
 const initialValues = {
-  email: '',
-  emailConfirmation: '',
+  username: '',
   password: '',
   passwordConfirmation: '',
-  firstName: '',
-  surname: '',
 };
 
 const validationSchema = yup.object({
-  email: yup.string()
+  username: yup.string()
     .required('Required')
-    .email('Incorrect email format'),
+    .min(6, 'At least 6 characters'),
   password: yup.string()
     .required('Required')
     .min(8, 'At least 8 characters')
@@ -30,14 +33,6 @@ const validationSchema = yup.object({
   passwordConfirmation: yup.string()
     .required('Required')
     .oneOf([yup.ref('password')], 'Passwords do not match'),
-  firstName: yup.string()
-    .required('Required')
-    .min(2, 'At least 2 characters')
-    .matches(/^[a-ząčęėįšųūž ]+$/i, 'Only letters and spaces'),
-  surname: yup.string()
-    .required('Required')
-    .min(2, 'At least 2 characters')
-    .matches(/^[a-ząčęėįšųūž ]+$/i, 'Only letters and spaces'),
 });
 
 const RegisterPage = () => {
@@ -47,8 +42,7 @@ const RegisterPage = () => {
   };
 
   const {
-    values, errors, touched, dirty, isValid,
-    handleChange, handleBlur, handleSubmit,
+    dirty, values, errors, touched, isValid, handleChange, handleBlur, handleSubmit,
   } = useFormik({
     initialValues,
     validationSchema,
@@ -56,111 +50,168 @@ const RegisterPage = () => {
   });
 
   return (
-    <MainContainer>
-      <Box widrth="100%" display="flex" flexDirection="column" alignItems="center">
+    <div className="register-container">
+      <Box display="flex" width="100%" justifyContent="center" alignItems="center" flexDirection="column" marginTop={2}>
         <Box
           component="form"
           sx={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: 3,
-            width: '400px',
-            height: '100%',
-            border: '1px solid black',
-            p: 4,
+            gap: 4,
+            width:
+            {
+              lg: 420,
+              md: 420,
+              sm: 400,
+              xs: 300,
+            },
           }}
           onSubmit={handleSubmit}
-          disabled={!dirty || !isValid}
         >
-          <Typography variant="h5" mb={3}>Registration</Typography>
+          <Typography component="h1" variant="h4">REGISTER</Typography>
+          <Box width="100%" display="flex" justifyContent="space-between">
+            {/* {accountTypes.map((type) => (
+            <Chip key={type} label={type}
+            onClick={handleAccountType}
+            color={account.accountType === type ? 'primary' : 'default'} />
+          ))} */}
+            <Chip
+              style={{
+                backgroundColor: 'white',
+                border: '2px solid #EB5757',
+                borderRadius: '10px',
+                color: '#EB5757',
+              }}
+              label="STUDENT"
+              variant="filled"
+            />
+            <Chip
+              style={{
+                backgroundColor: 'white',
+                border: '2px solid #EB5757',
+                borderRadius: '10px',
+                color: '#EB5757',
+              }}
+              label="TEACHER"
+              variant="filled"
+            />
+            <Chip
+              style={{
+                backgroundColor: 'white',
+                border: '2px solid #EB5757',
+                borderRadius: '10px',
+                color: '#EB5757',
+              }}
+              label="PARENT"
+              variant="filled"
+            />
+          </Box>
           <TextField
-            name="email"
-            label="Email"
-            type="email"
-            variant="filled"
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '30px',
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& > fieldset': {
+                  border: 'none',
+                },
+              },
+            }}
+            name="username"
+            label="Your username"
+            type="text"
+            variant="outlined"
             fullWidth
-            value={values.email}
+            value={values.username}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={touched.email && Boolean(errors.email)}
-            helperText={touched.email && errors.email}
+            error={touched.username && Boolean(errors.username)}
           />
+
           <TextField
-            name="emailConfirmation"
-            label="Repeat email"
-            type="email"
-            variant="filled"
-            fullWidth
-            value={values.emailConfirmation}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.emailConfirmation && Boolean(errors.emailConfirmation)}
-            helperText={touched.emailConfirmation && errors.emailConfirmation}
-          />
-          <TextField
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '30px',
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& > fieldset': {
+                  border: 'none',
+                },
+              },
+            }}
             name="password"
             label="Password"
             type="password"
-            variant="filled"
+            variant="outlined"
             fullWidth
-            onChange={handleChange}
             value={values.password}
+            onChange={handleChange}
             onBlur={handleBlur}
             error={touched.password && Boolean(errors.password)}
-            helperText={touched.password && errors.password}
           />
           <TextField
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '30px',
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& > fieldset': {
+                  border: 'none',
+                },
+              },
+            }}
             name="passwordConfirmation"
             label="Repeat password"
             type="password"
-            variant="filled"
+            variant="outlined"
             fullWidth
             value={values.passwordConfirmation}
             onChange={handleChange}
             onBlur={handleBlur}
             error={touched.passwordConfirmation && Boolean(errors.passwordConfirmation)}
-            helperText={touched.passwordConfirmation && errors.passwordConfirmation}
           />
-          <TextField
-            name="firstName"
-            label="Name"
-            type="text"
-            variant="filled"
-            fullWidth
-            value={values.firstName}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.firstName && Boolean(errors.firstName)}
-            helperText={touched.firstName && errors.firstName}
-          />
-          <TextField
-            name="surname"
-            label="Surname"
-            type="text"
-            variant="filled"
-            fullWidth
-            value={values.surname}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.surname && Boolean(errors.surname)}
-            helperText={touched.surname && errors.surname}
-          />
-          <Button
-            type="submit"
+          <StyledSubmitButton
             disabled={!dirty || !isValid}
-            variant="contained"
-            size="large"
-            sx={(theme) => ({
-              background: theme.palette.primary.main,
-              color: theme.palette.primary.contrastText,
-            })}
           >
             Register
-          </Button>
+          </StyledSubmitButton>
         </Box>
       </Box>
-    </MainContainer>
+      <Box height="200px" width="134px" left={0} bottom={-18} position="absolute">
+        <CardMedia
+          component="img"
+          image="Tree.png"
+          alt="tree"
+        />
+      </Box>
+      <Box height="180px" width="114px" left={35} bottom={-28} position="absolute">
+        <CardMedia
+          component="img"
+          image="Tree.png"
+          alt="tree"
+        />
+      </Box>
+      <Box height="171px" width="145px" right={0} bottom={0} position="absolute">
+        <CardMedia
+          height="171px"
+          component="img"
+          image="woman-sitting.png"
+          alt="woman sitting"
+        />
+      </Box>
+      <Box height="65px" width="90px" right={70} bottom={10} position="absolute">
+        <CardMedia
+          height="65px"
+          component="img"
+          image="backpack.png"
+          alt="backpack"
+        />
+      </Box>
+    </div>
   );
 };
 

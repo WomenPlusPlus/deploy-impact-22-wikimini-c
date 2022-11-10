@@ -10,6 +10,7 @@ import CreateTaskPage from '../pages/create-task-page';
 import AssignStudentPage from '../pages/assign-student-page';
 import TasksPage from '../pages/tasks-page';
 import HomePage from '../pages/home-page/home';
+import StudentTaskPage from '../pages/student-task-page';
 
 const PageRoutes = () => (
   <Routes>
@@ -24,6 +25,7 @@ const PageRoutes = () => (
       <Route path="/class/:id/create-task" element={<CreateTaskPage />} />
       <Route path="/class/:classId/task/:id/assign-student" element={<AssignStudentPage />} />
       <Route path="/class/:id/tasks" element={<TasksPage />} />
+      <Route path="/student-task" element={<StudentTaskPage />} />
     </Route>
   </Routes>
 );

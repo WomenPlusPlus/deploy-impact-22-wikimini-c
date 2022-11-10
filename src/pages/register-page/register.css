@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
     display:flex;
     align-items: center;
     flex-direction:column;
@@ -10,5 +10,4 @@
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-    
 }

@@ -58,7 +58,7 @@ const AddStudentModal = ({ classId }) => {
 
   return (
     <Box>
-      <ModalButton openModal={() => setModalOpen(true)}>ADD STUDENT</ModalButton>
+      <ModalButton openModal={() => setModalOpen(true)}>ADD</ModalButton>
       <Modal open={modalOpen} onClose={closeModal}>
         <Box sx={{
           position: 'absolute',

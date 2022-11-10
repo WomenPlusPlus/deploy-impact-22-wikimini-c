@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   Box, Chip, Typography, TextField, Button,
 } from '@mui/material';
@@ -7,9 +7,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useNavigate, useParams } from 'react-router-dom';
-import { createTask, changeStatus } from '../../redux/reducers/teacher';
-import './create-task.css';
+import { useNavigate } from 'react-router-dom';
+import MainContainer from '../../components/main-container';
+import { createTask } from '../../redux/reducers/teacher';
 
 const teachingSubjects = [
   { teachingSubject: 'Math' },
@@ -26,10 +26,9 @@ const taskTypes = [
   'Review Article',
 ];
 
-const CreateTaskPage = () => {
+const StudentTaskPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { id: classId } = useParams();
 
   const [task, setTask] = React.useState({
     taskName: '',
@@ -38,18 +37,8 @@ const CreateTaskPage = () => {
     taskDescription: '',
     taskLink: '',
     judgmentCriteria: '',
-    classId,
+    classId: 1,
   });
-
-  const teacher = useSelector((state) => state.teacher);
-  const taskId = teacher?.currentTask?.task_id;
-
-  React.useEffect(() => {
-    if (teacher.status === 'Task created') {
-      dispatch(changeStatus({ status: '', message: '' }));
-      navigate(`/class/${classId}/task/${taskId}/assign-student`);
-    }
-  }, [teacher, classId, navigate, dispatch, taskId]);
 
   const handleChange = (event) => {
     setTask({
@@ -69,15 +58,22 @@ const CreateTaskPage = () => {
     event.preventDefault();
     console.log(task);
     dispatch(createTask(task));
+    // navigate('/dashboard');
+  };
+
+  const handleSaveandAssign = (event) => {
+    event.preventDefault();
+    navigate('/assign-student');
   };
 
   return (
-    <div className="create-task-container">
+    <MainContainer>
       <Box
         component="form"
         width="100%"
       >
         <Box width="100%" mb={3}>
+          <Typography variant="h5" mb={2}>YOUR TASK</Typography>
           <Typography variant="h5" mb={2}>Task Name</Typography>
           <TextField
             id="outlined-multiline-static"
@@ -160,28 +156,36 @@ const CreateTaskPage = () => {
             <Button
               type="submit"
               variant="contained"
-              onClick={() => { navigate(`/class/${classId}/dashboard`); }}
-              disabled={teacher.status === 'Loading'}
+              onClick={handleSaveTask}
             >
-              Cancel
+              Save task
 
             </Button>
             <Button
               type="submit"
               variant="contained"
-              onClick={handleSaveTask}
-              disabled={teacher.status === 'Loading'}
+              onClick={handleSaveandAssign}
             >
-              Next
+              Save task and assign student
 
             </Button>
           </Box>
+          <Button
+            type="submit"
+            variant="contained"
+            onClick={() => {
+              alert('clicked cancel');
+            }}
+          >
+            Cancel
+
+          </Button>
         </Box>
 
       </Box>
-    </div>
+    </MainContainer>
 
   );
 };
 
-export default CreateTaskPage;
+export default StudentTaskPage;
