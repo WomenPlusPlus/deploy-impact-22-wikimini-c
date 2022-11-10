@@ -6,8 +6,8 @@
     position:relative;
     height:100%;
     width:100vw;
-    padding-top:175px;
-    padding-bottom:100px;
+    margin-top:165px;
+    padding-bottom:165px;
     padding-left: 15%;
     padding-right:15%;
     background-image: url("/public/Dashboard.png");
