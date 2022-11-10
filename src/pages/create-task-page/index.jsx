@@ -42,13 +42,14 @@ const CreateTaskPage = () => {
   });
 
   const teacher = useSelector((state) => state.teacher);
+  const taskId = teacher?.currentTask?.task_id;
 
   React.useEffect(() => {
     if (teacher.status === 'Task created') {
       dispatch(changeStatus({ status: '', message: '' }));
       // TODO: ADD CURRENT TASK ID WHEN IT IS AVAILABLE FROM THE API RESPONSE
       // navigate(`/class/${classId}/task/${teacher.currentTask.id}/assign-student`);
-      navigate(`/class/${classId}/task/${3}/assign-student`);
+      navigate(`/class/${classId}/task/${taskId}/assign-student`);
     }
   }, [teacher, classId, navigate, dispatch]);
 
@@ -162,6 +163,7 @@ const CreateTaskPage = () => {
               type="submit"
               variant="contained"
               onClick={() => { navigate(`/class/${classId}/dashboard`); }}
+              disabled={teacher.status === 'Loading'}
             >
               Cancel
 
@@ -170,6 +172,7 @@ const CreateTaskPage = () => {
               type="submit"
               variant="contained"
               onClick={handleSaveTask}
+              disabled={teacher.status === 'Loading'}
             >
               Next
 

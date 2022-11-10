@@ -15,7 +15,8 @@ const style = {
 const AssignStudentPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const students = useSelector((state) => state.student.data.students);
+  const studentState = useSelector((state) => state.student);
+  const { students } = studentState.data;
   const { id: taskId, classId } = useParams();
   const [student, setStudent] = React.useState(null);
 
@@ -68,8 +69,9 @@ const AssignStudentPage = () => {
           type="submit"
           variant="contained"
           onClick={() => { navigate(`/class/${classId}/dashboard`); }}
+          disabled={studentState.status === 'loading'}
         >
-          Cancel
+          Skip for now
 
         </Button>
 

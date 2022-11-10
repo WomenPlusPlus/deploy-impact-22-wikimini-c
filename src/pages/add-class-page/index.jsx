@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
@@ -19,24 +19,12 @@ import MainContainer from '../../components/main-container';
 import AddStudentModal from './add-student-modal';
 import { createClass, changeStatus } from '../../redux/reducers/teacher';
 import TransitionAlert from '../../components/transition-alert';
+import { listStudentsInClass } from '../../redux/reducers/student';
 
 const style = {
   width: '100%',
   bgcolor: 'background.paper',
 };
-
-const students = [
-  { studentName: 'Student1' },
-  { studentName: 'Student2' },
-  { studentName: 'Student3' },
-  { studentName: 'Student4' },
-  { studentName: 'Student5' },
-  { studentName: 'Student6' },
-  { studentName: 'Student7' },
-  { studentName: 'Student8' },
-  { studentName: 'Student9' },
-  { studentName: 'Student10' },
-];
 
 const initialValues = {
   classTitle: '',
@@ -52,7 +40,9 @@ const AddClassPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const teacherState = useSelector((state) => state.teacher);
-  const { classId, setClassId } = useState();
+  const student = useSelector((state) => state.student);
+  const { students } = student.data;
+  const { class_id: classId } = teacherState.currentClass;
 
   const onSubmit = (values) => {
     dispatch(createClass({ ...values, students: [] }));
@@ -71,14 +61,15 @@ const AddClassPage = () => {
   });
 
   // redirect to classes page
-  // TODO: after the class page is created, update this route
   useEffect(() => {
     if (teacherState.status === 'Created') {
       clearStatus();
-      
-      navigate('/classes');
+      // navigate('/classes');
     }
-  }, [clearStatus, navigate, teacherState.status]);
+    if (classId) {
+      dispatch(listStudentsInClass(classId));
+    }
+  }, [clearStatus, navigate, teacherState.status, dispatch, classId]);
 
   return (
     <MainContainer>
@@ -87,7 +78,15 @@ const AddClassPage = () => {
       )}
       <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
         <Box width="600px" height="100%" border="1px solid black" p={6} display="flex" flexDirection="column" gap={3}>
-          <Typography>ADD CLASS NAME</Typography>
+          <Box display="flex" gap={2}>
+            <Typography>ADD CLASS NAME</Typography>
+            <Button
+              variant="contained"
+              size="small"
+            >
+              Back
+            </Button>
+          </Box>
           <Box textAlign="center">
             <Box
               component="form"
@@ -109,7 +108,7 @@ const AddClassPage = () => {
                 type="submit"
                 variant="contained"
                 size="large"
-                disabled={!dirty || !isValid || teacherState.status === 'Loading'}
+                disabled={!dirty || !isValid || teacherState.status === 'Loading' || teacherState.status === 'Created'}
               >
                 Save class
               </Button>
@@ -131,10 +130,10 @@ const AddClassPage = () => {
                     }}
                   >
                     <List sx={style} component="nav">
-                      {students.map(({ studentName }) => (
-                        <div key={studentName}>
+                      {students.map(({ id, username }) => (
+                        <div key={id}>
                           <ListItem button>
-                            <ListItemText key={studentName} primary={studentName} />
+                            <ListItemText key={username} primary={username} />
                             <IconButton aria-label="delete">
                               <DeleteOutlineIcon />
                             </IconButton>
