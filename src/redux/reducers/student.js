@@ -7,44 +7,47 @@ import {
 } from '../../services/students';
 
 export const addStudentToClass = createAsyncThunk(
-  'teacher/addStudentToClass',
-  (student, { rejectWithValue }) => addStudentService(student)
-    .then((res) => {
-      if (res.data.error) {
-        return rejectWithValue(res.data.error);
-      }
+  'student/addStudentToClass',
+  (student, { rejectWithValue }) =>
+    addStudentService(student)
+      .then((res) => {
+        if (res.data.error) {
+          return rejectWithValue(res.data.error);
+        }
 
-      return res;
-    })
-    .catch((error) => error.message),
+        return res;
+      })
+      .catch((error) => error.message)
 );
 
 export const listStudentsInClass = createAsyncThunk(
-  'teacher/listStudentsInClass',
-  (classId, { rejectWithValue }) => listStudentsService(classId)
-    .then((res) => {
-      console.log(res);
-      if (res.data.error) {
-        return rejectWithValue(res.data.error);
-      }
+  'student/listStudentsInClass',
+  (classId, { rejectWithValue }) =>
+    listStudentsService(classId)
+      .then((res) => {
+        console.log(res);
+        if (res.data.error) {
+          return rejectWithValue(res.data.error);
+        }
 
-      return res.data.query.studentsinclass;
-    })
-    .catch((error) => error.message),
+        return res.data.query.studentsinclass;
+      })
+      .catch((error) => error.message)
 );
 
 export const giveTask = createAsyncThunk(
-  'teacher/giveTask',
-  (taskData, { rejectWithValue }) => giveTaskToStudentService(taskData)
-    .then((res) => {
-      console.log(res);
-      if (res.data.error) {
-        return rejectWithValue(res.data.error);
-      }
+  'student/giveTask',
+  (taskData, { rejectWithValue }) =>
+    giveTaskToStudentService(taskData)
+      .then((res) => {
+        console.log(res);
+        if (res.data.error) {
+          return rejectWithValue(res.data.error);
+        }
 
-      return res;
-    })
-    .catch((error) => error.message),
+        return res;
+      })
+      .catch((error) => error.message)
 );
 
 const initialState = {
