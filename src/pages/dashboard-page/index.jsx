@@ -7,41 +7,15 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import CreateIcon from '@mui/icons-material/Create';
 import { useNavigate, useParams } from 'react-router-dom';
 import DeletableList from '../../components/deletable-list';
-import AddStudentModal from '../add-class-page/add-student-modal';;
+import AddStudentModal from '../add-class-page/add-student-modal';
 import './dashboard.css';
 import StyledOutlinedEvaluateButton from '../../components/outlined-evaluate-button';
+import { getClassDetailsService } from '../../services/classes';
 
 const style = {
   width: '100%',
   bgcolor: 'background.paper',
 };
-
-const studentsTasksStatus = [
-  { id: 1, studentName: 'Student1', task: 'Task1' },
-  { id: 2, studentName: 'Student2', task: 'Task2' },
-  { id: 3, studentName: 'Student3', task: 'Task3' },
-  { id: 4, studentName: 'Student4', task: 'Task4' },
-  { id: 5, studentName: 'Student5', task: 'Task5' },
-  { id: 6, studentName: 'Student6', task: 'Task6' },
-  { id: 7, studentName: 'Student7', task: 'Task7' },
-  { id: 8, studentName: 'Student8', task: 'Task8' },
-  { id: 9, studentName: 'Student9', task: 'Task9' },
-  { id: 10, studentName: 'Student10', task: 'Task10' },
-];
-
-const tasks = [
-  { id: 1, task: 'Task1' },
-  { id: 2, task: 'Task2' },
-  { id: 3, task: 'Task3' },
-  { id: 4, task: 'Task4' },
-  { id: 5, task: 'Task5' },
-  { id: 6, task: 'Task6' },
-  { id: 7, task: 'Task7' },
-  { id: 8, task: 'Task8' },
-  { id: 9, task: 'Task9' },
-  { id: 10, task: 'Task10' },
-  { id: 11, task: 'Task11' },
-];
 
 const messages = [
   { id: 1, message: 'Message1' },
@@ -59,10 +33,29 @@ const messages = [
 const DashboardPage = () => {
   const navigate = useNavigate();
   const { id: classId } = useParams();
+  const [students, setStudents] = React.useState([]);
+  const [tasks, setTasks] = React.useState([]);
+  const [studentsTasks, setStudentsTasks] = React.useState([]);
+  const [ classTitle, setClassTitle ] = React.useState('');
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const data = await getClassDetailsService(classId);
+      console.log(data);
+      if (data) {
+        setStudents(data.allStudents || []);
+        setTasks(data.allTasks || []);
+        setStudentsTasks(data.tasksPerStudent || []);
+        setClassTitle(data.classInfo.class_name || '');
+      }
+    };
+
+    fetchData();
+  }, [classId]);
 
   return (
     <div className="dashboard-container">
-      <Typography variant="h5" mt={5}>Class 1</Typography>
+      <Typography variant="h5" mt={5}>{classTitle}</Typography>
       <Box display="flex" width="100%" gap={5}>
         <Box width="100%" height="380px" display="flex" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="#D7EFA8" borderRadius={4}>
           <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" p={2}>
@@ -80,7 +73,7 @@ const DashboardPage = () => {
                 gap: 2,
               }}
             >
-              <DeletableList items={studentsTasksStatus} itemName="studentName" style={style} />
+              <DeletableList items={students} itemName="studentUsername" style={style} />
             </Box>
           </Box>
         </Box>
@@ -166,10 +159,10 @@ const DashboardPage = () => {
             >
               <List sx={{ ...style, flexGrow: 1 }} component="nav" aria-label="mailbox folders">
 
-                {studentsTasksStatus.map(({ id, studentName, task }) => (
+                {studentsTasks.map(({ id, studentUsername, task, taskStatus }) => (
                   <div key={id}>
                     <ListItem button>
-                      <ListItemText primary={studentName} />
+                      <ListItemText primary={studentUsername} />
                       <ListItemText primary={task} />
                       <Chip
                         style={{
@@ -178,7 +171,7 @@ const DashboardPage = () => {
                           borderRadius: '10px',
                           color: '#EB5757',
                         }}
-                        label="Pending"
+                        label={taskStatus}
                         variant="filled"
                       />
                       <StyledOutlinedEvaluateButton>Evaluate</StyledOutlinedEvaluateButton>

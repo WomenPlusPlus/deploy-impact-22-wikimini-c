@@ -7,7 +7,7 @@ import {
 } from '../../services/students';
 
 export const addStudentToClass = createAsyncThunk(
-  'teacher/addStudentToClass',
+  'student/addStudentToClass',
   (student, { rejectWithValue }) => addStudentService(student)
     .then((res) => {
       if (res.data.error) {
@@ -20,7 +20,7 @@ export const addStudentToClass = createAsyncThunk(
 );
 
 export const listStudentsInClass = createAsyncThunk(
-  'teacher/listStudentsInClass',
+  'student/listStudentsInClass',
   (classId, { rejectWithValue }) => listStudentsService(classId)
     .then((res) => {
       console.log(res);
@@ -34,7 +34,7 @@ export const listStudentsInClass = createAsyncThunk(
 );
 
 export const giveTask = createAsyncThunk(
-  'teacher/giveTask',
+  'student/giveTask',
   (taskData, { rejectWithValue }) => giveTaskToStudentService(taskData)
     .then((res) => {
       console.log(res);
