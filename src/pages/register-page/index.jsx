@@ -111,6 +111,7 @@ const RegisterPage = () => {
             style={{
               backgroundColor: 'white',
               borderRadius: '30px',
+              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
             }}
             sx={{
               '& .MuiOutlinedInput-root': {
@@ -134,6 +135,7 @@ const RegisterPage = () => {
             style={{
               backgroundColor: 'white',
               borderRadius: '30px',
+              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
             }}
             sx={{
               '& .MuiOutlinedInput-root': {
@@ -156,6 +158,7 @@ const RegisterPage = () => {
             style={{
               backgroundColor: 'white',
               borderRadius: '30px',
+              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
             }}
             sx={{
               '& .MuiOutlinedInput-root': {

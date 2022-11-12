@@ -63,11 +63,12 @@ const LoginPage = () => {
           }}
           onSubmit={handleSubmit}
         >
-          <Typography component="h1" variant="h4">LOGIN</Typography>
+          <Typography component="h2" variant="h4">LOGIN</Typography>
           <TextField
             style={{
               backgroundColor: 'white',
               borderRadius: '30px',
+              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
             }}
             sx={{
               '& .MuiOutlinedInput-root': {
@@ -91,6 +92,7 @@ const LoginPage = () => {
             style={{
               backgroundColor: 'white',
               borderRadius: '30px',
+              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
             }}
             sx={{
               '& .MuiOutlinedInput-root': {
@@ -109,7 +111,7 @@ const LoginPage = () => {
             onBlur={handleBlur}
             error={touched.password && Boolean(errors.password)}
           />
-          <Box marginTop={-4} marginLeft={4} width="100%" display="flex" textAlign="left"><Typography variant="subtitle2">Forgot your password?</Typography></Box>
+          <Box marginTop={-3} marginLeft={4} width="100%" display="flex" textAlign="left"><Typography variant="subtitle2">Forgot your password?</Typography></Box>
           <StyledSubmitButton
             disabled={!dirty || !isValid}
           >

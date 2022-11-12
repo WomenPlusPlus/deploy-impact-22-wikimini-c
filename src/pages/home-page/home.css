@@ -126,6 +126,7 @@
 
 h1 {
     padding:0px;
+    font-family: 'Baloo Chettan 2', cursive;
 }
 
 .description-box {
@@ -177,7 +178,8 @@ h1 {
 
 .title {
     font-size: 36px;
-    font-weight: 900;
+    font-family:'Baloo Chettan 2', cursive;
+    font-weight: 600;
     text-align: center;
     margin-bottom:15px;
 }

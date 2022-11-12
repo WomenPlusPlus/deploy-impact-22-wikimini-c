@@ -73,15 +73,39 @@ const CreateTaskPage = () => {
 
   return (
     <div className="create-task-container">
+      <Box width="100%" textAlign="left">
+        <Typography variant="h4" sx={{ fontWeight: 'medium' }}>CREATE TASK</Typography>
+      </Box>
       <Box
         component="form"
         width="100%"
       >
         <Box width="100%" mb={3}>
-          <Typography variant="h5" mb={2}>Task Name</Typography>
+          {' '}
+          <Typography variant="h5" mb={2} sx={{ fontWeight: 'medium' }}>Type of task</Typography>
+          <Box width="100%" display="flex" gap={1} flexWrap="wrap">
+            {taskTypes.map((type) => (
+              <Chip key={type} label={type} onClick={handleTypeTask} color={task.taskType === type ? 'primary' : 'default'} />
+            ))}
+          </Box>
+        </Box>
+        <Box width="100%" mb={3}>
+          <Typography variant="h5" mb={1} sx={{ fontWeight: 'medium' }}>Task name</Typography>
           <TextField
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& > fieldset': {
+                  border: 'none',
+                },
+              },
+            }}
             id="outlined-multiline-static"
-            label="Task name"
+            // label="Task name"
             name="taskName"
             onChange={handleChange}
             multiline
@@ -90,18 +114,23 @@ const CreateTaskPage = () => {
           />
         </Box>
         <Box width="100%" mb={3}>
-          {' '}
-          <Typography variant="h5" mb={2}>Type of task</Typography>
-          <Box width="100%">
-            {taskTypes.map((type) => (
-              <Chip key={type} label={type} onClick={handleTypeTask} color={task.taskType === type ? 'primary' : 'default'} />
-            ))}
-          </Box>
-        </Box>
-        <Box width="100%" mb={3}>
-          <Typography variant="h5" mb={2}>Subject</Typography>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Subject</InputLabel>
+          <Typography variant="h5" mb={1} sx={{ fontWeight: 'medium' }}>Subject</Typography>
+          <FormControl
+            fullWidth
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              boxShadow: 'rgba((72, 72, 72, 0.15))',
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& > fieldset': {
+                  border: 'none',
+                },
+              },
+            }}
+          >
+            <InputLabel id="demo-simple-select-label">Choose</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -120,10 +149,22 @@ const CreateTaskPage = () => {
         </Box>
 
         <Box width="100%" mb={3}>
-          <Typography variant="h5" mb={2}>Task description</Typography>
+          <Typography variant="h5" mb={1} sx={{ fontWeight: 'medium' }}>Task description</Typography>
           <TextField
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& > fieldset': {
+                  border: 'none',
+                },
+              },
+            }}
             id="outlined-multiline-static"
-            label="Description"
+            // label="Description"
             name="taskDescription"
             onChange={handleChange}
             multiline
@@ -132,10 +173,22 @@ const CreateTaskPage = () => {
           />
         </Box>
         <Box width="100%" mb={3}>
-          <Typography variant="h5" mb={2}>Link</Typography>
+          <Typography variant="h5" mb={1} sx={{ fontWeight: 'medium' }}>Link to article</Typography>
           <TextField
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& > fieldset': {
+                  border: 'none',
+                },
+              },
+            }}
             id="outlined-multiline-static"
-            label="Link to article, video, etc."
+            // label="Link to article, video, etc."
             name="taskLink"
             onChange={handleChange}
             multiline
@@ -144,10 +197,22 @@ const CreateTaskPage = () => {
           />
         </Box>
         <Box width="100%" mb={3}>
-          <Typography variant="h5" mb={2}>Judgement criteria</Typography>
+          <Typography variant="h5" mb={2} sx={{ fontWeight: 'medium' }}>Judgement criteria</Typography>
           <TextField
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& > fieldset': {
+                  border: 'none',
+                },
+              },
+            }}
             id="outlined-multiline-static"
-            label="Judgement criteria"
+            // label="Judgement criteria"
             name="judgmentCriteria"
             onChange={handleChange}
             multiline
@@ -158,8 +223,25 @@ const CreateTaskPage = () => {
         <Box display="flex" width="100%" justifyContent="space-between">
           <Box display="flex" gap={3}>
             <Button
-              type="submit"
-              variant="contained"
+              style={{
+                borderRadius: '10px',
+                border: '2px solid #EB5757',
+              }}
+              sx={(theme) => ({
+                background: theme.palette.secondary.main,
+                color: theme.palette.common.white,
+                width: '170px',
+                type: 'button',
+                variant: 'contained',
+                size: 'large',
+                py: 1.5,
+                border: '2px solid theme.palette.secondary.main',
+                ':hover': {
+                  bgcolor: theme.palette.common.white,
+                  color: theme.palette.secondary.main,
+                  border: '2px solid #EB5757',
+                },
+              })}
               onClick={() => { navigate(`/class/${classId}/dashboard`); }}
               disabled={teacher.status === 'Loading'}
             >
@@ -167,8 +249,25 @@ const CreateTaskPage = () => {
 
             </Button>
             <Button
-              type="submit"
-              variant="contained"
+              style={{
+                borderRadius: '10px',
+                border: '2px solid #EB5757',
+              }}
+              sx={(theme) => ({
+                background: theme.palette.secondary.main,
+                color: theme.palette.common.white,
+                width: '170px',
+                type: 'button',
+                variant: 'contained',
+                size: 'large',
+                py: 1.5,
+                border: '2px solid theme.palette.secondary.main',
+                ':hover': {
+                  bgcolor: theme.palette.common.white,
+                  color: theme.palette.secondary.main,
+                  border: '2px solid #EB5757',
+                },
+              })}
               onClick={handleSaveTask}
               disabled={teacher.status === 'Loading'}
             >

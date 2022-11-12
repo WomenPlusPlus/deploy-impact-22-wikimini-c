@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Typography, Box, Button,
 } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import DeletableList from '../../components/deletable-list';
 import './tasks.css';
 
@@ -33,12 +33,13 @@ const tasks = [
 
 const TasksPage = () => {
   const navigate = useNavigate();
+  const { id: classId } = useParams();
 
   return (
     <div className="tasks-container">
-      <Box width="100%" height="95%" mt={8} display="flex" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="#FEB1D0" borderRadius={4}>
+      <Box width="100%" height="95%" mt={5} display="flex" flexDirection="column" backgroundColor="#FEB1D0" borderRadius={4}>
         <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" p={2}>
-          <Typography>LIST OF ALL YOUR TASKS</Typography>
+          <Typography variant="h6">LIST OF ALL TASKS</Typography>
           <Box>
             <Button
               sx={(theme) => ({
@@ -52,7 +53,7 @@ const TasksPage = () => {
               })}
               variant="contained"
               size="small"
-              onClick={() => navigate('/create-task')}
+              onClick={() => navigate(`/class/${classId}/create-task`)}
               style={{
                 borderRadius: '10px',
                 border: '2px solid #EB5757',

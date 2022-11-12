@@ -93,6 +93,18 @@ const AddClassPage = () => {
               onSubmit={handleSubmit}
             >
               <TextField
+                style={{
+                  backgroundColor: 'white',
+                  borderRadius: '30px',
+                  boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
+                }}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    '& > fieldset': {
+                      border: 'none',
+                    },
+                  },
+                }}
                 name="classTitle"
                 label="Class title"
                 type="text"

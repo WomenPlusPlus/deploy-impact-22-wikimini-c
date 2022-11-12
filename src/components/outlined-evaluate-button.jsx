@@ -18,7 +18,7 @@ const StyledOutlinedEvaluateButton = ({ children }) => {
         variant: 'outlined',
         border: '2px solid #EB5757',
         size: 'small',
-        ml: '15px',
+        ml: '10px',
         py: '2px',
 
         ':hover': {
