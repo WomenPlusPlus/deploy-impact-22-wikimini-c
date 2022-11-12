@@ -72,19 +72,22 @@ const AddStudentModal = ({ classId }) => {
           <Box
             display="flex"
             flexDirection="column"
-            height="600px"
-            width="500px"
-            backgroundColor="white"
-            p={7}
+            height="430px"
+            width="330px"
+            p={4}
             gap={3}
             justifyContent="center"
             alignItems="center"
+            borderRadius="20px"
+            sx={(theme) => ({
+              background: theme.palette.primary.light,
+            })}
           >
             {student.status === 'failed to add student' && (
               <TransitionAlert severity="error" message={student.message} handleChange={clearStatus} />
             )}
             {' '}
-            <Typography mb={3}>ADD A STUDENT</Typography>
+            <Typography variant="h6">ADD STUDENT</Typography>
             <Box
               component="form"
               sx={{
@@ -97,18 +100,42 @@ const AddStudentModal = ({ classId }) => {
               onSubmit={handleSubmit}
             >
               <TextField
+                style={{
+                  backgroundColor: 'white',
+                  borderRadius: '30px',
+                  boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
+                }}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    '& > fieldset': {
+                      border: 'none',
+                    },
+                  },
+                }}
                 name="username"
                 label="Username"
                 type="text"
-                variant="filled"
+                variant="outlined"
                 fullWidth
                 value={values.username}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 error={touched.username && Boolean(errors.username)}
-                helperText={touched.username && errors.username}
               />
               <Button
+                sx={(theme) => ({
+                  background: theme.palette.secondary.main,
+                  color: theme.palette.common.white,
+                  width: '170px',
+                  size: 'large',
+                  py: 1.5,
+                  border: '2px solid theme.palette.secondary.main',
+                  ':hover': {
+                    bgcolor: theme.palette.common.white,
+                    color: theme.palette.secondary.main,
+                    border: '2px solid #EB5757',
+                  },
+                })}
                 type="submit"
                 variant="contained"
                 size="large"

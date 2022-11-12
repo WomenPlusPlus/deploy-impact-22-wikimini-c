@@ -36,7 +36,7 @@ const DashboardPage = () => {
   const [students, setStudents] = React.useState([]);
   const [tasks, setTasks] = React.useState([]);
   const [studentsTasks, setStudentsTasks] = React.useState([]);
-  const [ classTitle, setClassTitle ] = React.useState('');
+  const [classTitle, setClassTitle] = React.useState('');
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -55,11 +55,24 @@ const DashboardPage = () => {
 
   return (
     <div className="dashboard-container">
-      <Typography variant="h5" mt={5}>{classTitle}</Typography>
-      <Box display="flex" width="100%" gap={5}>
+      <Typography variant="h4" mt={5}>{classTitle}</Typography>
+      <Box
+        display="flex"
+        width="100%"
+        gap={5}
+        sx={{
+          flexDirection:
+          {
+            lg: 'row',
+            md: 'column',
+            sm: 'column',
+            xs: 'column',
+          },
+        }}
+      >
         <Box width="100%" height="380px" display="flex" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="#D7EFA8" borderRadius={4}>
           <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" p={2}>
-            <Typography>STUDENTS</Typography>
+            <Typography variant="h6">STUDENTS</Typography>
             <AddStudentModal classId={classId} />
           </Box>
           <Box width="100%" mb={4}>
@@ -80,7 +93,7 @@ const DashboardPage = () => {
 
         <Box width="100%" height="380px" display="flex" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="#FEB1D0" borderRadius={4}>
           <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" p={2}>
-            <Typography>RECENT TASKS</Typography>
+            <Typography variant="h6">RECENT TASKS</Typography>
             <Box>
               <Button
                 sx={(theme) => ({
@@ -99,13 +112,13 @@ const DashboardPage = () => {
                   border: '2px solid #EB5757',
                 }}
               >
-                See all
+                All
 
               </Button>
               <Button
                 sx={(theme) => ({
                   background: theme.palette.secondary.main,
-                  ml: 2,
+                  ml: 1,
                   ':hover': {
                     bgcolor: theme.palette.common.white,
                     color: theme.palette.secondary.main,
@@ -120,7 +133,7 @@ const DashboardPage = () => {
                   border: '2px solid #EB5757',
                 }}
               >
-                Create task
+                ADD
               </Button>
             </Box>
             {/* <Box display="flex" gap={3} /> */}
@@ -145,7 +158,7 @@ const DashboardPage = () => {
 
       <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="#FDC982" borderRadius={4}>
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" width="100%">
-          <Typography py={2.5}>TASK STATUS</Typography>
+          <Typography variant="h6" py={2.5}>TASK STATUS</Typography>
           <Box width="100%" mb={5}>
             <Box
               sx={{
@@ -159,11 +172,13 @@ const DashboardPage = () => {
             >
               <List sx={{ ...style, flexGrow: 1 }} component="nav" aria-label="mailbox folders">
 
-                {studentsTasks.map(({ id, studentUsername, task, taskStatus }) => (
+                {studentsTasks.map(({
+                  id, studentUsername, task, taskStatus,
+                }) => (
                   <div key={id}>
                     <ListItem button>
                       <ListItemText primary={studentUsername} />
-                      <ListItemText primary={task} />
+                      <ListItemText primary={task} sx={{ display: { xs: 'none', sm: 'block', md: 'block' } }} />
                       <Chip
                         style={{
                           backgroundColor: 'white',
@@ -187,7 +202,7 @@ const DashboardPage = () => {
 
       <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="#87DED9" borderRadius={4}>
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" width="100%">
-          <Typography py={2.5}>FORUM</Typography>
+          <Typography variant="h6" py={2.5}>FORUM</Typography>
           <Box width="100%" mb={5}>
             <Box
               sx={{

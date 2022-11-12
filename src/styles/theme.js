@@ -16,6 +16,24 @@ const baseTheme = createTheme({
     },
   },
 
+  typography: {
+    h5: {
+      fontFamily: '"Baloo Chettan 2", cursive',
+    },
+    h1: {
+      fontFamily: '"Baloo Chettan 2", cursive',
+    },
+    h2: {
+      fontFamily: '"Baloo Chettan 2", cursive',
+    },
+    h4: {
+      fontFamily: '"Baloo Chettan 2", cursive',
+    },
+    h6: {
+      fontFamily: '"Baloo Chettan 2", cursive',
+    },
+  },
+
   breakpoints: {
     values: {
       xs: 0,
