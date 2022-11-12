@@ -40,8 +40,6 @@ const AddClassPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const teacherState = useSelector((state) => state.teacher);
-  const student = useSelector((state) => state.student);
-  const { students } = student.data;
   const { class_id: classId } = teacherState.currentClass;
 
   const onSubmit = (values) => {
@@ -64,12 +62,9 @@ const AddClassPage = () => {
   useEffect(() => {
     if (teacherState.status === 'Created') {
       clearStatus();
-      // navigate('/classes');
+      navigate(`/class/${classId}/dashboard`);
     }
-    if (classId) {
-      dispatch(listStudentsInClass(classId));
-    }
-  }, [clearStatus, navigate, teacherState.status, dispatch, classId]);
+  }, [clearStatus, navigate, teacherState, dispatch, classId]);
 
   return (
     <MainContainer>
@@ -83,6 +78,7 @@ const AddClassPage = () => {
             <Button
               variant="contained"
               size="small"
+              onClick={() => navigate('/classes')}
             >
               Back
             </Button>
@@ -125,41 +121,6 @@ const AddClassPage = () => {
                 Save class
               </Button>
             </Box>
-
-          </Box>
-          <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-            {classId && (
-              <>
-                <Box width="100%" border="1px solid black" borderRadius={1}>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      height: 290,
-                      overflow: 'hidden',
-                      overflowY: 'scroll',
-                      gap: 2,
-                    }}
-                  >
-                    <List sx={style} component="nav">
-                      {students.map(({ id, username }) => (
-                        <div key={id}>
-                          <ListItem button>
-                            <ListItemText key={username} primary={username} />
-                            <IconButton aria-label="delete">
-                              <DeleteOutlineIcon />
-                            </IconButton>
-                          </ListItem>
-                          <Divider variant="middle" />
-                        </div>
-                      ))}
-                    </List>
-                  </Box>
-                </Box>
-                <AddStudentModal classId={classId} />
-              </>
-            )}
-
           </Box>
         </Box>
       </Box>

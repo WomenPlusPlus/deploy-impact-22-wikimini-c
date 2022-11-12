@@ -12,6 +12,7 @@ import * as yup from 'yup';
 import ModalButton from '../../components/modal-button';
 import { addStudentToClass, resetToInitialState } from '../../redux/reducers/student';
 import TransitionAlert from '../../components/transition-alert';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   username: '',
@@ -26,6 +27,7 @@ const validationSchema = yup.object({
 const AddStudentModal = ({ classId }) => {
   const [modalOpen, setModalOpen] = React.useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const student = useSelector((state) => state.student);
 
   const closeModal = () => {
@@ -44,9 +46,9 @@ const AddStudentModal = ({ classId }) => {
 
   React.useEffect(() => {
     if (student.status === 'success add student') {
-      clearStatus();
+      window.location.reload(true);
     }
-  }, [student, clearStatus]);
+  }, [student, clearStatus, classId, navigate]);
 
   const {
     dirty, values, errors, touched, isValid, handleChange, handleBlur, handleSubmit,

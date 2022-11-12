@@ -25,11 +25,11 @@ const AssignStudentPage = () => {
   }, [dispatch, classId]);
 
   React.useEffect(() => {
-    if (students.status === 'task given') {
-      dispatch(resetToInitialState());
+    if (studentState.status === 'task given') {
       navigate(`/class/${classId}/dashboard`);
+      dispatch(resetToInitialState());
     }
-  }, [dispatch, students, navigate, classId]);
+  }, [dispatch, studentState, navigate, classId]);
 
   const handleSubmit = () => {
     dispatch(giveTask({ studentId: student.id, taskId }));
@@ -72,7 +72,6 @@ const AssignStudentPage = () => {
           disabled={studentState.status === 'loading'}
         >
           Skip for now
-
         </Button>
 
         <Button variant="contained" color="primary" onClick={handleSubmit} disabled={!student}>Assign</Button>
