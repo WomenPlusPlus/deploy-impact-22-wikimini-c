@@ -67,7 +67,7 @@ export const getClassDetailsService = async (classId) => {
       taskId: result.tasks_per_student[key].task_id,
       task: result.tasks_per_student[key].task_name,
       taskStatus: result.tasks_per_student[key].task_status,
-    })
+    }),
   );
 
   const classInfo = result.class_info;

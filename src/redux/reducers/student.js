@@ -8,46 +8,43 @@ import {
 
 export const addStudentToClass = createAsyncThunk(
   'student/addStudentToClass',
-  (student, { rejectWithValue }) =>
-    addStudentService(student)
-      .then((res) => {
-        if (res.data.error) {
-          return rejectWithValue(res.data.error);
-        }
+  (student, { rejectWithValue }) => addStudentService(student)
+    .then((res) => {
+      if (res.data.error) {
+        return rejectWithValue(res.data.error);
+      }
 
-        return res;
-      })
-      .catch((error) => error.message)
+      return res;
+    })
+    .catch((error) => error.message),
 );
 
 export const listStudentsInClass = createAsyncThunk(
   'student/listStudentsInClass',
-  (classId, { rejectWithValue }) =>
-    listStudentsService(classId)
-      .then((res) => {
-        console.log(res);
-        if (res.data.error) {
-          return rejectWithValue(res.data.error);
-        }
+  (classId, { rejectWithValue }) => listStudentsService(classId)
+    .then((res) => {
+      console.log(res);
+      if (res.data.error) {
+        return rejectWithValue(res.data.error);
+      }
 
-        return res.data.query.studentsinclass;
-      })
-      .catch((error) => error.message)
+      return res.data.query.studentsinclass;
+    })
+    .catch((error) => error.message),
 );
 
 export const giveTask = createAsyncThunk(
   'student/giveTask',
-  (taskData, { rejectWithValue }) =>
-    giveTaskToStudentService(taskData)
-      .then((res) => {
-        console.log(res);
-        if (res.data.error) {
-          return rejectWithValue(res.data.error);
-        }
+  (taskData, { rejectWithValue }) => giveTaskToStudentService(taskData)
+    .then((res) => {
+      console.log(res);
+      if (res.data.error) {
+        return rejectWithValue(res.data.error);
+      }
 
-        return res;
-      })
-      .catch((error) => error.message)
+      return res;
+    })
+    .catch((error) => error.message),
 );
 
 const initialState = {
