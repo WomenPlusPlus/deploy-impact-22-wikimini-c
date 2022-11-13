@@ -164,9 +164,9 @@ const HomePage = () => (
       </div>
       <div>
         <p>Contacts</p>
-        <a href="url">About Wikimini</a>
-        <a href="url">Warnings</a>
-        <a href="url">Rights of use</a>
+        <a href="url">+417695896</a>
+        <a href="url">wikimini@example.com</a>
+        <a href="url">Alte Züricherstrasse 14, Zürich, Switzerland</a>
       </div>
       <div className="footer-logo" />
     </div>
