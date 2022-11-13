@@ -4,12 +4,13 @@ import {
   Box,
   Typography,
   TextField,
+  Modal,
   Button,
 } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import MainContainer from '../../components/main-container';
+import ModalButton from '../../components/modal-button';
 import { createClass, changeStatus } from '../../redux/reducers/teacher';
 import TransitionAlert from '../../components/transition-alert';
 
@@ -23,11 +24,16 @@ const validationSchema = yup.object({
     .min(2, 'At least 2 characters'),
 });
 
-const AddClassPage = () => {
+const AddClassModal = () => {
+  const [modalOpen, setModalOpen] = React.useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const teacherState = useSelector((state) => state.teacher);
   const { class_id: classId } = teacherState.currentClass;
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   const onSubmit = (values) => {
     dispatch(createClass({ ...values, students: [] }));
@@ -54,25 +60,44 @@ const AddClassPage = () => {
   }, [clearStatus, navigate, teacherState, dispatch, classId]);
 
   return (
-    <MainContainer>
-      {teacherState.status === 'Failed' && (
-        <TransitionAlert severity="error" message={teacherState.message} handleChange={clearStatus} />
-      )}
-      <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-        <Box width="600px" height="100%" border="1px solid black" p={6} display="flex" flexDirection="column" gap={3}>
-          <Box display="flex" gap={2}>
-            <Typography>ADD CLASS NAME</Typography>
-            <Button
-              variant="contained"
-              size="small"
-              onClick={() => navigate('/classes')}
-            >
-              Back
-            </Button>
-          </Box>
-          <Box textAlign="center">
+    <Box>
+      <ModalButton openModal={() => setModalOpen(true)}>ADD CLASS</ModalButton>
+      <Modal open={modalOpen} onClose={closeModal}>
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            height="430px"
+            width="330px"
+            p={4}
+            gap={3}
+            justifyContent="center"
+            alignItems="center"
+            borderRadius="20px"
+            sx={(theme) => ({
+              background: theme.palette.primary.light,
+            })}
+          >
+            {teacherState.status === 'Failed' && (
+            <TransitionAlert severity="error" message={teacherState.message} handleChange={clearStatus} />
+            )}
+            {' '}
+            <Typography variant="h6">ADD NEW CLASS </Typography>
             <Box
               component="form"
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 3,
+                width: '100%',
+              }}
               onSubmit={handleSubmit}
             >
               <TextField
@@ -100,19 +125,32 @@ const AddClassPage = () => {
                 helperText={touched.classTitle && errors.classTitle}
               />
               <Button
+                sx={(theme) => ({
+                  background: theme.palette.secondary.main,
+                  color: theme.palette.common.white,
+                  width: '170px',
+                  size: 'large',
+                  py: 1.5,
+                  border: '2px solid theme.palette.secondary.main',
+                  ':hover': {
+                    bgcolor: theme.palette.common.white,
+                    color: theme.palette.secondary.main,
+                    border: '2px solid #EB5757',
+                  },
+                })}
                 type="submit"
                 variant="contained"
                 size="large"
                 disabled={!dirty || !isValid || teacherState.status === 'Loading' || teacherState.status === 'Created'}
               >
-                Save class
+                Add
               </Button>
             </Box>
           </Box>
         </Box>
-      </Box>
-    </MainContainer>
+      </Modal>
+    </Box>
   );
 };
 
-export default AddClassPage;
+export default AddClassModal;

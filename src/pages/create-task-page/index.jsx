@@ -220,7 +220,7 @@ const CreateTaskPage = () => {
             fullWidth
           />
         </Box>
-        <Box display="flex" width="100%" justifyContent="space-between">
+        <Box display="flex" width="100%" justifyContent="center">
           <Box display="flex" gap={3}>
             <Button
               style={{
