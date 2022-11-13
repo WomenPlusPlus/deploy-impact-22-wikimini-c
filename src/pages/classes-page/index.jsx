@@ -39,7 +39,7 @@ const ClassesPage = () => {
         width="90%"
         height="100%"
       >
-        <Typography variant="h5" mb={4}>WELCOME LYNDA!</Typography>
+        <Typography variant="h4" mb={4}>WELCOME LYNDA!</Typography>
         <Typography variant="h6" mb={4}>YOUR CLASSES</Typography>
         <Box>
           <Grid

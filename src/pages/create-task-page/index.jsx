@@ -8,6 +8,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useNavigate, useParams } from 'react-router-dom';
+import Tooltip from '@mui/material/Tooltip';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { createTask, changeStatus } from '../../redux/reducers/teacher';
 import './create-task.css';
 
@@ -25,6 +27,18 @@ const taskTypes = [
   'Illustrate',
   'Review Article',
 ];
+
+// const CustomWidthTooltip = styled(({ className, ...props }: TooltipProps) => (
+//   <Tooltip {...props} classes={{ popper: className }} />
+// ))({
+//   [`& .${tooltipClasses.tooltip}`]: {
+//     maxWidth: 500,
+//   },
+// });
+
+const longText = `
+Here you can describe the main requirements the student must fullfil in order to perform the task correctly. These requirements will be seen by the student in the studen's dashboard.
+`;
 
 const CreateTaskPage = () => {
   const navigate = useNavigate();
@@ -130,7 +144,7 @@ const CreateTaskPage = () => {
               },
             }}
           >
-            <InputLabel id="demo-simple-select-label">Choose</InputLabel>
+            <InputLabel id="demo-simple-select-label">Select</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -197,7 +211,12 @@ const CreateTaskPage = () => {
           />
         </Box>
         <Box width="100%" mb={3}>
-          <Typography variant="h5" mb={2} sx={{ fontWeight: 'medium' }}>Judgement criteria</Typography>
+          <Box width="100%" display="flex" alignItems="center" mb={2}>
+            <Typography variant="h5" mr={1} sx={{ fontWeight: 'medium' }}>
+              Judgement criteria
+            </Typography>
+            <Tooltip title={longText}><HelpOutlineIcon style={{ color: '#EB5757' }} /></Tooltip>
+          </Box>
           <TextField
             style={{
               backgroundColor: 'white',
@@ -221,59 +240,64 @@ const CreateTaskPage = () => {
           />
         </Box>
         <Box display="flex" width="100%" justifyContent="center">
-          <Box display="flex" gap={3}>
-            <Button
-              style={{
-                borderRadius: '10px',
-                border: '2px solid #EB5757',
-              }}
-              sx={(theme) => ({
-                background: theme.palette.secondary.main,
-                color: theme.palette.common.white,
-                width: '170px',
-                type: 'button',
-                variant: 'contained',
-                size: 'large',
-                py: 1.5,
-                border: '2px solid theme.palette.secondary.main',
-                ':hover': {
-                  bgcolor: theme.palette.common.white,
-                  color: theme.palette.secondary.main,
+          <Box display="flex" gap={3} flexWrap="wrap" justifyContent="center">
+            <Tooltip title="Task will not be saved">
+              <Button
+                style={{
+                  borderRadius: '10px',
                   border: '2px solid #EB5757',
-                },
-              })}
-              onClick={() => { navigate(`/class/${classId}/dashboard`); }}
-              disabled={teacher.status === 'Loading'}
-            >
-              Cancel
+                }}
+                sx={(theme) => ({
+                  background: theme.palette.secondary.main,
+                  color: theme.palette.common.white,
+                  width: '170px',
+                  type: 'button',
+                  variant: 'contained',
+                  size: 'large',
+                  py: 1.5,
+                  border: '2px solid theme.palette.secondary.main',
+                  ':hover': {
+                    bgcolor: theme.palette.common.white,
+                    color: theme.palette.secondary.main,
+                    border: '2px solid #EB5757',
+                  },
+                })}
+                onClick={() => { navigate(`/class/${classId}/dashboard`); }}
+                disabled={teacher.status === 'Loading'}
+              >
+                Cancel
 
-            </Button>
-            <Button
-              style={{
-                borderRadius: '10px',
-                border: '2px solid #EB5757',
-              }}
-              sx={(theme) => ({
-                background: theme.palette.secondary.main,
-                color: theme.palette.common.white,
-                width: '170px',
-                type: 'button',
-                variant: 'contained',
-                size: 'large',
-                py: 1.5,
-                border: '2px solid theme.palette.secondary.main',
-                ':hover': {
-                  bgcolor: theme.palette.common.white,
-                  color: theme.palette.secondary.main,
+              </Button>
+            </Tooltip>
+            <Tooltip title="Click to save or to save and assign">
+
+              <Button
+                style={{
+                  borderRadius: '10px',
                   border: '2px solid #EB5757',
-                },
-              })}
-              onClick={handleSaveTask}
-              disabled={teacher.status === 'Loading'}
-            >
-              Next
+                }}
+                sx={(theme) => ({
+                  background: theme.palette.secondary.main,
+                  color: theme.palette.common.white,
+                  width: '170px',
+                  type: 'button',
+                  variant: 'contained',
+                  size: 'large',
+                  py: 1.5,
+                  border: '2px solid theme.palette.secondary.main',
+                  ':hover': {
+                    bgcolor: theme.palette.common.white,
+                    color: theme.palette.secondary.main,
+                    border: '2px solid #EB5757',
+                  },
+                })}
+                onClick={handleSaveTask}
+                disabled={teacher.status === 'Loading'}
+              >
+                Next
 
-            </Button>
+              </Button>
+            </Tooltip>
           </Box>
         </Box>
 

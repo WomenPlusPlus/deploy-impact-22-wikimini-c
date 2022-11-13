@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import Tooltip from '@mui/material/Tooltip';
 import StyledSubmitButton from '../../components/submit-button';
 import './register.css';
 
@@ -70,42 +71,74 @@ const RegisterPage = () => {
           onSubmit={handleSubmit}
         >
           <Typography component="h1" variant="h4">REGISTER</Typography>
-          <Box width="100%" display="flex" justifyContent="space-between">
-            {/* {accountTypes.map((type) => (
+          <Box dislay="flex" flexDirection="column" width="100%">
+            <Box display="flex" width="100%" justifyContent="space-around">
+              <Box height="40px" width="40px">
+                <CardMedia
+                  component="img"
+                  image="student.png"
+                  alt="student"
+                />
+              </Box>
+              <Box height="40px" width="40px">
+                <CardMedia
+                  component="img"
+                  image="teacher.png"
+                  alt="student"
+                />
+              </Box>
+              <Box height="40px" width="40px">
+                <CardMedia
+                  component="img"
+                  image="mother.png"
+                  alt="student"
+                />
+              </Box>
+            </Box>
+            <Box width="100%" display="flex" justifyContent="space-around">
+              {/* {accountTypes.map((type) => (
             <Chip key={type} label={type}
             onClick={handleAccountType}
             color={account.accountType === type ? 'primary' : 'default'} />
           ))} */}
-            <Chip
-              style={{
-                backgroundColor: 'white',
-                border: '2px solid #EB5757',
-                borderRadius: '10px',
-                color: '#EB5757',
-              }}
-              label="STUDENT"
-              variant="filled"
-            />
-            <Chip
-              style={{
-                backgroundColor: 'white',
-                border: '2px solid #EB5757',
-                borderRadius: '10px',
-                color: '#EB5757',
-              }}
-              label="TEACHER"
-              variant="filled"
-            />
-            <Chip
-              style={{
-                backgroundColor: 'white',
-                border: '2px solid #EB5757',
-                borderRadius: '10px',
-                color: '#EB5757',
-              }}
-              label="PARENT"
-              variant="filled"
-            />
+              <Tooltip title="Choose">
+                <Chip
+                  style={{
+                    backgroundColor: 'white',
+                    border: '2px solid #EB5757',
+                    borderRadius: '10px',
+                    color: '#EB5757',
+                  }}
+                  label="STUDENT"
+                  variant="filled"
+                />
+              </Tooltip>
+              <Tooltip title="Choose">
+                <Chip
+                  style={{
+                    backgroundColor: 'white',
+                    border: '2px solid #EB5757',
+                    borderRadius: '10px',
+                    color: '#EB5757',
+                  }}
+                  label="TEACHER"
+                  variant="filled"
+                />
+              </Tooltip>
+              <Tooltip title="Choose">
+                <Chip
+                  style={{
+                    backgroundColor: 'white',
+                    border: '2px solid #EB5757',
+                    borderRadius: '10px',
+                    color: '#EB5757',
+                  }}
+                  label="PARENT"
+                  variant="filled"
+                />
+              </Tooltip>
+            </Box>
+
           </Box>
           <TextField
             style={{
