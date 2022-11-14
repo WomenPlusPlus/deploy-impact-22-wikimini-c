@@ -40,12 +40,17 @@ const Navbar = () => {
                 sm: 50,
                 xs: 35,
               },
+                ':hover': {
+                  cursor: 'pointer',
+                },
               }}
               width="312px"
               height="64px"
               component="img"
               image="LogoWikimini.png"
-              alt="logo wikimini"
+              alt="Logo wikimini"
+              onClick={() => navigate('/')}
+
             />
           </Card>
           {/* <Box height="100px" width="100px" border="2px solid blue" /> */}

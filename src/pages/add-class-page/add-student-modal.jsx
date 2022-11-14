@@ -9,10 +9,10 @@ import {
 } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 import ModalButton from '../../components/modal-button';
 import { addStudentToClass, resetToInitialState } from '../../redux/reducers/student';
 import TransitionAlert from '../../components/transition-alert';
-import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   username: '',
