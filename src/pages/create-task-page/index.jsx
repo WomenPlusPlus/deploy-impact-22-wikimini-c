@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Box, Chip, Typography, TextField, Button,
+  Box, Chip, Typography, Button,
 } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,6 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { createTask, changeStatus } from '../../redux/reducers/teacher';
 import './create-task.css';
+import StyledTextField from './styled-textfield';
 
 const teachingSubjects = [
   { teachingSubject: 'Math' },
@@ -28,16 +29,10 @@ const taskTypes = [
   'Review Article',
 ];
 
-// const CustomWidthTooltip = styled(({ className, ...props }: TooltipProps) => (
-//   <Tooltip {...props} classes={{ popper: className }} />
-// ))({
-//   [`& .${tooltipClasses.tooltip}`]: {
-//     maxWidth: 500,
-//   },
-// });
-
 const longText = `
-Here you can describe the main requirements the student must fullfil in order to perform the task correctly. These requirements will be seen by the student in the studen's dashboard.
+Here you can describe the main requirements the student 
+must fullfil in order to perform the task correctly. 
+These requirements will be seen by the student in the studen's dashboard.
 `;
 
 const CreateTaskPage = () => {
@@ -105,27 +100,7 @@ const CreateTaskPage = () => {
         </Box>
         <Box width="100%" mb={3}>
           <Typography variant="h5" mb={1} sx={{ fontWeight: 'medium' }}>Task name</Typography>
-          <TextField
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '10px',
-              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                '& > fieldset': {
-                  border: 'none',
-                },
-              },
-            }}
-            id="outlined-multiline-static"
-            // label="Task name"
-            name="taskName"
-            onChange={handleChange}
-            multiline
-            rows={1}
-            fullWidth
-          />
+          <StyledTextField name="taskName" rows={1} handleChange={handleChange} />
         </Box>
         <Box width="100%" mb={3}>
           <Typography variant="h5" mb={1} sx={{ fontWeight: 'medium' }}>Subject</Typography>
@@ -161,54 +136,13 @@ const CreateTaskPage = () => {
             </Select>
           </FormControl>
         </Box>
-
         <Box width="100%" mb={3}>
           <Typography variant="h5" mb={1} sx={{ fontWeight: 'medium' }}>Task description</Typography>
-          <TextField
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '10px',
-              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                '& > fieldset': {
-                  border: 'none',
-                },
-              },
-            }}
-            id="outlined-multiline-static"
-            // label="Description"
-            name="taskDescription"
-            onChange={handleChange}
-            multiline
-            rows={4}
-            fullWidth
-          />
+          <StyledTextField name="taskDescription" rows={4} handleChange={handleChange} />
         </Box>
         <Box width="100%" mb={3}>
           <Typography variant="h5" mb={1} sx={{ fontWeight: 'medium' }}>Link to article</Typography>
-          <TextField
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '10px',
-              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                '& > fieldset': {
-                  border: 'none',
-                },
-              },
-            }}
-            id="outlined-multiline-static"
-            // label="Link to article, video, etc."
-            name="taskLink"
-            onChange={handleChange}
-            multiline
-            rows={1}
-            fullWidth
-          />
+          <StyledTextField name="taskLink" rows={1} handleChange={handleChange} />
         </Box>
         <Box width="100%" mb={3}>
           <Box width="100%" display="flex" alignItems="center" mb={2}>
@@ -217,27 +151,7 @@ const CreateTaskPage = () => {
             </Typography>
             <Tooltip title={longText}><HelpOutlineIcon style={{ color: '#EB5757' }} /></Tooltip>
           </Box>
-          <TextField
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '10px',
-              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                '& > fieldset': {
-                  border: 'none',
-                },
-              },
-            }}
-            id="outlined-multiline-static"
-            // label="Judgement criteria"
-            name="judgmentCriteria"
-            onChange={handleChange}
-            multiline
-            rows={3}
-            fullWidth
-          />
+          <StyledTextField name="judgmentCriteria" rows={4} handleChange={handleChange} />
         </Box>
         <Box display="flex" width="100%" justifyContent="center">
           <Box display="flex" gap={3} flexWrap="wrap" justifyContent="center">
@@ -266,7 +180,6 @@ const CreateTaskPage = () => {
                 disabled={teacher.status === 'Loading'}
               >
                 Cancel
-
               </Button>
             </Tooltip>
             <Tooltip title="Click to save or to save and assign">
@@ -300,10 +213,8 @@ const CreateTaskPage = () => {
             </Tooltip>
           </Box>
         </Box>
-
       </Box>
     </div>
-
   );
 };
 

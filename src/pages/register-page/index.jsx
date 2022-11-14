@@ -1,12 +1,14 @@
 import React from 'react';
 import {
-  Box, Typography, TextField, CardMedia, Chip,
+  Box, Typography, TextField, Chip,
 } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Tooltip from '@mui/material/Tooltip';
 import StyledSubmitButton from '../../components/submit-button';
 import './register.css';
+import CornerPictures from '../../components/corner-pictures';
+import ProfileIcons from './profile-icons';
 
 // const accountTypes = [
 //   'Student',
@@ -72,29 +74,7 @@ const RegisterPage = () => {
         >
           <Typography component="h1" variant="h4">REGISTER</Typography>
           <Box dislay="flex" flexDirection="column" width="100%">
-            <Box display="flex" width="100%" justifyContent="space-around">
-              <Box height="40px" width="40px">
-                <CardMedia
-                  component="img"
-                  image="student.png"
-                  alt="student"
-                />
-              </Box>
-              <Box height="40px" width="40px">
-                <CardMedia
-                  component="img"
-                  image="teacher.png"
-                  alt="student"
-                />
-              </Box>
-              <Box height="40px" width="40px">
-                <CardMedia
-                  component="img"
-                  image="mother.png"
-                  alt="student"
-                />
-              </Box>
-            </Box>
+            <ProfileIcons />
             <Box width="100%" display="flex" justifyContent="space-around">
               {/* {accountTypes.map((type) => (
             <Chip key={type} label={type}
@@ -138,7 +118,6 @@ const RegisterPage = () => {
                 />
               </Tooltip>
             </Box>
-
           </Box>
           <TextField
             style={{
@@ -217,36 +196,7 @@ const RegisterPage = () => {
           </StyledSubmitButton>
         </Box>
       </Box>
-      <Box height="200px" width="134px" left={0} bottom={-18} position="absolute">
-        <CardMedia
-          component="img"
-          image="Tree.png"
-          alt="tree"
-        />
-      </Box>
-      <Box height="180px" width="114px" left={35} bottom={-28} position="absolute">
-        <CardMedia
-          component="img"
-          image="Tree.png"
-          alt="tree"
-        />
-      </Box>
-      <Box height="171px" width="145px" right={0} bottom={0} position="absolute">
-        <CardMedia
-          height="171px"
-          component="img"
-          image="woman-sitting.png"
-          alt="woman sitting"
-        />
-      </Box>
-      <Box height="65px" width="90px" right={70} bottom={10} position="absolute">
-        <CardMedia
-          height="65px"
-          component="img"
-          image="backpack.png"
-          alt="backpack"
-        />
-      </Box>
+      <CornerPictures />
     </div>
   );
 };

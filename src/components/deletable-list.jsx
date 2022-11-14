@@ -12,7 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 
 const DeletableList = ({ items, itemName, style }) => (
 
-  <List sx={{ ...style, flexGrow: 1 }} component="nav" disablePadding="true">
+  <List sx={{ ...style, flexGrow: 1 }} component="nav" disablePadding>
     {items.map((item) => (
       <div key={item.id}>
         <ListItem button>
@@ -32,7 +32,6 @@ const DeletableList = ({ items, itemName, style }) => (
       </div>
     ))}
   </List>
-
 );
 
 export default DeletableList;

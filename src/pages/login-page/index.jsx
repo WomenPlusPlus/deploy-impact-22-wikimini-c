@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Box, Typography, TextField, Button, CardMedia,
+  Box, Typography, TextField, Button,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
@@ -8,6 +8,7 @@ import * as yup from 'yup';
 import StyledSubmitButton from '../../components/submit-button';
 import StyledOutlinedRegisterButton from '../../components/outlined-register-button';
 import './login.css';
+import CornerPictures from '../../components/corner-pictures';
 
 const initialValues = {
   username: '',
@@ -134,36 +135,7 @@ const LoginPage = () => {
           </StyledOutlinedRegisterButton>
         </Box>
       </Box>
-      <Box height="200px" width="134px" left={0} bottom={-18} position="absolute">
-        <CardMedia
-          component="img"
-          image="Tree.png"
-          alt="tree"
-        />
-      </Box>
-      <Box height="180px" width="114px" left={35} bottom={-28} position="absolute">
-        <CardMedia
-          component="img"
-          image="Tree.png"
-          alt="tree"
-        />
-      </Box>
-      <Box height="171px" width="145px" right={0} bottom={0} position="absolute">
-        <CardMedia
-          height="171px"
-          component="img"
-          image="woman-sitting.png"
-          alt="woman sitting"
-        />
-      </Box>
-      <Box height="65px" width="90px" right={70} bottom={10} position="absolute">
-        <CardMedia
-          height="65px"
-          component="img"
-          image="backpack.png"
-          alt="backpack"
-        />
-      </Box>
+      <CornerPictures />
     </div>
   );
 };

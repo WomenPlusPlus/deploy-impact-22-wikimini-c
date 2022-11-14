@@ -51,7 +51,6 @@ const AddClassModal = () => {
     onSubmit,
   });
 
-  // redirect to classes page
   useEffect(() => {
     if (teacherState.status === 'Created') {
       clearStatus();
