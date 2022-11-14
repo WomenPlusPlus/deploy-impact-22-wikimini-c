@@ -48,7 +48,7 @@ const AssignStudentPage = () => {
           }}
         >
           <List sx={style} component="nav">
-            {students.map(({ id, username }) => (
+            {students && students.map(({ id, username }) => (
               <div key={id}>
                 <ListItem>
                   <ListItemButton
