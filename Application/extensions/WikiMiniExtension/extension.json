@@ -51,13 +51,16 @@
 		"createclass": "MediaWiki\\Extension\\Wikimini\\api\\ApiCreateClass",
 		"createtask": "MediaWiki\\Extension\\Wikimini\\api\\ApiCreateTask",
 		"addstudent": "MediaWiki\\Extension\\Wikimini\\api\\ApiAddStudentToClass",
-		"givetask": "MediaWiki\\Extension\\Wikimini\\api\\ApiAddTaskToStudent"
+		"givetask": "MediaWiki\\Extension\\Wikimini\\api\\ApiAddTaskToStudent",
+		"deletetask": "MediaWiki\\Extension\\Wikimini\\api\\ApiDeleteTask"
 	},
 	"APIListModules": {
 		"allclasses": "MediaWiki\\Extension\\Wikimini\\api\\ApiAllClasses",
 		"studentsinclass": "MediaWiki\\Extension\\Wikimini\\api\\ApiStudentsInClass",
 		"getstudentstasks": "MediaWiki\\Extension\\Wikimini\\api\\ApiGetStudentsTasks",
-		"getclassdetails": "MediaWiki\\Extension\\Wikimini\\api\\ApiClassDetails"
+		"getclassdetails": "MediaWiki\\Extension\\Wikimini\\api\\ApiClassDetails",
+		"gettaskdetails": "MediaWiki\\Extension\\Wikimini\\api\\ApiGetTaskDetails",
+		"getclasstasks": "MediaWiki\\Extension\\Wikimini\\api\\ApiGetClassTasks"
 	},
 	"namespaces": [
 		{

@@ -11,6 +11,9 @@
 	"apihelp-query+studentsinclass-summary": "Get all students in specified class.",
 	"apihelp-givetask-summary": "Give a task to a student.",
 	"apihelp-query+getclassdetails-summary": "Fetch all information associated with a class, such as students, tasks, etc.",
+	"apihelp-deletetask-summary": "Delete selected task. If this task was given to a student, it will also remove that task from the students' list.",
+	"apihelp-query+gettaskdetails-summary": "Get all details about selected task.",
+	"apihelp-query+getclasstasks-summary": "Get all tasks of specified class.",
 
 	"apihelp-addstudent-extended-description": " The same student cannot be added to the same class - this will result in a DB error. If the student and/or class does not exist a error will be displayed.",
 
@@ -31,6 +34,9 @@
 	"apihelp-givetask-param-student_id": "ID of the student. Accepts multiple inputs.",
 	"apihelp-givetask-param-task_status": "Status of the task.",
 	"apihelp-createclass-param-teacher_id": "ID of the teacher creating the class.",
+	"apihelp-deletetask-param-task_id": "ID of the task.",
+	"apihelp-query+gettaskdetails-param-task_id": "ID of the task.",
+	"apihelp-query+getclasstasks-param-class_id": "ID of the class.",
 
 	"apihelp-query+createtask-example-1": "Create a new task without referencing a link.",
 	"apihelp-query+createtask-example-2": "Create a task referencing a link.",
@@ -39,5 +45,8 @@
 	"apihelp-query+addstudent-example-1": "Add Student 1 to Class 1.",
 	"apihelp-studentsinclass-example-1": "Fetch all students in class 1.",
 	"apihelp-query+givetask-example-1": "Give task 1 to student 1.",
-	"apihelp-classdetails-example-1": "Fetch all information about class 1."
+	"apihelp-classdetails-example-1": "Fetch all information about class 1.",
+	"apihelp-query+deletetask-example-1": "This will delete a task with ID equal to 1.",
+	"apihelp-taskdetails-example-1": "Fetch all details of task with ID equal to 2.",
+	"apihelp-getclasstasks-example-1": "Fetch all tasks created for class with ID equal to 1."
 }

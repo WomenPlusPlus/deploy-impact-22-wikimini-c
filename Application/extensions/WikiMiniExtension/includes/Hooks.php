@@ -40,12 +40,64 @@ class Hooks implements
 	 * @param Skin $skin
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
-		if ( $this->permissionManager->userCan( 'read', $out->getUser(), $out->getTitle() ) ) {
-			global $wgExampleEnableWelcome;
-			if ( $wgExampleEnableWelcome ) {
-				// Load our module on all pages
-				$out->addModules( 'ext.Example.welcome' );
+
+		// check if it is an article
+		if ($out->isArticle()) {
+
+			// fetch the body + remove HTML formatting and special characters from string
+			$body = $out->getHTML();
+			$text = strip_tags($body);
+
+			// apply ARI formula
+
+			// count number of letters
+			$no_sp_char = preg_replace('/[^A-Za-z0-9\-]/', '', $text);
+			$count_letters = strlen($no_sp_char);
+
+			// count number of words
+			$count_words = str_word_count($text);
+
+			// count number of sentences
+			$count_sentences = preg_match_all('/[^\s](\.|\!|\?)(?!\w)/',$text);
+
+			// calculate L and S variables for formula
+			$l = ($count_letters / $count_words);
+			$s = ($count_words / $count_sentences);
+
+			// calculate index
+			$cl_index = round(4.71 * $l + 0.5 * $s - 21.43);
+
+			$conversion = [
+				1 => 'Kindergarten',
+				2 => '1st grade',
+				3 => '2nd grade',
+				4 => '3th grade',
+				5 => '4th grade',
+				6 => '5th grade',
+				7 => '6th grade',
+				8 => '7th grade',
+				9 => '8th grade',
+				10 => '9th grade',
+				11 => '10th grade',
+				12 => '11th grade',
+				13 => '12th grade',
+				14 => 'College'
+			];
+
+			$i = 1;
+			$output = '';
+
+			for ($i; $i < sizeof($conversion)  + 1; $i++) {
+				if (round($cl_index) == $i) {
+					$output = $conversion[$i];
+				}
 			}
+
+			$out->addHTML(
+				'<br><div style="background-color: yellow;"><b>This article has a reading level equivalent to: </b> ' 
+				. $output
+				.'</div>'
+			);
 		}
 	}
 

@@ -97,4 +97,18 @@ class MoreHooks implements
 		}
 	}
 
+	public static function onMultiContentSave( RenderedRevision $renderedRevision, UserIdentity $user, CommentStoreComment $summary, $flags) 
+	{
+    	// get page content
+    	$content = $renderedRevision->getRevision()->getSlot('main')->getContent();
+
+		// update content
+    	$data = $content->getText();
+    	$data .= "[[Category:TBD]]";
+
+    	$content1 = new WikitextContent($data);
+
+    	return true;
+	}
+
 }
