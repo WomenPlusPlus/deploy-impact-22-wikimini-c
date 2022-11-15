@@ -28,6 +28,10 @@ export const listStudentsInClass = createAsyncThunk(
         return rejectWithValue(res.data.error);
       }
 
+      if (!res.data.query) {
+        return [];
+      }
+
       return res.data.query.studentsinclass;
     })
     .catch((error) => error.message),
