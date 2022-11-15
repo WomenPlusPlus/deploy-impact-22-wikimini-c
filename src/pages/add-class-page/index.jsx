@@ -1,10 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Box,
-  Typography,
-  TextField,
-  Button,
+  Box, Typography, TextField, Button,
 } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -58,8 +55,22 @@ const AddClassPage = () => {
       {teacherState.status === 'Failed' && (
         <TransitionAlert severity="error" message={teacherState.message} handleChange={clearStatus} />
       )}
-      <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
-        <Box width="600px" height="100%" border="1px solid black" p={6} display="flex" flexDirection="column" gap={3}>
+      <Box
+        width="100%"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Box
+          width="600px"
+          height="100%"
+          border="1px solid black"
+          p={6}
+          display="flex"
+          flexDirection="column"
+          gap={3}
+        >
           <Box display="flex" gap={2}>
             <Typography>ADD CLASS NAME</Typography>
             <Button

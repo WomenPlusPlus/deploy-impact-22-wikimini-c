@@ -1,10 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import { Typography, Button } from '@mui/material';
+import {
+  Typography, Button, Grid, Paper, Box,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { getClasses } from '../../redux/reducers/teacher';
 import './classes.css';

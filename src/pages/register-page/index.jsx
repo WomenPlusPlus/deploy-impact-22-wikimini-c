@@ -1,14 +1,13 @@
 import React from 'react';
 import {
-  Box, Typography, TextField, Chip,
+  Box, Typography, TextField, Chip, Tooltip,
 } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import Tooltip from '@mui/material/Tooltip';
-import StyledSubmitButton from '../../components/submit-button';
 import './register.css';
 import CornerPictures from '../../components/corner-pictures';
 import ProfileIcons from './profile-icons';
+import FilledFullWidthSubmitButton from '../../components/filled-full-width-submit-button';
 
 // const accountTypes = [
 //   'Student',
@@ -54,7 +53,14 @@ const RegisterPage = () => {
 
   return (
     <div className="register-container">
-      <Box display="flex" width="100%" justifyContent="center" alignItems="center" flexDirection="column" marginTop={2}>
+      <Box
+        display="flex"
+        width="100%"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        marginTop={2}
+      >
         <Box
           component="form"
           sx={{
@@ -189,11 +195,11 @@ const RegisterPage = () => {
             onBlur={handleBlur}
             error={touched.passwordConfirmation && Boolean(errors.passwordConfirmation)}
           />
-          <StyledSubmitButton
+          <FilledFullWidthSubmitButton
             disabled={!dirty || !isValid}
           >
             Register
-          </StyledSubmitButton>
+          </FilledFullWidthSubmitButton>
         </Box>
       </Box>
       <CornerPictures />

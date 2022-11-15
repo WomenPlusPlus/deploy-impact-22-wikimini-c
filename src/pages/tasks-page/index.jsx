@@ -48,7 +48,8 @@ const TasksPage = () => {
                 ':hover': {
                   bgcolor: theme.palette.common.white,
                   color: theme.palette.secondary.main,
-                  border: '2px solid #EB5757',
+                  border: '2px solid',
+                  borderColor: 'secondary.main',
                 },
               })}
               variant="contained"
@@ -60,7 +61,6 @@ const TasksPage = () => {
               }}
             >
               Create task
-
             </Button>
           </Box>
           {/* <Box display="flex" gap={3} /> */}
@@ -80,7 +80,6 @@ const TasksPage = () => {
           </Box>
         </Box>
       </Box>
-
     </div>
   );
 };

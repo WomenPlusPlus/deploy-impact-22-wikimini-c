@@ -26,18 +26,14 @@ export const createClass = createAsyncThunk(
     .catch((error) => rejectWithValue(error.message)),
 );
 
-export const getClasses = createAsyncThunk('teacher/getClasses', () => {
-  console.log('ar tu čia');
+export const getClasses = createAsyncThunk('teacher/getClasses', () => getClassesService()
+  .then((res) => res.query.allclasses.map((c) => {
+    const { id, name: classTitle, teacherid } = c;
+    console.log(classTitle);
 
-  return getClassesService()
-    .then((res) => res.query.allclasses.map((c) => {
-      const { id, name: classTitle, teacherid } = c;
-      console.log(classTitle);
-
-      return { id, classTitle, teacherid };
-    }))
-    .catch((error) => console.log(error.message));
-});
+    return { id, classTitle, teacherid };
+  }))
+  .catch((error) => console.log(error.message)));
 
 export const createTask = createAsyncThunk(
   'teacher/createTask',

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Button } from '@mui/material';
 
-const StyledSubmitButton = ({ children }) => (
+const FilledFullWidthSubmitButton = ({ children }) => (
   <Button
     style={{
       borderRadius: '10px',
-      border: '2px solid #EB5757',
     }}
     sx={(theme) => ({
       background: theme.palette.secondary.main,
@@ -15,11 +14,13 @@ const StyledSubmitButton = ({ children }) => (
       variant: 'contained',
       size: 'large',
       py: 1.5,
-      border: '2px solid theme.palette.secondary.main',
+      border: '2px solid',
+      borderColor: 'secondary.main',
       ':hover': {
         bgcolor: theme.palette.common.white,
         color: theme.palette.secondary.main,
-        border: '2px solid #EB5757',
+        border: '2px solid',
+        borderColor: 'secondary.main',
       },
     })}
   >
@@ -27,4 +28,4 @@ const StyledSubmitButton = ({ children }) => (
   </Button>
 );
 
-export default StyledSubmitButton;
+export default FilledFullWidthSubmitButton;

@@ -73,7 +73,14 @@ const AssignStudentPage = () => {
         >
           Skip for now
         </Button>
-        <Button variant="contained" color="primary" onClick={handleSubmit} disabled={!student}>Assign</Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit}
+          disabled={!student}
+        >
+          Assign
+        </Button>
       </Box>
     </MainContainer>
   );

@@ -1,0 +1,18 @@
+.student-task-container {
+    display:flex;
+    align-items: center;
+    flex-direction:column;
+    justify-content: center;
+    position:relative;
+    min-height:100vh;
+    width:100vw;
+    margin-top:165px;
+    padding-bottom:165px;
+    padding-left: 15%;
+    padding-right:15%;
+    background-image: url("/public/Dashboard.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    gap: 40px 
+}
