@@ -10,7 +10,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 const DeletableList = ({ items, itemName, style }) => (
 
-  <List sx={{ ...style, flexGrow: 1 }} component="nav" disablePadding="true">
+  <List sx={{ ...style, flexGrow: 1 }} component="nav" disablePadding>
     {items.map((item) => (
       <div key={item.id}>
         <ListItem button>
