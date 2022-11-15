@@ -1,15 +1,19 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import {
-  Box, Chip, Typography, TextField, Button,
+  Box,
+  Chip,
+  Typography,
+  TextField,
+  Button,
+  Select,
+  FormControl,
+  MenuItem,
+  InputLabel,
 } from '@mui/material';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import { useNavigate } from 'react-router-dom';
-import MainContainer from '../../components/main-container';
 import { createTask } from '../../redux/reducers/teacher';
+import './student-task.css';
 
 const teachingSubjects = [
   { teachingSubject: 'Math' },
@@ -67,13 +71,13 @@ const StudentTaskPage = () => {
   };
 
   return (
-    <MainContainer>
+    <div className="student-task-container">
       <Box
         component="form"
         width="100%"
       >
         <Box width="100%" mb={3}>
-          <Typography variant="h5" mb={2}>YOUR TASK</Typography>
+          <Typography variant="h5" mb={2}>ALLAN&apos;S TASK</Typography>
           <Typography variant="h5" mb={2}>Task Name</Typography>
           <TextField
             id="outlined-multiline-static"
@@ -90,7 +94,12 @@ const StudentTaskPage = () => {
           <Typography variant="h5" mb={2}>Type of task</Typography>
           <Box width="100%">
             {taskTypes.map((type) => (
-              <Chip key={type} label={type} onClick={handleTypeTask} color={task.taskType === type ? 'primary' : 'default'} />
+              <Chip
+                key={type}
+                label={type}
+                onClick={handleTypeTask}
+                color={task.taskType === type ? 'primary' : 'default'}
+              />
             ))}
           </Box>
         </Box>
@@ -114,7 +123,6 @@ const StudentTaskPage = () => {
             </Select>
           </FormControl>
         </Box>
-
         <Box width="100%" mb={3}>
           <Typography variant="h5" mb={2}>Task description</Typography>
           <TextField
@@ -159,7 +167,6 @@ const StudentTaskPage = () => {
               onClick={handleSaveTask}
             >
               Save task
-
             </Button>
             <Button
               type="submit"
@@ -167,7 +174,6 @@ const StudentTaskPage = () => {
               onClick={handleSaveandAssign}
             >
               Save task and assign student
-
             </Button>
           </Box>
           <Button
@@ -178,13 +184,10 @@ const StudentTaskPage = () => {
             }}
           >
             Cancel
-
           </Button>
         </Box>
-
       </Box>
-    </MainContainer>
-
+    </div>
   );
 };
 

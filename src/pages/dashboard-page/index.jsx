@@ -9,7 +9,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import DeletableList from '../../components/deletable-list';
 import AddStudentModal from '../add-class-page/add-student-modal';
 import './dashboard.css';
-import StyledOutlinedEvaluateButton from '../../components/outlined-evaluate-button';
+import SmallOutlinedButton from '../../components/small-outlined-button';
 import { getClassDetailsService } from '../../services/classes';
 import SmallDashboardButton from './small-dashboard-button';
 import SmallContainer from './small-container';
@@ -105,7 +105,10 @@ const DashboardPage = () => {
             <div key={id}>
               <ListItem button>
                 <ListItemText primary={studentUsername} />
-                <ListItemText primary={task} sx={{ display: { xs: 'none', sm: 'block', md: 'block' } }} />
+                <ListItemText
+                  primary={task}
+                  sx={{ display: { xs: 'none', sm: 'block', md: 'block' } }}
+                />
                 <Chip
                   style={{
                     backgroundColor: 'white',
@@ -116,7 +119,7 @@ const DashboardPage = () => {
                   label={taskStatus}
                   variant="filled"
                 />
-                <StyledOutlinedEvaluateButton>Evaluate</StyledOutlinedEvaluateButton>
+                <SmallOutlinedButton handleClick={() => navigate('/student-task')}>Evaluate</SmallOutlinedButton>
               </ListItem>
               <Divider variant="middle" />
             </div>

@@ -1,11 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Box,
-  Typography,
-  TextField,
-  Modal,
-  Button,
+  Box, Typography, TextField, Modal, Button,
 } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -129,11 +125,13 @@ const AddStudentModal = ({ classId }) => {
                   width: '170px',
                   size: 'large',
                   py: 1.5,
-                  border: '2px solid theme.palette.secondary.main',
+                  border: '2px solid',
+                  borderColor: 'secondary.main',
                   ':hover': {
                     bgcolor: theme.palette.common.white,
                     color: theme.palette.secondary.main,
-                    border: '2px solid #EB5757',
+                    border: '2px solid',
+                    borderColor: 'secondary.main',
                   },
                 })}
                 type="submit"

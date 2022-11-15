@@ -5,8 +5,8 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import StyledSubmitButton from '../../components/submit-button';
-import StyledOutlinedRegisterButton from '../../components/outlined-register-button';
+import FilledFullWidthSubmitButton from '../../components/filled-full-width-submit-button';
+import OutlinedControlledWidthButton from '../../components/outlined-controlled-width-button';
 import './login.css';
 import CornerPictures from '../../components/corner-pictures';
 
@@ -88,7 +88,6 @@ const LoginPage = () => {
             onBlur={handleBlur}
             error={touched.username && Boolean(errors.username)}
           />
-
           <TextField
             style={{
               backgroundColor: 'white',
@@ -112,12 +111,20 @@ const LoginPage = () => {
             onBlur={handleBlur}
             error={touched.password && Boolean(errors.password)}
           />
-          <Box marginTop={-3} marginLeft={4} width="100%" display="flex" textAlign="left"><Typography variant="subtitle2">Forgot your password?</Typography></Box>
-          <StyledSubmitButton
+          <Box
+            marginTop={-3}
+            marginLeft={4}
+            width="100%"
+            display="flex"
+            textAlign="left"
+          >
+            <Typography variant="subtitle2">Forgot your password?</Typography>
+          </Box>
+          <FilledFullWidthSubmitButton
             disabled={!dirty || !isValid}
           >
             Log In
-          </StyledSubmitButton>
+          </FilledFullWidthSubmitButton>
           <Button
             sx={(theme) => ({
               background: theme.palette.primary.main,
@@ -130,9 +137,9 @@ const LoginPage = () => {
         </Box>
         <Box width="420px" textAlign="center">
           <Typography mb={1}>Don&apos;t have an account yet?</Typography>
-          <StyledOutlinedRegisterButton>
+          <OutlinedControlledWidthButton onClick={() => navigate('/register')}>
             Register
-          </StyledOutlinedRegisterButton>
+          </OutlinedControlledWidthButton>
         </Box>
       </Box>
       <CornerPictures />
