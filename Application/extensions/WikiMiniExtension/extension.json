@@ -52,7 +52,8 @@
 		"createtask": "MediaWiki\\Extension\\Wikimini\\api\\ApiCreateTask",
 		"addstudent": "MediaWiki\\Extension\\Wikimini\\api\\ApiAddStudentToClass",
 		"givetask": "MediaWiki\\Extension\\Wikimini\\api\\ApiAddTaskToStudent",
-		"deletetask": "MediaWiki\\Extension\\Wikimini\\api\\ApiDeleteTask"
+		"deletetask": "MediaWiki\\Extension\\Wikimini\\api\\ApiDeleteTask",
+		"edittask": "MediaWiki\\Extension\\Wikimini\\api\\ApiEditTask"
 	},
 	"APIListModules": {
 		"allclasses": "MediaWiki\\Extension\\Wikimini\\api\\ApiAllClasses",
