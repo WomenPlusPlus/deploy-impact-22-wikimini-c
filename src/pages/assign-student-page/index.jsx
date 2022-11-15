@@ -26,7 +26,7 @@ const AssignStudentPage = () => {
 
   React.useEffect(() => {
     if (studentState.status === 'task given') {
-      navigate(`/class/${classId}/dashboard`);
+      navigate(`/class/${classId}/tasks`);
       dispatch(resetToInitialState());
     }
   }, [dispatch, studentState, navigate, classId]);
@@ -68,7 +68,7 @@ const AssignStudentPage = () => {
         <Button
           type="submit"
           variant="contained"
-          onClick={() => { navigate(`/class/${classId}/dashboard`); }}
+          onClick={() => { navigate(`/class/${classId}/tasks`); }}
           disabled={studentState.status === 'loading'}
         >
           Skip for now

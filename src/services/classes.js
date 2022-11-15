@@ -79,3 +79,22 @@ export const getClassDetailsService = async (classId) => {
     classInfo,
   };
 };
+
+export const listTasks = async (classId) => {
+  try {
+    const url = `${process.env.REACT_APP_API_URL}api.php`;
+
+    const params = {
+      action: 'query',
+      list: 'getclasstasks',
+      class_id: classId,
+      format: 'json',
+    };
+
+    const response = await axios.get(url, { params });
+
+    return response.data.query?.getclasstasks || [];
+  } catch (error) {
+    return [];
+  }
+};

@@ -5,35 +5,32 @@ import {
 import { useNavigate, useParams } from 'react-router-dom';
 import DeletableList from '../../components/deletable-list';
 import './tasks.css';
+import { listTasks } from '../../services/classes';
 
 const style = {
   width: '100%',
   bgcolor: 'background.paper',
 };
 
-const tasks = [
-  { id: 1, task: 'Task1' },
-  { id: 2, task: 'Task2' },
-  { id: 3, task: 'Task3' },
-  { id: 4, task: 'Task4' },
-  { id: 5, task: 'Task5' },
-  { id: 6, task: 'Task6' },
-  { id: 7, task: 'Task7' },
-  { id: 8, task: 'Task8' },
-  { id: 9, task: 'Task9' },
-  { id: 10, task: 'Task10' },
-  { id: 12, task: 'Task11' },
-  { id: 13, task: 'Task11' },
-  { id: 14, task: 'Task11' },
-  { id: 15, task: 'Task11' },
-  { id: 16, task: 'Task11' },
-  { id: 17, task: 'Task11' },
-  { id: 18, task: 'Task11' },
-];
-
 const TasksPage = () => {
   const navigate = useNavigate();
   const { id: classId } = useParams();
+  const [tasks, setTasks] = React.useState([]);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      let fetchedTasks = await listTasks(classId);
+      if (fetchedTasks.length > 0) {
+        fetchedTasks = fetchedTasks.map((t) => ({
+          id: t.task_id,
+          task: t.task_name,
+        }));
+      }
+      setTasks(fetchedTasks);
+    };
+
+    fetchData();
+  }, [classId]);
 
   return (
     <div className="tasks-container">
