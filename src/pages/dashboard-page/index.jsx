@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Typography, Box, List, ListItem, ListItemText, Divider, IconButton, Button, Chip,
+  Typography, Box, List, ListItem, ListItemText, Divider, IconButton, Chip,
 } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
@@ -11,6 +11,9 @@ import AddStudentModal from '../add-class-page/add-student-modal';
 import './dashboard.css';
 import StyledOutlinedEvaluateButton from '../../components/outlined-evaluate-button';
 import { getClassDetailsService } from '../../services/classes';
+import SmallDashboardButton from './small-dashboard-button';
+import SmallContainer from './small-container';
+import BigContainer from './big-container';
 
 const style = {
   width: '100%',
@@ -70,175 +73,77 @@ const DashboardPage = () => {
           },
         }}
       >
-        <Box width="100%" height="380px" display="flex" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="#D7EFA8" borderRadius={4}>
-          <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" p={2}>
-            <Typography variant="h6">STUDENTS</Typography>
-            <AddStudentModal classId={classId} />
-          </Box>
-          <Box width="100%" mb={4}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: 290,
-                overflow: 'hidden',
-                overflowY: 'scroll',
-                gap: 2,
-              }}
-            >
-              <DeletableList items={students} itemName="studentUsername" style={style} />
-            </Box>
-          </Box>
-        </Box>
-
-        <Box width="100%" height="380px" display="flex" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="#FEB1D0" borderRadius={4}>
-          <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" p={2}>
-            <Typography variant="h6">RECENT TASKS</Typography>
-            <Box>
-              <Button
-                sx={(theme) => ({
-                  background: theme.palette.secondary.main,
-                  ':hover': {
-                    bgcolor: theme.palette.common.white,
-                    color: theme.palette.secondary.main,
-                    border: '2px solid #EB5757',
-                  },
-                })}
-                variant="contained"
-                size="small"
-                onClick={() => navigate(`/class/${classId}/tasks`)}
-                style={{
-                  borderRadius: '10px',
-                  border: '2px solid #EB5757',
-                }}
-              >
+        <SmallContainer
+          title="STUDENT"
+          color="#D7EFA8"
+          modal={<AddStudentModal classId={classId} />}
+        >
+          <DeletableList items={students} itemName="studentUsername" style={style} />
+        </SmallContainer>
+        <SmallContainer
+          title="RECENT TASKS"
+          color="#FEB1D0"
+          buttons={(
+            <Box display="flex" gap={1}>
+              <SmallDashboardButton clickHandler={() => { navigate(`/class/${classId}/tasks`); }}>
                 All
-
-              </Button>
-              <Button
-                sx={(theme) => ({
-                  background: theme.palette.secondary.main,
-                  ml: 1,
-                  ':hover': {
-                    bgcolor: theme.palette.common.white,
-                    color: theme.palette.secondary.main,
+              </SmallDashboardButton>
+              <SmallDashboardButton clickHandler={() => { navigate(`/class/${classId}/create-task`); }}>
+                Add
+              </SmallDashboardButton>
+            </Box>
+)}
+        >
+          <DeletableList items={tasks} itemName="task" style={style} />
+        </SmallContainer>
+      </Box>
+      <BigContainer color="#FDC982" title="TASK STATUS">
+        <List sx={{ ...style, flexGrow: 1 }} component="nav" aria-label="mailbox folders">
+          {studentsTasks.map(({
+            id, studentUsername, task, taskStatus,
+          }) => (
+            <div key={id}>
+              <ListItem button>
+                <ListItemText primary={studentUsername} />
+                <ListItemText primary={task} sx={{ display: { xs: 'none', sm: 'block', md: 'block' } }} />
+                <Chip
+                  style={{
+                    backgroundColor: 'white',
                     border: '2px solid #EB5757',
-                  },
-                })}
-                variant="contained"
-                size="small"
-                onClick={() => navigate(`/class/${classId}/create-task`)}
-                style={{
-                  borderRadius: '10px',
-                  border: '2px solid #EB5757',
-                }}
-              >
-                ADD
-              </Button>
-            </Box>
-            {/* <Box display="flex" gap={3} /> */}
-          </Box>
-          <Box width="100%" mb={4}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: 290,
-                overflow: 'hidden',
-                overflowY: 'scroll',
-                gap: 2,
-              }}
-            >
-              <DeletableList items={tasks} itemName="task" style={style} />
-            </Box>
-          </Box>
-        </Box>
-
-      </Box>
-
-      <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="#FDC982" borderRadius={4}>
-        <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" width="100%">
-          <Typography variant="h6" py={2.5}>TASK STATUS</Typography>
-          <Box width="100%" mb={5}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: 300,
-                overflow: 'hidden',
-                overflowY: 'scroll',
-                gap: 2,
-              }}
-            >
-              <List sx={{ ...style, flexGrow: 1 }} component="nav" aria-label="mailbox folders">
-
-                {studentsTasks.map(({
-                  id, studentUsername, task, taskStatus,
-                }) => (
-                  <div key={id}>
-                    <ListItem button>
-                      <ListItemText primary={studentUsername} />
-                      <ListItemText primary={task} sx={{ display: { xs: 'none', sm: 'block', md: 'block' } }} />
-                      <Chip
-                        style={{
-                          backgroundColor: 'white',
-                          border: '2px solid #EB5757',
-                          borderRadius: '10px',
-                          color: '#EB5757',
-                        }}
-                        label={taskStatus}
-                        variant="filled"
-                      />
-                      <StyledOutlinedEvaluateButton>Evaluate</StyledOutlinedEvaluateButton>
-                    </ListItem>
-                    <Divider variant="middle" />
-                  </div>
-                ))}
-              </List>
-            </Box>
-          </Box>
-        </Box>
-      </Box>
-
-      <Box width="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="#87DED9" borderRadius={4}>
-        <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" width="100%">
-          <Typography variant="h6" py={2.5}>FORUM</Typography>
-          <Box width="100%" mb={5}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: 293,
-                overflow: 'hidden',
-                overflowY: 'scroll',
-                gap: 2,
-              }}
-            >
-              <List sx={{ ...style, flexGrow: 1 }} component="nav" aria-label="mailbox folders">
-
-                {messages.map(({ id, message }) => (
-                  <div key={id}>
-                    <ListItem button>
-                      <IconButton aria-label="delete">
-                        <MailOutlineIcon />
-                      </IconButton>
-                      <ListItemText primary={message} />
-                      <IconButton aria-label="delete">
-                        <CreateIcon />
-                      </IconButton>
-                      <IconButton aria-label="delete">
-                        <DeleteOutlineIcon />
-                      </IconButton>
-                    </ListItem>
-                    <Divider variant="middle" />
-                  </div>
-                ))}
-              </List>
-            </Box>
-          </Box>
-        </Box>
-      </Box>
-
+                    borderRadius: '10px',
+                    color: '#EB5757',
+                  }}
+                  label={taskStatus}
+                  variant="filled"
+                />
+                <StyledOutlinedEvaluateButton>Evaluate</StyledOutlinedEvaluateButton>
+              </ListItem>
+              <Divider variant="middle" />
+            </div>
+          ))}
+        </List>
+      </BigContainer>
+      <BigContainer color="#87DED9" title="FORUM">
+        <List sx={{ ...style, flexGrow: 1 }} component="nav" aria-label="mailbox folders">
+          {messages.map(({ id, message }) => (
+            <div key={id}>
+              <ListItem button>
+                <IconButton aria-label="delete">
+                  <MailOutlineIcon />
+                </IconButton>
+                <ListItemText primary={message} />
+                <IconButton aria-label="delete">
+                  <CreateIcon />
+                </IconButton>
+                <IconButton aria-label="delete">
+                  <DeleteOutlineIcon />
+                </IconButton>
+              </ListItem>
+              <Divider variant="middle" />
+            </div>
+          ))}
+        </List>
+      </BigContainer>
     </div>
   );
 };

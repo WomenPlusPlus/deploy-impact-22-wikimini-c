@@ -1,15 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Box, Chip, Typography, TextField, Button,
+  Box, Chip, Typography, Button,
 } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useNavigate, useParams } from 'react-router-dom';
+import Tooltip from '@mui/material/Tooltip';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { createTask, changeStatus } from '../../redux/reducers/teacher';
 import './create-task.css';
+import StyledTextField from './styled-textfield';
 
 const teachingSubjects = [
   { teachingSubject: 'Math' },
@@ -25,6 +28,12 @@ const taskTypes = [
   'Illustrate',
   'Review Article',
 ];
+
+const longText = `
+Here you can describe the main requirements the student 
+must fullfil in order to perform the task correctly. 
+These requirements will be seen by the student in the studen's dashboard.
+`;
 
 const CreateTaskPage = () => {
   const navigate = useNavigate();
@@ -91,27 +100,7 @@ const CreateTaskPage = () => {
         </Box>
         <Box width="100%" mb={3}>
           <Typography variant="h5" mb={1} sx={{ fontWeight: 'medium' }}>Task name</Typography>
-          <TextField
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '10px',
-              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                '& > fieldset': {
-                  border: 'none',
-                },
-              },
-            }}
-            id="outlined-multiline-static"
-            // label="Task name"
-            name="taskName"
-            onChange={handleChange}
-            multiline
-            rows={1}
-            fullWidth
-          />
+          <StyledTextField name="taskName" rows={1} handleChange={handleChange} />
         </Box>
         <Box width="100%" mb={3}>
           <Typography variant="h5" mb={1} sx={{ fontWeight: 'medium' }}>Subject</Typography>
@@ -130,7 +119,7 @@ const CreateTaskPage = () => {
               },
             }}
           >
-            <InputLabel id="demo-simple-select-label">Choose</InputLabel>
+            <InputLabel id="demo-simple-select-label">Select</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -147,139 +136,85 @@ const CreateTaskPage = () => {
             </Select>
           </FormControl>
         </Box>
-
         <Box width="100%" mb={3}>
           <Typography variant="h5" mb={1} sx={{ fontWeight: 'medium' }}>Task description</Typography>
-          <TextField
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '10px',
-              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                '& > fieldset': {
-                  border: 'none',
-                },
-              },
-            }}
-            id="outlined-multiline-static"
-            // label="Description"
-            name="taskDescription"
-            onChange={handleChange}
-            multiline
-            rows={4}
-            fullWidth
-          />
+          <StyledTextField name="taskDescription" rows={4} handleChange={handleChange} />
         </Box>
         <Box width="100%" mb={3}>
           <Typography variant="h5" mb={1} sx={{ fontWeight: 'medium' }}>Link to article</Typography>
-          <TextField
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '10px',
-              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                '& > fieldset': {
-                  border: 'none',
-                },
-              },
-            }}
-            id="outlined-multiline-static"
-            // label="Link to article, video, etc."
-            name="taskLink"
-            onChange={handleChange}
-            multiline
-            rows={1}
-            fullWidth
-          />
+          <StyledTextField name="taskLink" rows={1} handleChange={handleChange} />
         </Box>
         <Box width="100%" mb={3}>
-          <Typography variant="h5" mb={2} sx={{ fontWeight: 'medium' }}>Judgement criteria</Typography>
-          <TextField
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '10px',
-              boxShadow: '0px 4px rgba(0, 0, 0, 0.25)',
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                '& > fieldset': {
-                  border: 'none',
-                },
-              },
-            }}
-            id="outlined-multiline-static"
-            // label="Judgement criteria"
-            name="judgmentCriteria"
-            onChange={handleChange}
-            multiline
-            rows={3}
-            fullWidth
-          />
+          <Box width="100%" display="flex" alignItems="center" mb={2}>
+            <Typography variant="h5" mr={1} sx={{ fontWeight: 'medium' }}>
+              Judgement criteria
+            </Typography>
+            <Tooltip title={longText}><HelpOutlineIcon style={{ color: '#EB5757' }} /></Tooltip>
+          </Box>
+          <StyledTextField name="judgmentCriteria" rows={4} handleChange={handleChange} />
         </Box>
         <Box display="flex" width="100%" justifyContent="center">
-          <Box display="flex" gap={3}>
-            <Button
-              style={{
-                borderRadius: '10px',
-                border: '2px solid #EB5757',
-              }}
-              sx={(theme) => ({
-                background: theme.palette.secondary.main,
-                color: theme.palette.common.white,
-                width: '170px',
-                type: 'button',
-                variant: 'contained',
-                size: 'large',
-                py: 1.5,
-                border: '2px solid theme.palette.secondary.main',
-                ':hover': {
-                  bgcolor: theme.palette.common.white,
-                  color: theme.palette.secondary.main,
+          <Box display="flex" gap={3} flexWrap="wrap" justifyContent="center">
+            <Tooltip title="Task will not be saved">
+              <Button
+                style={{
+                  borderRadius: '10px',
                   border: '2px solid #EB5757',
-                },
-              })}
-              onClick={() => { navigate(`/class/${classId}/dashboard`); }}
-              disabled={teacher.status === 'Loading'}
-            >
-              Cancel
+                }}
+                sx={(theme) => ({
+                  background: theme.palette.secondary.main,
+                  color: theme.palette.common.white,
+                  width: '170px',
+                  type: 'button',
+                  variant: 'contained',
+                  size: 'large',
+                  py: 1.5,
+                  border: '2px solid theme.palette.secondary.main',
+                  ':hover': {
+                    bgcolor: theme.palette.common.white,
+                    color: theme.palette.secondary.main,
+                    border: '2px solid #EB5757',
+                  },
+                })}
+                onClick={() => { navigate(`/class/${classId}/dashboard`); }}
+                disabled={teacher.status === 'Loading'}
+              >
+                Cancel
+              </Button>
+            </Tooltip>
+            <Tooltip title="Click to save or to save and assign">
 
-            </Button>
-            <Button
-              style={{
-                borderRadius: '10px',
-                border: '2px solid #EB5757',
-              }}
-              sx={(theme) => ({
-                background: theme.palette.secondary.main,
-                color: theme.palette.common.white,
-                width: '170px',
-                type: 'button',
-                variant: 'contained',
-                size: 'large',
-                py: 1.5,
-                border: '2px solid theme.palette.secondary.main',
-                ':hover': {
-                  bgcolor: theme.palette.common.white,
-                  color: theme.palette.secondary.main,
+              <Button
+                style={{
+                  borderRadius: '10px',
                   border: '2px solid #EB5757',
-                },
-              })}
-              onClick={handleSaveTask}
-              disabled={teacher.status === 'Loading'}
-            >
-              Next
+                }}
+                sx={(theme) => ({
+                  background: theme.palette.secondary.main,
+                  color: theme.palette.common.white,
+                  width: '170px',
+                  type: 'button',
+                  variant: 'contained',
+                  size: 'large',
+                  py: 1.5,
+                  border: '2px solid theme.palette.secondary.main',
+                  ':hover': {
+                    bgcolor: theme.palette.common.white,
+                    color: theme.palette.secondary.main,
+                    border: '2px solid #EB5757',
+                  },
+                })}
+                onClick={handleSaveTask}
+                disabled={teacher.status === 'Loading'}
+              >
+                Next
 
-            </Button>
+              </Button>
+            </Tooltip>
           </Box>
         </Box>
-
       </Box>
     </div>
-
   );
 };
 
