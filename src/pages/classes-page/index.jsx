@@ -10,6 +10,7 @@ import { getClasses } from '../../redux/reducers/teacher';
 import './classes.css';
 import StyledCreateClassButton from '../../components/create-class-button';
 import CornerPictures from '../../components/corner-pictures';
+import AddClassModal from '../add-class-page/add-class-modal';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -24,7 +25,6 @@ const ClassesPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const teacherClasses = useSelector((state) => state.teacher.allClasses);
-  console.log(teacherClasses);
 
   React.useEffect(() => {
     dispatch(getClasses());
@@ -60,7 +60,7 @@ const ClassesPage = () => {
             ))}
           </Grid>
         </Box>
-        <StyledCreateClassButton>CREATE NEW CLASS</StyledCreateClassButton>
+        <AddClassModal />
       </Box>
       <CornerPictures />
     </div>
