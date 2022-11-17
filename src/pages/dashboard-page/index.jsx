@@ -14,7 +14,6 @@ import { getClassDetailsService } from '../../services/classes';
 import SmallDashboardButton from './small-dashboard-button';
 import SmallContainer from './small-container';
 import BigContainer from './big-container';
-import SearchElement from './search-bar';
 
 const style = {
   width: '100%',
