@@ -9,7 +9,6 @@ const ArticlePage = () => (
       <a href="/login" className="login-button">Login</a>
     </div>
     <div className="article-container">
-
       <form id="form-search" className="article-search-form">
         <input className="article-search-input" type="search" id="query" name="q" placeholder="Search in Wikimini..." />
         <button className="article-search-button" type="submit" label="none" />
@@ -30,7 +29,6 @@ const ArticlePage = () => (
             But it was also the place where the Panathenaic procession ended
             which crossed the city and at the end of which everyone was going
             to make an offering to the goddess of the city, Athena.
-
           </div>
           <div className="chip-container">
             <div className="tag-chip">Architecture</div>
@@ -41,16 +39,11 @@ const ArticlePage = () => (
         </div>
         <div className="article-image-container">
           <div className="image-box">
-            <img src="mountains.png" alt="mountains" />
+            <img src="Acropolis.jpg" alt="Acropolis on a mountain" />
             <p>In this photo we see the Acropolis in the background</p>
           </div>
         </div>
       </div>
-      {/* <div className="additional-info-container">
-        <div className="related-articles-container">aaa</div>
-        <div className="actions-container">bbb</div>
-      </div> */}
-
       <div className="additional-info-container">
         <div className="images-container">
           <h4>VIEW ALSO...</h4>
@@ -65,7 +58,6 @@ const ArticlePage = () => (
               </p>
             </div>
             <div>
-
               <img src="parthenon.png" alt="Parthenon" />
               <p>
                 The Parthenon
@@ -122,7 +114,6 @@ const ArticlePage = () => (
         </div>
       </div>
     </div>
-
   </>
 );
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@mui/material';
 
-const FilledFullWidthSubmitButton = ({ children }) => (
+const FilledFullWidthSubmitButton = ({ children, onClick }) => (
   <Button
     style={{
       borderRadius: '10px',
@@ -23,6 +23,7 @@ const FilledFullWidthSubmitButton = ({ children }) => (
         borderColor: 'secondary.main',
       },
     })}
+    onClick={onClick}
   >
     {children}
   </Button>
