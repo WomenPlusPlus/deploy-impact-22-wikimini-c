@@ -164,7 +164,7 @@ One important thing that is missing in the APIs is validation - does this user h
 
 ### Database tables
 
-(Application\extensions\WikiMiniExtension\images\wikimini.png?raw=true)
+![alt text](https://github.com/vichoiglesias/wikimini-c/blob/master/Application/extensions/WikiMiniExtension/images/wikimini.png?raw=true)
 
 ### Groups & Permissions
 
@@ -184,7 +184,7 @@ It uses the ARI (Automated Readability Index) method, which assesses the U.S. gr
 
 In the below image you can see how the score is translated into a grade - age level.
 
-(Application\extensions\WikiMiniExtension\images\wikimini.png?raw=true)
+![alt text](https://github.com/vichoiglesias/wikimini-c/blob/master/Application/extensions/WikiMiniExtension/images/readability.png?raw=true)
 
 ## Testing
 
