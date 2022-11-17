@@ -44,10 +44,12 @@ const HomePage = () => (
       <div className="category-container">
         <p className="title">SEARCH BY CATEGORY</p>
         <div className="grid-container">
-          <div className="category-card">
-            <img className="category-image" src="Atlas_Of_The_World.png" alt="category" />
-            <p>Atlas of the world</p>
-          </div>
+          <a href="article" className="article-link">
+            <div className="category-card">
+              <img className="category-image" src="Atlas_Of_The_World.png" alt="category" />
+              <p>Atlas of the world</p>
+            </div>
+          </a>
           <div className="category-card">
             <img className="category-image" src="artsandsports.png" alt="category" />
             <p>Arts, leisure and sports</p>
