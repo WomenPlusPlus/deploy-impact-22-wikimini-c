@@ -11,10 +11,12 @@ import AssignStudentPage from '../pages/assign-student-page';
 import TasksPage from '../pages/tasks-page';
 import HomePage from '../pages/home-page/home';
 import StudentTaskPage from '../pages/student-task-page';
+import ArticlePage from '../pages/article-page/article';
 
 const PageRoutes = () => (
   <Routes>
     <Route index element={<HomePage />} />
+    <Route path="/article" element={<ArticlePage />} />
     <Route path="/" element={<MainLayout />}>
       {/* <Route index element={<HomePage />} /> */}
       <Route path="/login" element={<LoginPage />} />
