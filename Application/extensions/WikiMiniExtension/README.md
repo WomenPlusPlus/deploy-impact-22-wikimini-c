@@ -25,7 +25,7 @@ This extension is composed by four (4) major components:
 
 If you navigate to the ```includes/api``` folder inside the extension you can find multiple endpoints created and below I'll be giving a quick explanation of what each API does and how you can use them.
 
-#### Create a Class
+<details><summary>1. Create a Class</summary>
 
 Allows the teacher to create a new class.
 
@@ -38,7 +38,9 @@ http://localhost/wikimedia/api.php?action=createclass
 * class_name = class-name-value
 * teacher_id = teacher-id-value
 
-#### <details><summary>2. Create a Task</summary>
+</details>
+
+<details><summary>2. Create a Task</summary>
 
 Allows the teacher to create a new task.
 
@@ -58,7 +60,7 @@ http://localhost/wikimedia/api.php?action=createtask
 
 </details>
 
-#### 2. Edit a Task
+<details><summary>3. Edit a Task</summary>
 
 Allows to edit a previously created task.
 
@@ -77,7 +79,9 @@ http://localhost/wikimedia/api.php?action=edittask
 * class_id = class-id-value
 * task_reference_link = task-reference-link-value
 
-#### 3. Delete a Task
+</details>
+
+<details><summary>4. Delete a Task</summary>
 
 Allows the deletion of a previously created task.
 
@@ -89,7 +93,9 @@ http://localhost/wikimedia/api.php?action=deletetask
 <u>Body of the request:</u>
 * task_id = task-id-value
 
-#### 4. Add a Student to a Class
+</details>
+
+<details><summary>5. Add a Student to a Class</summary>
 
 Assigns students to a specific class.
 
@@ -102,7 +108,9 @@ http://localhost/wikimedia/api.php?action=addstudent
 * class_id = class-id-value
 * student_name = student-name-value
 
-#### 5. Give a Task to a Student
+</details>
+
+<details><summary>6. Give a Task to a Student</summary>
 
 Assigns specific tasks to a specific student(s).
 
@@ -115,7 +123,9 @@ http://localhost/wikimedia/api.php?action=givetask
 * task_id = task-id-value
 * student_id = student-id-value
 
-#### 6. Fetch All Classes
+</details>
+
+<details><summary>7. Fetch All Classes</summary>
 
 Allows to fetch all created classes.
 
@@ -124,7 +134,9 @@ Allows to fetch all created classes.
 http://localhost/wikimedia/api.php?action=query&list=allclasses
 </code>
 
-#### 7. Fetch Task Details
+</details>
+
+<details><summary>8. Fetch Task Details</summary>
 
 Allows to fetch all the information about a specific task.
 
@@ -133,7 +145,9 @@ Allows to fetch all the information about a specific task.
 http://localhost/wikimedia/api.php?action=query&list=gettaskdetails&task_id=1
 </code>
 
-#### 8. Fetch All Students in a Class
+</details>
+
+<details><summary>9. Fetch All Students in a Class</summary>
 
 Allows to fetch all the students assigned to a specific class.
 
@@ -142,7 +156,9 @@ Allows to fetch all the students assigned to a specific class.
 http://localhost/wikimedia/api.php?action=query&list=studentsinclass&class_id=1
 </code>
 
-#### 9. Fetch All Tasks created for a Class
+</details>
+
+<details><summary>10. Fetch All Tasks created for a Class</summary>
 
 Allows to fetch all the tasks that were created for a specific class.
 
@@ -151,7 +167,9 @@ Allows to fetch all the tasks that were created for a specific class.
 http://localhost/wikimedia/api.php?action=query&list=getclasstasks&class_id=1
 </code>
 
-#### 10. Fetch All Tasks assigned to a Student
+</details>
+
+<details><summary>11. Fetch All Tasks assigned to a Student</summary>
 
 Allows to fetch all the tasks that were assigned to a specific student.
 
@@ -159,6 +177,7 @@ Allows to fetch all the tasks that were assigned to a specific student.
 <code>
 http://localhost/wikimedia/api.php?action=query&list=getstudentstasks&student_id=1
 
+</details>
 
 <blockquote>
 One important thing that is missing in the APIs is validation - does this user have permissions to do this or not, does the student already have more than 1 task assigned to him, etc.
