@@ -1,6 +1,6 @@
-# Wikimini
+# Wikimini - MediaKiwi 🥝
 
-## Getting Started
+## :computer: Getting Started
  
 ### To launch the front-end project locally:
 
@@ -24,16 +24,13 @@ Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](./issues).
 
+## :tada: Acknowledgments
+
+- A special thank for women++, Wikimedia and all sponsors for providing such amazing experience - deploy(impact) 2022
+
+## 📝 License
+[GNU General Public License v3.0](https://github.com/WomenPlusPlus/deploy-impact-22-wikimini-c/blob/development/LICENSE)
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- A special thank for @WomenPlusPlus 
-
-## License
-[GNU General Public License v3.0](https://github.com/WomenPlusPlus/deploy-impact-22-wikimini-c/blob/development/LICENSE)
-
-## Acknowledgements 
-- To 
