@@ -38,7 +38,7 @@ http://localhost/wikimedia/api.php?action=createclass
 * class_name = class-name-value
 * teacher_id = teacher-id-value
 
-<details><summary>1. Create a Task</summary>
+#### <details><summary>2. Create a Task</summary>
 
 Allows the teacher to create a new task.
 
