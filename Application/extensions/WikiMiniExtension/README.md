@@ -55,6 +55,7 @@ http://localhost/wikimedia/api.php?action=createtask
 * task_criteria = task-criteria-value
 * class_id = class-id-value
 * task_reference_link = task-reference-link-value
+
 </details>
 
 #### 2. Edit a Task
