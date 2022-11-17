@@ -4,8 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import {
   Box, List, ListItem, ListItemText, Divider, Typography, ListItemButton, Button,
 } from '@mui/material';
-import MainContainer from '../../components/main-container';
 import { giveTask, listStudentsInClass, resetToInitialState } from '../../redux/reducers/student';
+import './assign-student.css';
 
 const style = {
   width: '100%',
@@ -36,10 +36,10 @@ const AssignStudentPage = () => {
   };
 
   return (
-    <MainContainer>
-      <Typography variant="h5">Select Students</Typography>
+    <div className="assign-student-container">
+      <Typography variant="h5">Assign to...</Typography>
       {' '}
-      <Box width="100%" border="1px solid black" borderRadius={1} mb={5}>
+      <Box width="100%" mb={5}>
         <Box
           sx={{
             display: 'flex',
@@ -47,7 +47,7 @@ const AssignStudentPage = () => {
             gap: 2,
           }}
         >
-          <List sx={style} component="nav">
+          <List sx={style} component="nav" style={{ borderRadius: '20px', paddingBottom: '-1px' }}>
             {students && students.map(({ id, username }) => (
               <div key={id}>
                 <ListItem>
@@ -82,7 +82,7 @@ const AssignStudentPage = () => {
           Assign
         </Button>
       </Box>
-    </MainContainer>
+    </div>
   );
 };
 
