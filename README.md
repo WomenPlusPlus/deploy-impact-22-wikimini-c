@@ -26,7 +26,7 @@ Feel free to check the [issues page](./issues).
 
 ## :tada: Acknowledgments
 
-- A special thank for women++, Wikimedia and all sponsors for providing such amazing experience - deploy(impact) 2022
+- A special thank for women++, Wikimedia and all sponsors for providing such an amazing experience - deploy(impact) 2022
 
 ## 📝 License
 [GNU General Public License v3.0](https://github.com/WomenPlusPlus/deploy-impact-22-wikimini-c/blob/development/LICENSE)
