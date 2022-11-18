@@ -67,7 +67,6 @@ const DashboardPage = () => {
           {students.length === 0 && (
           <Box height="100%" backgroundColor="white" display="flex" justifyContent="center" alignItems="center">There are no students in this class. Click the ADD button to add them.</Box>
           )}
-
         </SmallContainer>
         <SmallContainer
           title="RECENT TASKS"
@@ -89,7 +88,6 @@ const DashboardPage = () => {
           )}
         </SmallContainer>
       </Box>
-
       <BigContainer color="#FDC982" title="TASK STATUS" height="300px">
         {studentsTasks.length > 0 && (
         <List
@@ -105,19 +103,53 @@ const DashboardPage = () => {
                 <ListItemText primary={studentUsername} />
                 <ListItemText
                   primary={task}
-                  sx={{ display: { xs: 'none', sm: 'block', md: 'block' } }}
+                  sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}
                 />
-                <Chip
-                  style={{
-                    backgroundColor: 'white',
-                    border: '2px solid #EB5757',
-                    borderRadius: '10px',
-                    color: '#EB5757',
-                  }}
-                  label={taskStatus}
-                  variant="filled"
-                />
-                <SmallOutlinedButton handleClick={() => navigate('/student-task')}>Evaluate</SmallOutlinedButton>
+                {taskStatus === 'Pending' && (
+                  <>
+                    <Chip
+                      style={{
+                        backgroundColor: '#FF4A3F',
+                        borderRadius: '10px',
+                        width: '82px',
+                        fontSize: '11px',
+                      }}
+                      label={taskStatus}
+                      variant="filled"
+                    />
+                    <Box width="88px" />
+                  </>
+                )}
+                {taskStatus === 'Completed' && (
+                  <>
+                    <Chip
+                      style={{
+                        backgroundColor: '#7BB662',
+                        borderRadius: '10px',
+                        width: '82px',
+                        fontSize: '11px',
+                      }}
+                      label={taskStatus}
+                      variant="filled"
+                    />
+                    <SmallOutlinedButton handleClick={() => navigate('/student-task')}>Evaluate</SmallOutlinedButton>
+                  </>
+                )}
+                {taskStatus === 'In Progress' && (
+                  <>
+                    <Chip
+                      style={{
+                        backgroundColor: '#FFD301',
+                        borderRadius: '10px',
+                        width: '82px',
+                        fontSize: '11px',
+                      }}
+                      label={taskStatus}
+                      variant="filled"
+                    />
+                    <Box width="88px" />
+                  </>
+                )}
               </ListItem>
               <Divider variant="middle" />
             </div>
@@ -131,7 +163,6 @@ const DashboardPage = () => {
             Create a task and assign a student or assign previously created
             task to a student to be able to see the task status here.
           </Typography>
-
         </Box>
         )}
       </BigContainer>
