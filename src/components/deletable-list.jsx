@@ -9,6 +9,7 @@ import {
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import Tooltip from '@mui/material/Tooltip';
+import './deletable-list.css';
 
 const DeletableList = ({ items, itemName, style }) => (
 
@@ -16,7 +17,10 @@ const DeletableList = ({ items, itemName, style }) => (
     {items.map((item) => (
       <div key={item.id}>
         <ListItem button>
-          <ListItemText primary={item[itemName]} />
+          <ListItemText
+            className="text"
+            primary={item[itemName]}
+          />
           <Tooltip title="Edit">
             <IconButton aria-label="edit">
               <ModeEditIcon />

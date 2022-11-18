@@ -63,7 +63,11 @@ const DashboardPage = () => {
           color="#D7EFA8"
           modal={<AddStudentModal classId={classId} />}
         >
-          <DeletableList items={students} itemName="studentUsername" style={style} />
+          {students.length > 0 && (<DeletableList items={students} itemName="studentUsername" style={style} />)}
+          {students.length === 0 && (
+          <Box height="100%" backgroundColor="white" display="flex" justifyContent="center" alignItems="center">There are no students in this class. Click the ADD button to add them.</Box>
+          )}
+
         </SmallContainer>
         <SmallContainer
           title="RECENT TASKS"
@@ -79,10 +83,15 @@ const DashboardPage = () => {
             </Box>
 )}
         >
-          <DeletableList items={tasks} itemName="task" style={style} />
+          {tasks.length > 0 && (<DeletableList items={tasks} itemName="task" style={style} />)}
+          {tasks.length === 0 && (
+          <Box height="100%" backgroundColor="white" display="flex" justifyContent="center" alignItems="center">There are no tasks in this class. Click the ADD button to add them.</Box>
+          )}
         </SmallContainer>
       </Box>
+
       <BigContainer color="#FDC982" title="TASK STATUS" height="300px">
+        {studentsTasks.length > 0 && (
         <List
           sx={{ ...style, flexGrow: 1 }}
           component="nav"
@@ -114,6 +123,17 @@ const DashboardPage = () => {
             </div>
           ))}
         </List>
+        )}
+        {studentsTasks.length === 0 && (
+        <Box height="100%" padding={5} backgroundColor="white" display="flex" justifyContent="center" alignItems="center" textAlign="center">
+          <Typography>
+            Task status can be shown only when tasks are asigned to students.
+            Create a task and assign a student or assign previously created
+            task to a student to be able to see the task status here.
+          </Typography>
+
+        </Box>
+        )}
       </BigContainer>
       <BigContainer color="#87DED9" title="CLASS CHAT" height="350px">
         <Box sx={{ ...style, flexGrow: 1 }} component="nav">
