@@ -6,12 +6,12 @@ const HomePage = () => (
   <>
     <div className="topnav">
       <div className="logo" />
-      <div>
+      {/* <div>
         <a className="active" href="/">Home</a>
         <a href="/login">Login</a>
         <a href="/register">Register</a>
         <a href="/dashboard">Dashboard</a>
-      </div>
+      </div> */}
       <a href="/login" className="login-button">Login</a>
     </div>
     <div className="home-container">
