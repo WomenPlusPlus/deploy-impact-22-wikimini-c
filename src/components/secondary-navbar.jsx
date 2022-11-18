@@ -8,12 +8,12 @@ const toolbarStyle = {
   minHeight: '165px',
 };
 
-const Navbar = () => {
+const SecondaryNavbar = () => {
   const navigate = useNavigate();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="sticky" elevation={0} style={{ background: '#ddf1fb' }}>
+      <AppBar position="fixed" elevation={0} style={{ background: '#ddf1fb' }}>
         <Toolbar style={toolbarStyle}>
           <Card
             elevation={0}
@@ -53,4 +53,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default SecondaryNavbar;

@@ -126,15 +126,6 @@ const LoginPage = () => {
           >
             Log In
           </FilledFullWidthSubmitButton>
-          {/* <Button
-            sx={(theme) => ({
-              background: theme.palette.primary.main,
-              color: theme.palette.primary.contrastText,
-            })}
-            onClick={() => navigate('/classes')}
-          >
-            If loggedin click here.
-          </Button> */}
         </Box>
         <Box width="420px" textAlign="center">
           <Typography mb={1} mt={3}>Don&apos;t have an account yet?</Typography>
