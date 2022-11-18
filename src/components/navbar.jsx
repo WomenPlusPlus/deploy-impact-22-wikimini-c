@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Card, CardMedia, Toolbar, Box, AppBar,
+  Card, Toolbar, Box, AppBar,
 } from '@mui/material';
 
 const toolbarStyle = {
@@ -20,32 +20,10 @@ const Navbar = () => {
             sx={(theme) => ({
               background: theme.palette.primary.light,
             })}
+            onClick={() => navigate('/')}
           >
-            <CardMedia
-              sx={{
-                width:
-              {
-                lg: 312,
-                md: 312,
-                sm: 250,
-                xs: 200,
-              },
-                height:
-              {
-                lg: 64,
-                md: 64,
-                sm: 50,
-                xs: 35,
-              },
-                ':hover': {
-                  cursor: 'pointer',
-                },
-              }}
-              component="img"
-              image="LogoWikimini.png"
-              alt="Logo wikimini"
-              onClick={() => navigate('/')}
-            />
+            <div className="logo" />
+
           </Card>
         </Toolbar>
       </AppBar>

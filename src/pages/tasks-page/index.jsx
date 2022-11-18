@@ -36,7 +36,7 @@ const TasksPage = () => {
     <div className="tasks-container">
       <Box width="100%" height="95%" mt={5} display="flex" flexDirection="column" backgroundColor="#FEB1D0" borderRadius={4}>
         <Box width="100%" display="flex" alignItems="flex-end" justifyContent="space-between" p={2}>
-          <Typography variant="h6">LIST OF ALL TASKS</Typography>
+          <Typography variant="h6">ALL TASKS</Typography>
           <Box>
             <Button
               sx={(theme) => ({
@@ -57,10 +57,9 @@ const TasksPage = () => {
                 border: '2px solid #EB5757',
               }}
             >
-              Create task
+              Create a task
             </Button>
           </Box>
-          {/* <Box display="flex" gap={3} /> */}
         </Box>
         <Box width="100%" mb={4}>
           <Box
@@ -69,11 +68,18 @@ const TasksPage = () => {
               flexDirection: 'column',
               height: '100%',
               overflow: 'hidden',
-              // overflowY: 'scroll',
               gap: 2,
             }}
           >
-            <DeletableList items={tasks} itemName="task" style={style} />
+            {tasks.length > 0 && (<DeletableList items={tasks} itemName="task" style={style} />)}
+            {tasks.length === 0 && (
+            <Box height="200px" padding={5} backgroundColor="white" display="flex" justifyContent="center" alignItems="center" textAlign="center">
+              <Typography>
+                There are no tasks in this class. Click the CREATE A TASK button to add them.
+              </Typography>
+
+            </Box>
+            )}
           </Box>
         </Box>
       </Box>
