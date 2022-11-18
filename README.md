@@ -5,7 +5,7 @@ Our solution extends MediaWiki to support the creation of classes, tasks, with a
 ## :computer: Getting Started
 
 Our project has two main components:
-1. The Backend, powered by a vanilla MediaWiki at the [mediawiki folder](./mediawiki), with a custom extension.
+1. The Backend, powered by a vanilla MediaWiki at the [mediawiki application folder](./mediawiki/Application), with a custom extension.
 2. A front-end, build with React, which powers the teacher dashboard, that allows the creation of classes and tasks for students.
 
 ### To launch the MediaWiki backend locally:
