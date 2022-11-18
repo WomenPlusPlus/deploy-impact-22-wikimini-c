@@ -1,0 +1,155 @@
+{
+	"name": "wikimini",
+	"author": [
+		"Soraia Tavares"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:Example",
+	"descriptionmsg": "example-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
+	"config": {
+		"ExampleEnableWelcome": {
+			"description": "Enable the Welcome features",
+			"value": true
+		},
+		"ExampleWelcomeColorDays": {
+			"description": "Color for the Welcome message bar by week day",
+			"value": {
+				"monday": "orange",
+				"tuesday": "blue",
+				"wednesday": "green",
+				"thursday": "red",
+				"friday": "yellow"
+			}
+		},
+		"ExampleWelcomeColorDefault": {
+			"description": "Default color for the Welcome message",
+			"value": "#eee"
+		},
+		"ExampleMyWord": {
+			"description": "Value for the {{MYWORD}} magic word in wikitext.",
+			"value": "Awesome"
+		}
+	},
+	"MessagesDirs": {
+		"Wikimini": [
+			"i18n",
+			"i18n/api"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"ExampleAlias": "Example.i18n.alias.php",
+		"ExampleMagic": "Example.i18n.magic.php"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\Wikimini\\": "includes/"
+	},
+	"APIModules": {
+		"createclass": "MediaWiki\\Extension\\Wikimini\\api\\ApiCreateClass",
+		"createtask": "MediaWiki\\Extension\\Wikimini\\api\\ApiCreateTask",
+		"addstudent": "MediaWiki\\Extension\\Wikimini\\api\\ApiAddStudentToClass",
+		"givetask": "MediaWiki\\Extension\\Wikimini\\api\\ApiAddTaskToStudent",
+		"deletetask": "MediaWiki\\Extension\\Wikimini\\api\\ApiDeleteTask",
+		"edittask": "MediaWiki\\Extension\\Wikimini\\api\\ApiEditTask"
+	},
+	"APIListModules": {
+		"allclasses": "MediaWiki\\Extension\\Wikimini\\api\\ApiAllClasses",
+		"studentsinclass": "MediaWiki\\Extension\\Wikimini\\api\\ApiStudentsInClass",
+		"getstudentstasks": "MediaWiki\\Extension\\Wikimini\\api\\ApiGetStudentsTasks",
+		"getclassdetails": "MediaWiki\\Extension\\Wikimini\\api\\ApiClassDetails",
+		"gettaskdetails": "MediaWiki\\Extension\\Wikimini\\api\\ApiGetTaskDetails",
+		"getclasstasks": "MediaWiki\\Extension\\Wikimini\\api\\ApiGetClassTasks"
+	},
+	"namespaces": [
+		{
+			"id": 234,
+			"constant": "NS_XML",
+			"name": "XML",
+			"subpages": false,
+			"content": false,
+			"defaultcontentmodel": "xmldata"
+		},
+		{
+			"id": 235,
+			"constant": "NS_XML_TALK",
+			"name": "XML_Talk",
+			"subpages": true,
+			"content": false,
+			"defaultcontentmodel": "wikitext"
+		}
+	],
+	"AddGroups": {
+		"coordinators": [
+			"TeachersGroup",
+			"ParentsGroup"
+		],
+		"othermembers": [
+			"StudentsGroup"
+		]
+	},
+	"AvailableRights": [
+		"r_create_class",
+		"r_delete_class",
+		"r_add_student",
+		"r_rem_student",
+		"r_edit_article",
+		"r_approve_article",
+		"r_delete_article"
+	],
+	"GroupPermissions": {
+		"*": {
+			"r_create_class": false,
+			"r_delete_class": false,
+			"r_add_student": false,
+			"r_rem_student": false,
+			"r_edit_article": false,
+			"r_approve_article": false,
+			"r_delete_article": false
+		},
+		"TeachersGroup": {
+			"r_create_class": true,
+			"r_delete_class": true,
+			"r_add_student": true,
+			"r_rem_student": true,
+			"r_edit_article": true,
+			"r_approve_article": true,
+			"r_delete_article": true,
+			"userrights": true
+		},
+		"StudentsGroup": {
+			"r_edit_article": true
+		}
+	},
+	"Hooks": {
+		"BeforePageDisplay": "handleHooks",
+		"ParserFirstCallInit": "handleHooks",
+		"ParserGetVariableValueSwitch": "handleHooks",
+		"SkinTemplateNavigation": "handleHooks",
+		"MagicWordwgVariableIDs": {
+			"handler": "handleMoreHooks",
+			"deprecated": true
+		},
+		"GetMagicVariableIDs": "handleMoreHooks",
+		"LoadExtensionSchemaUpdates": {
+			"handler": "handleMoreHooks"
+		},
+		"APIGetAllowedParams": "handleMoreHooks",
+		"APIAfterExecute": "handleMoreHooks"
+	},
+	"HookHandlers": {
+		"handleHooks": {
+			"class": "MediaWiki\\Extension\\Wikimini\\Hooks",
+			"services": [ "PermissionManager" ]
+		},
+		"handleMoreHooks": {
+			"class": "MediaWiki\\Extension\\Wikimini\\MoreHooks"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules/"
+	},
+	"manifest_version": 2
+}

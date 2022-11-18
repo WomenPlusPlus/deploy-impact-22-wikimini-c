@@ -1,0 +1,102 @@
+{
+	"name": "Gadgets",
+	"author": [
+		"Daniel Kinzler",
+		"Max Semenik"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:Gadgets",
+	"descriptionmsg": "gadgets-desc",
+	"license-name": "GPL-2.0-or-later",
+	"requires": {
+		"MediaWiki": ">= 1.37.0"
+	},
+	"type": "other",
+	"namespaces": [
+		{
+			"id": 2300,
+			"constant": "NS_GADGET",
+			"name": "Gadget",
+			"protection": "gadgets-edit"
+		},
+		{
+			"id": 2301,
+			"constant": "NS_GADGET_TALK",
+			"name": "Gadget_talk"
+		},
+		{
+			"id": 2302,
+			"constant": "NS_GADGET_DEFINITION",
+			"name": "Gadget_definition",
+			"protection": "gadgets-definition-edit",
+			"capitallinkoverride": false,
+			"defaultcontentmodel": "GadgetDefinition"
+		},
+		{
+			"id": 2303,
+			"constant": "NS_GADGET_DEFINITION_TALK",
+			"name": "Gadget_definition_talk"
+		}
+	],
+	"ContentHandlers": {
+		"GadgetDefinition": "MediaWiki\\Extension\\Gadgets\\Content\\GadgetDefinitionContentHandler"
+	},
+	"AvailableRights": [
+		"gadgets-edit",
+		"gadgets-definition-edit"
+	],
+	"SpecialPages": {
+		"Gadgets": "MediaWiki\\Extension\\Gadgets\\SpecialGadgets",
+		"GadgetUsage": "MediaWiki\\Extension\\Gadgets\\SpecialGadgetUsage"
+	},
+	"APIListModules": {
+		"gadgetcategories": "MediaWiki\\Extension\\Gadgets\\Api\\ApiQueryGadgetCategories",
+		"gadgets": "MediaWiki\\Extension\\Gadgets\\Api\\ApiQueryGadgets"
+	},
+	"MessagesDirs": {
+		"Gadgets": [
+			"i18n",
+			"i18n/api"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"GadgetsAlias": "Gadgets.alias.php",
+		"GadgetsNamespaces": "Gadgets.namespaces.php"
+	},
+	"RawHtmlMessages": [
+		"gadgets-definition"
+	],
+	"AutoloadClasses": {
+		"Gadget": "includes/Gadget.php",
+		"GadgetRepo": "includes/GadgetRepo.php",
+		"MediaWiki\\Extension\\Gadgets\\Gadget": "includes/Gadget.php",
+		"MediaWiki\\Extension\\Gadgets\\GadgetRepo": "includes/GadgetRepo.php"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\Gadgets\\": "includes/"
+	},
+	"TestAutoloadClasses": {
+		"GadgetTestUtils": "tests/phpunit/GadgetTestUtils.php"
+	},
+	"Hooks": {
+		"PageSaveComplete": "MediaWiki\\Extension\\Gadgets\\Hooks::onPageSaveComplete",
+		"BeforePageDisplay": "MediaWiki\\Extension\\Gadgets\\Hooks::beforePageDisplay",
+		"CodeEditorGetPageLanguage": "MediaWiki\\Extension\\Gadgets\\Hooks::onCodeEditorGetPageLanguage",
+		"ContentHandlerDefaultModelFor": "MediaWiki\\Extension\\Gadgets\\Hooks::onContentHandlerDefaultModelFor",
+		"EditFilterMergedContent": "MediaWiki\\Extension\\Gadgets\\Hooks::onEditFilterMergedContent",
+		"UserGetDefaultOptions": "MediaWiki\\Extension\\Gadgets\\Hooks::userGetDefaultOptions",
+		"GetPreferences": "MediaWiki\\Extension\\Gadgets\\Hooks::getPreferences",
+		"PreferencesGetLegend": "MediaWiki\\Extension\\Gadgets\\Hooks::onPreferencesGetLegend",
+		"ResourceLoaderRegisterModules": "MediaWiki\\Extension\\Gadgets\\Hooks::registerModules",
+		"wgQueryPages": "MediaWiki\\Extension\\Gadgets\\Hooks::onwgQueryPages",
+		"DeleteUnknownPreferences": "MediaWiki\\Extension\\Gadgets\\Hooks::onDeleteUnknownPreferences"
+	},
+	"config": {
+		"GadgetsRepoClass": {
+			"value": "MediaWiki\\Extension\\Gadgets\\MediaWikiGadgetsDefinitionRepo"
+		},
+		"SpecialGadgetUsageActiveUsers": {
+			"value": true
+		}
+	},
+	"manifest_version": 2
+}

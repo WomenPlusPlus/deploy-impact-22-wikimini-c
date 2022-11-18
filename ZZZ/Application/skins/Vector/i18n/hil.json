@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anjoeli9806",
+			"Redhotchili23",
+			"Kai theos en ho logos"
+		]
+	},
+	"vector-language-button-label": "{{PLURAL:$1|$1 ka pinulongan|$1 ka mga pinulongan}}",
+	"vector-action-addsection": "Magdugang sing topiko",
+	"vector-action-delete": "Panason",
+	"vector-action-move": "Saylohon",
+	"vector-action-protect": "Pangapinan",
+	"vector-action-undelete": "Dulaon ang pagpanas",
+	"vector-action-unprotect": "Ilisan ang pagpangapin",
+	"vector-view-create": "Himuon",
+	"vector-view-edit": "Liwaton",
+	"vector-view-history": "Lantawon ang nagkalatabo",
+	"vector-view-view": "Magbasa",
+	"vector-view-viewsource": "Lantawon ang ginhalinan",
+	"vector-more-actions": "Dugang Pa"
+}

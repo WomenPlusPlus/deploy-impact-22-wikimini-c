@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Babamamadidiane",
+			"Lancine.kounfantoh.fofana",
+			"Lanciné.kounfantoh.fofana",
+			"Youssoufkadialy",
+			"Amire80"
+		]
+	},
+	"vector-languages": "ߞߊ߲ ߠߎ߬",
+	"vector-language-button-label": "{{PLURAL:$1|ߞߊ߲ $1|ߞߊ߲ $1 ߠߎ߬}}",
+	"vector-action-addsection": "ߥߟߊ߬ߘߊ߫ ߝߙߊ߬",
+	"vector-action-delete": "ߊ߬ ߖߏ߬ߛߌ߬",
+	"vector-action-move": "ߊ߬ ߛߋ߲߬ߓߐ߫",
+	"vector-action-protect": "ߊ߬ ߟߊߞߊ߲ߘߊ߫",
+	"vector-view-create": "ߊ߬ ߟߊߘߊ߲߫",
+	"vector-view-edit": "ߊ߬ ߡߊߦߟߍ߬ߡߊ߲߫",
+	"vector-view-history": "ߘߐ߬ߝߐ ߡߊߝߟߍ߫",
+	"vector-view-view": "ߘߐ߬ߞߊ߬ߙߊ߲߬ߠߌ߲",
+	"vector-more-actions": "ߡߞߊ߬ߝߏ߬ ߜߘߍ߫ ߟߎ߫",
+	"vector-main-menu-tooltip": "ߢߣߊߕߊߟߌ ߓߊߖߎߡߊ",
+	"tooltip-vector-anon-user-menu-title": "ߢߣߊߕߊߟߌ߫ ߜߘߍ߫ ߟߎ߬"
+}

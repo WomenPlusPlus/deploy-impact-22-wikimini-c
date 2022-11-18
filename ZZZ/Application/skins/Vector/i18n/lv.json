@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Marozols",
+			"Papuass"
+		]
+	},
+	"vector-opt-out": "Pārslēgties uz veco izskatu",
+	"vector-action-toggle-sidebar": "Pārslēgt sānjoslu",
+	"vector-languages": "Valodas",
+	"vector-language-button-label": "{{PLURAL:$1|$1 valodas|$1 valoda|$1 valodas}}",
+	"vector-action-addsection": "Jauna sadaļa",
+	"vector-action-delete": "Dzēst",
+	"vector-action-move": "Pārvietot",
+	"vector-action-protect": "Aizsargāt",
+	"vector-action-undelete": "Atjaunot",
+	"vector-action-unprotect": "Mainīt aizsardzību",
+	"vector-view-create": "Izveidot",
+	"vector-view-edit": "Labot",
+	"vector-view-history": "Hronoloģija",
+	"vector-view-view": "Skatīt",
+	"vector-view-viewsource": "Aplūkot kodu",
+	"vector-more-actions": "Vairāk",
+	"vector-anon-user-menu-pages-learn": "uzzināt vairāk",
+	"vector-anon-user-menu-pages-label": "Uzzini vairāk par rediģēšanu",
+	"vector-main-menu-tooltip": "Galvenā izvēlne",
+	"tooltip-vector-anon-user-menu-title": "Vairāk iespēju"
+}
