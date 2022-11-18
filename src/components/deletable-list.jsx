@@ -18,7 +18,7 @@ const DeletableList = ({ items, itemName, style }) => (
         <ListItem button>
           <ListItemText primary={item[itemName]} />
           <Tooltip title="Edit">
-            <IconButton aria-label="delete">
+            <IconButton aria-label="edit">
               <ModeEditIcon />
             </IconButton>
           </Tooltip>
