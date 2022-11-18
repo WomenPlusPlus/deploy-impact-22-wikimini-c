@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Box, Typography, TextField, Button,
+  Box, Typography, TextField,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
@@ -122,21 +122,13 @@ const LoginPage = () => {
           </Box>
           <FilledFullWidthSubmitButton
             disabled={!dirty || !isValid}
+            onClick={() => navigate('/classes')}
           >
             Log In
           </FilledFullWidthSubmitButton>
-          <Button
-            sx={(theme) => ({
-              background: theme.palette.primary.main,
-              color: theme.palette.primary.contrastText,
-            })}
-            onClick={() => navigate('/classes')}
-          >
-            If loggedin click here.
-          </Button>
         </Box>
         <Box width="420px" textAlign="center">
-          <Typography mb={1}>Don&apos;t have an account yet?</Typography>
+          <Typography mb={1} mt={3}>Don&apos;t have an account yet?</Typography>
           <OutlinedControlledWidthButton onClick={() => navigate('/register')}>
             Register
           </OutlinedControlledWidthButton>

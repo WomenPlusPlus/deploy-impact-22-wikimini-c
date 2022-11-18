@@ -11,21 +11,27 @@ import AssignStudentPage from '../pages/assign-student-page';
 import TasksPage from '../pages/tasks-page';
 import HomePage from '../pages/home-page/home';
 import StudentTaskPage from '../pages/student-task-page';
+import ArticlePage from '../pages/article-page/article';
+import SecondaryLayout from '../layouts/secondary-layout';
 
 const PageRoutes = () => (
   <Routes>
     <Route index element={<HomePage />} />
+    <Route path="/article" element={<ArticlePage />} />
     <Route path="/" element={<MainLayout />}>
       {/* <Route index element={<HomePage />} /> */}
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
       <Route path="/class/:id/dashboard" element={<DashboardPage />} />
-      <Route path="/classes" element={<ClassesPage />} />
       <Route path="/add-class" element={<AddClassPage />} />
       <Route path="/class/:id/create-task" element={<CreateTaskPage />} />
       <Route path="/class/:classId/task/:id/assign-student" element={<AssignStudentPage />} />
       <Route path="/class/:id/tasks" element={<TasksPage />} />
       <Route path="/student-task" element={<StudentTaskPage />} />
+    </Route>
+    <Route path="/" element={<SecondaryLayout />}>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/classes" element={<ClassesPage />} />
+
     </Route>
   </Routes>
 );

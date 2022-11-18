@@ -6,12 +6,12 @@ const HomePage = () => (
   <>
     <div className="topnav">
       <div className="logo" />
-      <div>
+      {/* <div>
         <a className="active" href="/">Home</a>
         <a href="/login">Login</a>
         <a href="/register">Register</a>
         <a href="/dashboard">Dashboard</a>
-      </div>
+      </div> */}
       <a href="/login" className="login-button">Login</a>
     </div>
     <div className="home-container">
@@ -44,10 +44,12 @@ const HomePage = () => (
       <div className="category-container">
         <p className="title">SEARCH BY CATEGORY</p>
         <div className="grid-container">
-          <div className="category-card">
-            <img className="category-image" src="Atlas_Of_The_World.png" alt="category" />
-            <p>Atlas of the world</p>
-          </div>
+          <a href="article" className="article-link">
+            <div className="category-card">
+              <img className="category-image" src="Atlas_Of_The_World.png" alt="category" />
+              <p>Atlas of the world</p>
+            </div>
+          </a>
           <div className="category-card">
             <img className="category-image" src="artsandsports.png" alt="category" />
             <p>Arts, leisure and sports</p>

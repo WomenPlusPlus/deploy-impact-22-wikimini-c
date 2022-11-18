@@ -90,7 +90,7 @@ const CreateTaskPage = () => {
   return (
     <div className="create-task-container">
       <Box width="100%" textAlign="left" mt={5}>
-        <Typography variant="h4" sx={{ fontWeight: 'medium' }}>CREATE TASK</Typography>
+        <Typography variant="h4" sx={{ fontWeight: 'medium' }}>CREATE A TASK</Typography>
       </Box>
       <Box
         component="form"
@@ -98,14 +98,14 @@ const CreateTaskPage = () => {
       >
         <Box width="100%" mb={3}>
           {' '}
-          <Typography variant="h5" mb={2} sx={{ fontWeight: 'medium' }}>Choose type of task</Typography>
+          <Typography variant="h5" mb={2} sx={{ fontWeight: 'medium' }}>Choose the type of task</Typography>
           <Box width="100%" display="flex" gap={1} flexWrap="wrap">
             {taskTypes.map((type) => (
               <Chip
                 key={type}
                 label={type}
                 onClick={handleTypeTask}
-                color={task.taskType === type ? 'primary' : 'default'}
+                color={task.taskType === type ? 'secondary' : 'default'}
               />
             ))}
           </Box>
@@ -170,7 +170,6 @@ const CreateTaskPage = () => {
               sx={{ fontWeight: 'medium' }}
             >
               Link to article
-
             </Typography>
             <Tooltip title={linkTip}><HelpOutlineIcon style={{ color: '#EB5757' }} /></Tooltip>
           </Box>

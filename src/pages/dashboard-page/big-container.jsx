@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 
 const BigContainer = ({
-  children, color, title,
+  children, color, title, height,
 }) => (
   <Box
     width="100%"
@@ -26,11 +26,11 @@ const BigContainer = ({
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            height: 300,
             overflow: 'hidden',
             overflowY: 'scroll',
             gap: 2,
           }}
+          height={height}
         >
           {children}
         </Box>

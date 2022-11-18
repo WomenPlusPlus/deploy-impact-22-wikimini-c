@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aliyu shaba",
+			"Amire80",
+			"Mohammedbama123"
+		]
+	},
+	"vector-language-button-label": "{{PLURAL:$1|$1 language|$1 languages}}",
+	"vector-action-addsection": "Bayin yukko",
+	"vector-action-delete": "Chinne",
+	"vector-action-move": "Huutu",
+	"vector-action-protect": "Teliwune",
+	"vector-view-create": "Awo kelta",
+	"vector-view-edit": "Yasa",
+	"vector-view-history": "Awodoyə közina kuru",
+	"vector-view-view": "Qra",
+	"vector-more-actions": "Kuru",
+	"vector-searchsuggest-containing": "Na awoodoyə gnazanama mata <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>"
+}
