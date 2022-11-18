@@ -78,21 +78,23 @@ export const getClassDetailsService = async (classId) => {
       studentUsername: result.all_students[key].student_username,
     }));
 
-    const allTasks = Object.keys(result.all_tasks).map((key) => ({
-      id: result.all_tasks[key].task_id,
-      task: result.all_tasks[key].task_name,
-    }));
+    const allTasks = Object.keys(result.all_tasks)
+      .map((key) => ({
+        id: result.all_tasks[key].task_id,
+        task: result.all_tasks[key].task_name,
+      }))
+      .reverse();
 
-    const tasksPerStudent = Object.keys(result.tasks_per_student).map(
-      (key, id) => ({
+    const tasksPerStudent = Object.keys(result.tasks_per_student)
+      .map((key, id) => ({
         id,
         studentId: result.tasks_per_student[key].student_id,
         studentUsername: result.tasks_per_student[key].student_username,
         taskId: result.tasks_per_student[key].task_id,
         task: result.tasks_per_student[key].task_name,
         taskStatus: result.tasks_per_student[key].task_status,
-      }),
-    );
+      }))
+      .reverse();
 
     const classInfo = result.class_info;
 
