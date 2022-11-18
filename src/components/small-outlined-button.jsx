@@ -9,15 +9,16 @@ const SmallOutlinedButton = ({ children, handleClick }) => (
     }}
     sx={(theme) => ({
       background: theme.palette.common.white,
-      color: theme.palette.secondary.main,
+      color: theme.palette.secondary.additional,
       variant: 'outlined',
       border: '2px solid',
-      borderColor: 'secondary.main',
+      borderColor: theme.palette.secondary.additional,
       size: 'small',
       ml: '10px',
-      py: '2px',
+      py: '4px',
+      fontSize: '11px',
       ':hover': {
-        bgcolor: theme.palette.secondary.main,
+        bgcolor: theme.palette.secondary.additional,
         color: theme.palette.common.white,
       },
     })}
