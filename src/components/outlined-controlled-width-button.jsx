@@ -1,10 +1,8 @@
 import React from 'react';
 import { Button } from '@mui/material';
-// import { useNavigate } from 'react-router-dom';
 
 const OutlinedControlledWidthButton = ({ children, onClick }) => (
   <Button
-      // onClick={() => navigate('/register')}
     style={{
       borderRadius: '10px',
     }}

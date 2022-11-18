@@ -1,9 +1,6 @@
 import axios from 'axios';
 
 export const addStudentService = (student) => {
-  // The same student cannot be added to the same class - this will result in a DB error.
-  // If the student and/or class does not exist a error will be displayed.
-
   const url = `${process.env.REACT_APP_API_URL}api.php`;
 
   const params = {

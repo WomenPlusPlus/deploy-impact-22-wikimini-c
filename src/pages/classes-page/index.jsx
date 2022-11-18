@@ -6,18 +6,8 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { getClasses } from '../../redux/reducers/teacher';
 import './classes.css';
-import StyledCreateClassButton from '../../components/create-class-button';
 import CornerPictures from '../../components/corner-pictures';
-import AddClassModal from '../add-class-page/add-class-modal';
-
-// const Item = styled(Paper)(({ theme }) => ({
-//   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-//   ...theme.typography.body2,
-//   padding: theme.spacing(1),
-//   textAlign: 'center',
-//   color: theme.palette.text.secondary,
-//   borderRadius: 10,
-// }));
+import AddClassModal from './add-class-modal';
 
 const ClassesPage = () => {
   const navigate = useNavigate();
@@ -41,9 +31,7 @@ const ClassesPage = () => {
         <Typography variant="h4" mb={4}>WELCOME LYNDA!</Typography>
         <Typography variant="h6" mb={4}>YOUR CLASSES</Typography>
         <Box width="300px" display="flex" justifyContent="center" flexDirection="column" gap={2} mb={6}>
-
           {teacherClasses?.map(({ id, classTitle }) => (
-
             <Button
               style={{
                 borderRadius: '30px',
@@ -65,9 +53,7 @@ const ClassesPage = () => {
             >
               {classTitle}
             </Button>
-
           ))}
-
         </Box>
         <AddClassModal />
       </Box>

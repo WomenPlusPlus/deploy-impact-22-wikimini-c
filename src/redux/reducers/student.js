@@ -23,7 +23,6 @@ export const listStudentsInClass = createAsyncThunk(
   'student/listStudentsInClass',
   (classId, { rejectWithValue }) => listStudentsService(classId)
     .then((res) => {
-      console.log(res);
       if (res.data.error) {
         return rejectWithValue(res.data.error);
       }
@@ -41,7 +40,6 @@ export const giveTask = createAsyncThunk(
   'student/giveTask',
   (taskData, { rejectWithValue }) => giveTaskToStudentService(taskData)
     .then((res) => {
-      console.log(res);
       if (res.data.error) {
         return rejectWithValue(res.data.error);
       }

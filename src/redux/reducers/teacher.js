@@ -19,8 +19,6 @@ export const createClass = createAsyncThunk(
         return rejectWithValue(res.data.error);
       }
 
-      console.log(res);
-
       return res.data.createclass.created_class;
     })
     .catch((error) => rejectWithValue(error.message)),
@@ -29,7 +27,6 @@ export const createClass = createAsyncThunk(
 export const getClasses = createAsyncThunk('teacher/getClasses', () => getClassesService()
   .then((res) => res.query.allclasses.map((c) => {
     const { id, name: classTitle, teacherid } = c;
-    console.log(classTitle);
 
     return { id, classTitle, teacherid };
   }))
@@ -39,8 +36,6 @@ export const createTask = createAsyncThunk(
   'teacher/createTask',
   (taskData, { rejectWithValue }) => createTaskService(taskData)
     .then((res) => {
-      console.log(res);
-
       if (res.data.error) {
         return rejectWithValue(res.data.error);
       }

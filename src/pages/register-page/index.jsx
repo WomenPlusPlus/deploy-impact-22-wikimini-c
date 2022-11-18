@@ -9,12 +9,6 @@ import CornerPictures from '../../components/corner-pictures';
 import ProfileIcons from './profile-icons';
 import FilledFullWidthSubmitButton from '../../components/filled-full-width-submit-button';
 
-// const accountTypes = [
-//   'Student',
-//   'Teacher',
-//   'Parent',
-// ];
-
 const initialValues = {
   username: '',
   password: '',
@@ -39,7 +33,6 @@ const validationSchema = yup.object({
 
 const RegisterPage = () => {
   const onSubmit = (values) => {
-    console.log('Values entered');
     console.table(values);
   };
 
@@ -82,11 +75,6 @@ const RegisterPage = () => {
           <Box dislay="flex" flexDirection="column" width="100%">
             <ProfileIcons />
             <Box width="100%" display="flex" justifyContent="space-around">
-              {/* {accountTypes.map((type) => (
-            <Chip key={type} label={type}
-            onClick={handleAccountType}
-            color={account.accountType === type ? 'primary' : 'default'} />
-          ))} */}
               <Tooltip title="Choose">
                 <Chip
                   style={{
@@ -148,7 +136,6 @@ const RegisterPage = () => {
             onBlur={handleBlur}
             error={touched.username && Boolean(errors.username)}
           />
-
           <TextField
             style={{
               backgroundColor: 'white',

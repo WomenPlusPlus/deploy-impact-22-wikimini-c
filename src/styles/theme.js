@@ -77,9 +77,6 @@ const baseTheme = createTheme({
 const mixinTheme = createTheme(baseTheme, {
   mixins: {
     navbar: {
-      // display: 'flex',
-      // justifyContent: 'flex-end',
-      // alignItems: 'center',
       height: '165px',
       boxShadow: 0,
       padding: baseTheme.spacing(0, 4),

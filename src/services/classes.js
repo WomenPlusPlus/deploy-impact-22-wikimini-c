@@ -2,11 +2,7 @@ import axios from 'axios';
 
 export const getClassesService = async () => {
   const url = `${process.env.REACT_APP_API_URL}api.php?action=query&list=allclasses&format=json`;
-  const responseData = axios.get(url).then((response) => {
-    console.log(response.data);
-
-    return response.data;
-  });
+  const responseData = axios.get(url).then((response) => response.data);
 
   return responseData;
 };
@@ -46,8 +42,6 @@ export const getClassDetailsService = async (classId) => {
 
   const response = await axios.get(url, { params });
   const result = response.data.query.getclassdetails[0];
-
-  console.log(result);
 
   const allStudents = Object.keys(result.all_students).map((key) => ({
     id: result.all_students[key].student_id,
