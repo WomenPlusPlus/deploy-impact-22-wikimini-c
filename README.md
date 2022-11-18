@@ -22,13 +22,14 @@
 4. Run this command to see the page `npm start` or `yarn start`
 5. Go to http://localhost:3000/ to check the app
 
+### Deployed MediaWiki
+http://wikimini-c.azurewebsites.net/
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](./issues).
-
-##
 
 ## :tada: Acknowledgments
 
