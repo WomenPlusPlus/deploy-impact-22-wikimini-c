@@ -1,10 +1,9 @@
 import axios from 'axios';
+import apiUrl from './api';
 
 export const addStudentService = (student) => {
   // The same student cannot be added to the same class - this will result in a DB error.
   // If the student and/or class does not exist a error will be displayed.
-
-  const url = `${process.env.REACT_APP_API_URL}api.php`;
 
   const params = {
     action: 'addstudent',
@@ -15,12 +14,10 @@ export const addStudentService = (student) => {
   formData.append('student_name', student.username);
   formData.append('class_id', student.classId);
 
-  return axios.post(url, formData, { params });
+  return axios.post(apiUrl, formData, { params });
 };
 
 export const listStudentsService = (classId) => {
-  const url = `${process.env.REACT_APP_API_URL}api.php`;
-
   const params = {
     action: 'query',
     list: 'studentsinclass',
@@ -28,12 +25,10 @@ export const listStudentsService = (classId) => {
     class_id: classId,
   };
 
-  return axios.get(url, { params });
+  return axios.get(apiUrl, { params });
 };
 
 export const giveTaskToStudentService = ({ studentId, taskId }) => {
-  const url = `${process.env.REACT_APP_API_URL}api.php`;
-
   const params = {
     action: 'givetask',
     format: 'json',
@@ -44,5 +39,5 @@ export const giveTaskToStudentService = ({ studentId, taskId }) => {
   formData.append('task_id', taskId);
   formData.append('task_status', 'Pending');
 
-  return axios.post(url, formData, { params });
+  return axios.post(apiUrl, formData, { params });
 };
