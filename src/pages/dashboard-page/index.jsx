@@ -5,7 +5,7 @@ import {
 import { useNavigate, useParams } from 'react-router-dom';
 import ForumIcon from '@mui/icons-material/Forum';
 import DeletableList from '../../components/deletable-list';
-import AddStudentModal from '../add-class-page/add-student-modal';
+import AddStudentModal from './add-student-modal';
 import './dashboard.css';
 import SmallOutlinedButton from '../../components/small-outlined-button';
 import { getClassDetailsService } from '../../services/classes';
@@ -29,7 +29,6 @@ const DashboardPage = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       const data = await getClassDetailsService(classId);
-      console.log(data);
       if (data) {
         setStudents(data.allStudents || []);
         setTasks(data.allTasks || []);

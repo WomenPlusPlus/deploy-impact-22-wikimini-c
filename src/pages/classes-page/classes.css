@@ -2,7 +2,6 @@
     display:flex;
     align-items: center;
     flex-direction:column;
-    /* justify-content: center; */
     position:relative;
     padding-top:165px;
     min-height:100vh;

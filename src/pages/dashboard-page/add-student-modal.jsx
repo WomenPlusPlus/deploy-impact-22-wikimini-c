@@ -31,8 +31,6 @@ const AddStudentModal = ({ classId }) => {
   };
 
   const onSubmit = (values) => {
-    console.log('Values entered');
-    console.table(values);
     dispatch(addStudentToClass({ ...values, classId }));
   };
 

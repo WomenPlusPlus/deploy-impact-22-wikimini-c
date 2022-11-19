@@ -83,7 +83,6 @@ const CreateTaskPage = () => {
 
   const handleSaveTask = (event) => {
     event.preventDefault();
-    console.log(task);
     dispatch(createTask(task));
   };
 

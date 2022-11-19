@@ -32,7 +32,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const onSubmit = (values) => {
-    console.log('Values entered');
     console.table(values);
   };
 

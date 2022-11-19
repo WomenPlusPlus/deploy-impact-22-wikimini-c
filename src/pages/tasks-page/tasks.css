@@ -2,8 +2,6 @@
     display:flex;
     align-items: center;
     flex-direction:column;
-    /* justify-content: center; */
-    /* position:relative; */
     min-height:100vh;
     width:100vw;
     padding-bottom:165px;
@@ -13,6 +11,5 @@
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-    gap: 40px
-    
+    gap: 40px 
 }

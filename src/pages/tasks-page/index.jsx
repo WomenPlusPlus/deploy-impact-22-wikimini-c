@@ -77,7 +77,6 @@ const TasksPage = () => {
               <Typography>
                 There are no tasks in this class. Click the CREATE A TASK button to add them.
               </Typography>
-
             </Box>
             )}
           </Box>
