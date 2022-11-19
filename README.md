@@ -47,3 +47,6 @@ Feel free to check the [issues page](./issues).
 ## Show your support
 
 Give a ⭐️ if you like this project!
+
+## Further development or questions
+Contact Vicente Iglesias: vichoiglesias *at* hey *dot* com
