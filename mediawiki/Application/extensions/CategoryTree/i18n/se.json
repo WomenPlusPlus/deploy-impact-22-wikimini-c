@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yupik"
+		]
+	},
+	"categorytree-portlet": "Kategoriijat",
+	"categorytree-category": "Kategoriija:",
+	"categorytree-expand": "čájet",
+	"categorytree-load": "čájet",
+	"categorytree-no-subcategories": "vuollekategoriijat ii leat"
+}

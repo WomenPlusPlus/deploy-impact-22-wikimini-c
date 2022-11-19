@@ -1,0 +1,52 @@
+/*!
+ * VisualEditor MediaWiki UserInterface MWParameterPage styles.
+ *
+ * @copyright 2011-2020 VisualEditor Team and others; see AUTHORS.txt
+ * @license The MIT License (MIT); see LICENSE.txt
+ */
+
+.ve-ui-mwParameterPage .ve-ui-mwParameter-wikitextFallbackInput {
+	/* Support: Blink, Gecko, Webkit */
+	/* Specify a valid second value to fix size, see T176636 */
+	font-family: monospace, monospace;
+	background-color: #c8ccd1;
+}
+
+.ve-ui-mwParameterPage-info {
+	margin-bottom: 0.5em;
+}
+
+.ve-ui-mwParameterPage-label {
+	display: inline;
+	vertical-align: middle;
+	font-weight: bold;
+	overflow-wrap: break-word;
+}
+
+.ve-ui-mwParameterPage-statusIndicator {
+	display: inline-block;
+	vertical-align: middle;
+	opacity: 0.5;
+}
+
+.ve-ui-mwParameterPage-inlineDescription {
+	position: relative;
+	/* FIXME remove when sidebar feature flag is gone T303386 */
+	padding-left: 2.5em;
+}
+
+.ve-ui-mwTransclusionDialog-newSidebar .ve-ui-mwParameterPage-inlineDescription {
+	/* FIXME remove when sidebar feature flag is gone T303386 */
+	padding-left: 0;
+}
+
+.ve-ui-mwParameterPage-inlineDescription > .ve-ui-expandableContent-container {
+	right: 0;
+}
+
+.ve-ui-mwParameterPage-undocumentedLabel {
+	margin-left: 0.4em;
+	font-size: 13px;
+	font-style: italic;
+	color: #72777d;
+}

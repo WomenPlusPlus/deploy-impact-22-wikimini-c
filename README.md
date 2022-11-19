@@ -1,6 +1,10 @@
 # Wikimini - MediaKiwi 🥝
 
 ## :computer: Getting Started
+
+### To launch the MediaWiki locally:
+1. Follow these [instructions](./mediawiki/Application/Readme.md) to install and learn more about MediaWiki
+2. We created our own WikiMini Extension, you can check its documentation [here](./mediawiki/Application/extensions/WikiMiniExtension)
  
 ### To launch the front-end project locally:
 
@@ -12,11 +16,14 @@
 1. Change the directory to wikimini front-end directory  
 `cd deploy-impact-22-wikimini-C`
 2. Create an .env file in the root of the project containing:
-  `REACT_APP_API_URL=(deployed media-wiki url)`
+  `REACT_APP_API_URL=(deployed media-wiki url or the local mediawiki)`
 3. Install the project's dependencies by running this command:   
 `npm install` or `yarn install`
 4. Run this command to see the page `npm start` or `yarn start`
 5. Go to http://localhost:3000/ to check the app
+
+### Deployed MediaWiki
+http://wikimini-c.azurewebsites.net/
 
 ## 🤝 Contributing
 

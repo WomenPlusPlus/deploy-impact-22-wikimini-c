@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tochiprecious",
+			"Ukabia",
+			"Uzoma Ozurumba",
+			"Edith Nwobu",
+			"Izuchi Onyeike",
+			"Olugold",
+			"Amire80",
+			"Timzy D'Great"
+		]
+	},
+	"tooltip-ca-ve-edit": "Mèzi ihu â",
+	"visualeditor-ca-createlocaldescriptionsource": "Tinye nkọwa ebe o si",
+	"visualeditor-ca-createsource": "Mepụta isi mmalite",
+	"visualeditor-ca-editsource": "Dezie ebe osi",
+	"visualeditor-ca-editsource-section": "dezie ebe o si",
+	"visualeditor-categories-tool": "Ụdàkọ",
+	"visualeditor-descriptionpagelink": "Project:Ihe ndozi nke anya nahu",
+	"visualeditor-dialog-media-save": "Dònye",
+	"visualeditor-dialog-media-search-tab-search": "Tùwe",
+	"visualeditor-dialog-meta-categories-category": "Ụdàkọ",
+	"visualeditor-dialog-meta-categories-data-label": "Ụdàkọ",
+	"visualeditor-dialog-meta-categories-section": "Ụdàkọ",
+	"visualeditor-dialog-meta-settings-toc-disable": "Emelaème",
+	"visualeditor-dialog-transclusion-add-param-error-exists-selected": "E nweghị ike itinye ntụ \"$2\" ugboro abụọ.",
+	"visualeditor-dialog-transclusion-add-param-error-exists-unselected": "Nke\n oke \"$2\" adịlarị maka ojiji. Biko lelee nhọrọ ndị dị na sidebar.",
+	"visualeditor-linkinspector-educationpopup-title": "Òjikọ",
+	"visualeditor-mweditmodesource-warning-cancel": "Hapụ̀",
+	"visualeditor-savedialog-label-save-short": "Dònye",
+	"visualeditor-savedialog-label-save-short-start": "Dònye…"
+}

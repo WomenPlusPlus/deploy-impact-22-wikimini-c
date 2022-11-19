@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"apierror-visualeditor-difffailed": "Ӏалашйан цайелира",
+	"apihelp-visualeditor-param-etag": "ETag дӀайахьийта.",
+	"apihelp-visualeditoredit-param-etag": "ETag дӀайахьийта."
+}

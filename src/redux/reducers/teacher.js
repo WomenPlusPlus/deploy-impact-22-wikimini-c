@@ -1,7 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { createClassService } from '../../services/teacher';
-import { getClassesService, createTaskService } from '../../services/classes';
+import {
+  createClassService,
+  getClassesService,
+  createTaskService,
+} from '../../services/classes';
 
 const initialState = {
   allClasses: [],
@@ -24,13 +27,22 @@ export const createClass = createAsyncThunk(
     .catch((error) => rejectWithValue(error.message)),
 );
 
-export const getClasses = createAsyncThunk('teacher/getClasses', () => getClassesService()
-  .then((res) => res.query.allclasses.map((c) => {
-    const { id, name: classTitle, teacherid } = c;
+export const getClasses = createAsyncThunk(
+  'teacher/getClasses',
+  (_, { rejectWithValue }) => getClassesService()
+    .then((res) => {
+      if (res.data.error) {
+        return rejectWithValue(res.data.error);
+      }
 
-    return { id, classTitle, teacherid };
-  }))
-  .catch((error) => console.log(error.message)));
+      return res.data.query.allclasses.map((c) => {
+        const { id, name: classTitle, teacherid } = c;
+
+        return { id, classTitle, teacherid };
+      });
+    })
+    .catch((error) => error.message),
+);
 
 export const createTask = createAsyncThunk(
   'teacher/createTask',
